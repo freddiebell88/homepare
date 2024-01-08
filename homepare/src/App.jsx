@@ -1,14 +1,18 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Dashboard } from './dashboard'
+import { Register } from './register'
+import { Login } from './login'
 
 function App() {
   
 
   return (
+    <>
     <Dashboard />
+    <Register />
+    <Login />
+    </>
   )
 }
 

@@ -1,3 +1,5 @@
+import { ListingDetails } from './ListingDetails'
+
 export function UserListings() {
 
     return (
@@ -16,6 +18,8 @@ export function UserListings() {
         <div>
         <p>🏠</p>
             Address 4 </div>
+            
+        <ListingDetails />
         </>
     )
 }
