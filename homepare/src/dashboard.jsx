@@ -1,5 +1,6 @@
 import { UserListings } from './UserListings'
 import { UserCollections } from './UserCollections.jsx'
+import { Menu } from './Menu'
 
 export function Dashboard() {
     return (
@@ -9,6 +10,8 @@ export function Dashboard() {
         <UserListings />
         
         <UserCollections />
+
+        <Menu />
         </>
     )
 }
