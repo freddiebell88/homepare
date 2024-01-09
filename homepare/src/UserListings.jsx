@@ -6,14 +6,14 @@ export function UserListings() {
     //     return (
     //         <DetailsCard />
     //     )
-    }
+    
 
     return (
         <>
         <h1> My Listings </h1>
         <div> 
             <p>🏠</p>
-            <button onClick={handleSelectListing}>Address 1</button onClick={handleSelectListing}>
+            <p >Address 1</p>
         </div>
         <div>
         <p>🏠</p>

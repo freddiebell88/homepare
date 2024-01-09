@@ -16,13 +16,13 @@ export function DetailsCard({streetAddress, sqFootage, listPrice, city, zipCode,
         // post notes to API
     }
 
-    
+    const imgWidth = "200px";
     
         return (
             <div className="detailsCard">
             <h1>Listing Details</h1>
             
-            <img src={thumbnail} alt="thumbnail of home"/>
+            <img src={thumbnail} alt="thumbnail of home" width={imgWidth}/>
             
             <p>Street Address:{streetAddress}</p>
             <p>City: {city}</p>
