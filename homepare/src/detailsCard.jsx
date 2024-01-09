@@ -14,12 +14,11 @@ export function DetailsCard({streetAddress, sqFootage, listPrice, city, zipCode,
     
     
         return (
-            <>
+            <div className="detailCard">
             <h1>Listing Details</h1>
-            <div>🏡</div>
-            <div>
+            
             <img src={thumbnail} alt="thumbnail of home"/>
-            </div>
+            
             <p>Street Address:{streetAddress}</p>
             <p>City: {city}</p>
             <p>Zip Code: {zipCode}</p>
@@ -27,7 +26,7 @@ export function DetailsCard({streetAddress, sqFootage, listPrice, city, zipCode,
             <p>SQ Footage: {sqFootage}</p>
             <div>CHECKLIST</div>
             <button onClick={handleAddListingClick}>Add to My Listings</button>
-            </>
+            </div>
     
         )
     }
