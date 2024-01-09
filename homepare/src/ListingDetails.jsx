@@ -14,6 +14,9 @@ export function ListingDetails() {
         city={homeData.value[0].City}
         zipCode={homeData.value[0].PostalCode}
         thumbnail={homeData.value[0].Media[0].Thumbnail}
+        bedrooms={homeData.value[0].BedroomsTotal}
+        bathrooms={homeData.value[0].BathroomsTotalInteger}
+        propertyType={homeData.value[0].PropertySubType}
       />
       
     </>
