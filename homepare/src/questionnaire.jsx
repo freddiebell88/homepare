@@ -14,12 +14,16 @@ export function Questionnaire() {
     setIndex(index === questionnaireData.length - 1 ? index : index + 1)
   }
 
+  const answerString = questionnaireData[index].answers
+
   return (
     // <Checklist />
     <>
       <h1>Questonnaire</h1>
       <h3>{questionnaireData[index].question}</h3>
-      <h3>{questionnaireData[index].answers}</h3>
+      {/* <button>{questionnaireData[index].answers}</button> */}
+      {answerString.map((answer) => <button>{answer}</button>)}
+      <br></br>
       <button onClick={handleNextClick}>Next</button>
     </>
     // checklist is list of results from questionnaire
