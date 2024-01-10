@@ -27,7 +27,7 @@ export function UserListings() {
             Address 4 </div>
             
         {/* <ListingDetails /> */}
-        <ListingInput />
+        {/* <ListingInput /> */}
         </>
     )
 }

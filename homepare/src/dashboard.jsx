@@ -2,6 +2,7 @@ import { UserListings } from "./UserListings";
 import { UserCollections } from "./UserCollections.jsx";
 import { Menu } from "./Menu";
 import { useState } from "react";
+import SearchBar from "./listingInput.jsx";
 
 const TABNAMES = {
   MY_LISTINGS: "My Listings",
