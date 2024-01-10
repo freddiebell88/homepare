@@ -2,6 +2,7 @@ import { UserListings } from "./UserListings";
 import { UserCollections } from "./UserCollections.jsx";
 import { Menu } from "./Menu";
 import { useState } from "react";
+import { ComparisonTable } from "./comparisonTable.jsx";
 
 const TABNAMES = {
   MY_LISTINGS: "My Listings",
@@ -34,6 +35,8 @@ export function Dashboard() {
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings />}
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
       <Menu />
+      <ComparisonTable />
+      {/* just calling this here so I can see it, will ultimately be called from collection details page --Freddie */}
     </>
   );
 }
