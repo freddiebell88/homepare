@@ -1,5 +1,6 @@
 import { ListingDetails } from './ListingDetails'
 import { DetailsCard } from './detailsCard'
+import { ListingInput } from './listingInput'
 
 export function UserListings() {
     // const handleSelectListing = () = {
@@ -25,7 +26,8 @@ export function UserListings() {
         <p>🏠</p>
             Address 4 </div>
             
-        <ListingDetails />
+        {/* <ListingDetails /> */}
+        <ListingInput />
         </>
     )
 }
