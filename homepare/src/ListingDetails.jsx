@@ -1,4 +1,4 @@
-import homeData from "/Users/mariajuri/Momentum/Phase-4/Final-Project-Homepare/homepare/homepare/homes.json";
+import homeData from "./data/homes.json";
 import { DetailsCard } from "./detailsCard.jsx";
 
 export function ListingDetails() {

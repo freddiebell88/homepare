@@ -3,15 +3,28 @@ import './App.css'
 import { Dashboard } from './dashboard'
 import { Register } from './register'
 import { Login } from './login'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   
 
   return (
     <>
-    <Dashboard />
-    <Register />
-    <Login />
+    <Routes> 
+      <Route
+        path="/"
+        element={<Dashboard />}
+        />
+      <Route
+        path="/register"
+        element={<Register />}
+      />
+      <Route
+        path="/login"
+        element={<Login />}
+        />
+    </Routes>
+  
     </>
   )
 }
