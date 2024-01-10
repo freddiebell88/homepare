@@ -1,8 +1,13 @@
 import homeData from "./data/homes.json";
 import { DetailsCard } from "./detailsCard.jsx";
+import { useState } from 'react'
 
 export function ListingDetails() {
   console.log(homeData);
+
+  const index = []
+
+  // const [index, setIndex] = useState(0)
 
   return (
     <>
