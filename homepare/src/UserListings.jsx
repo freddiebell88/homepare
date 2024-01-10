@@ -1,13 +1,19 @@
 import { ListingDetails } from './ListingDetails'
+import { DetailsCard } from './detailsCard'
 
 export function UserListings() {
+    // const handleSelectListing = () = {
+    //     return (
+    //         <DetailsCard />
+    //     )
+    
 
     return (
         <>
         <h1> My Listings </h1>
         <div> 
             <p>🏠</p>
-            <p>Address 1</p>
+            <p >Address 1</p>
         </div>
         <div>
         <p>🏠</p>
