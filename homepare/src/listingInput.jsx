@@ -2,14 +2,14 @@ import { useState } from "react";
 import homeData from "./data/homes.json";
 
 export function ListingInput() {
-    const preview = (
-        <>
-        <img /> 
-        {/* src is media image from json - can pass that prop */}
-        <p>Address</p>
-        {/* address also from json */}
-        </>
-    )
+    // const preview = (
+    //     <>
+    //     <img /> 
+    //     {/* src is media image from json - can pass that prop */}
+    //     <p>Address</p>
+    //     {/* address also from json */}
+    //     </>
+    // )
     return (
         <>
         <h2>Input Your Listing Address</h2>
@@ -19,7 +19,7 @@ export function ListingInput() {
             streetAddress={homeData.value[0].UnparsedAddress}
         />
         {/* <SearchBarFilter /> */}
-        <div>{preview}</div>
+        {/* <div>{preview}</div> */}
         </>
     )
 }
