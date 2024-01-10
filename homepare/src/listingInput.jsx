@@ -32,6 +32,7 @@ export function Preview( {thumbnail, streetAddress} ) {
         <div className="previewCard">
             <img src={thumbnail} alt="thumbnail photo of house" width={previewWidth}/>
             <p>{streetAddress}</p>
+            <button>View Listing Details</button>
             <button>Add to My Listings</button>
         </div>
     )
