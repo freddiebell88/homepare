@@ -1,0 +1,46 @@
+[
+    {
+    "questionID" : "0",
+    "question": "How many bedrooms are you looking for?",
+    "answers" : [
+        "4+",
+        "3+",
+        "2+",
+        "1+"
+]
+},
+    {
+    "questionID" : "1",
+    "question": "How many bathrooms?",
+    "answers" : [
+        "4+",
+        "3+",
+        "2+",
+        "1+"
+]
+    },
+    {
+        "questionID" : "2",
+        "question": "Do you need a yard?",
+        "answers" : [
+            "Yes",
+            "No",
+            "Not sure"]
+},
+{
+    "questionID" : "3",
+    "question": "Do you want a home with a garage?",
+    "answers" : [
+        "Yes",
+        "No",
+        "Not sure"]
+},
+{
+    "questionID" : "4",
+    "question": "Do you want a home with an HOA (Home Owner's Association)?",
+    "answers" : [
+        "Yes",
+        "No",
+        "Not sure"]
+}
+]
