@@ -10,7 +10,7 @@ export function Menu() {
 
     return (
         <>
-        <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />;
+        <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />
         <p>🍔 Menu:</p>
         <p>Add Listing</p>
         <ListingInput />
