@@ -44,3 +44,7 @@
 .detailsCard {
   border: solid blue 2px;
 }
+
+.previewCard {
+  border: solid pink 3px;
+}
