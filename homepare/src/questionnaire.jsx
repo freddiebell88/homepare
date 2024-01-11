@@ -17,7 +17,6 @@ export function Questionnaire() {
   const answerString = questionnaireData[index].answers
 
   return (
-    // <Checklist />
     <>
       <h1>Questonnaire</h1>
       <h3>{questionnaireData[index].question}</h3>

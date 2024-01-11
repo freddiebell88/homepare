@@ -7,6 +7,7 @@ import SearchBar from "./listingInput.jsx";
 import { Questionnaire } from "./questionnaire";
 
 import { ComparisonTable } from "./comparisonTable.jsx";
+import { Checklist } from "./checklist";
 
 
 const TABNAMES = {
@@ -42,6 +43,8 @@ export function Dashboard() {
       <Menu />
 
       <Questionnaire />
+      <Checklist />
+    
 
       <ComparisonTable />
       {/* just calling this here so I can see it, will ultimately be called from collection details page --Freddie */}
