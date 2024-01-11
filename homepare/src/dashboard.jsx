@@ -48,8 +48,6 @@ export function Dashboard() {
 
       <ComparisonTable />
       {/* just calling this here so I can see it, will ultimately be called from collection details page --Freddie */}
-      
-      <UserCollections />
 
     </>
   );

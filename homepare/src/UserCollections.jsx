@@ -10,6 +10,7 @@ export function UserCollections() {
         <>
         <h1> My Collections </h1>
         Collection 1 Name
+        {/* The name of the collection comes directly from the user */}
         <div className='userCollection'>
         <div className='listing-thumbnail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
@@ -54,6 +55,7 @@ export function UserCollections() {
         </div>
 
         <p>See more</p>
+        {/* See more should take us to collection details */}
 
         Collection 2 Name
         <div className='userCollection'>
