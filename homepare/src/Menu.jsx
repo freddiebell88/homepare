@@ -15,7 +15,7 @@ export function Menu() {
         <p>Add Listing</p>
         <ListingInput />
         <p>Checklist</p>
-        <Checklist />
+        {/* <Checklist /> */}
         <p>My Account</p>
         <UserAccount />
         </>
