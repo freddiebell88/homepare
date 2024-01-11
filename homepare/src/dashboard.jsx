@@ -4,6 +4,11 @@ import { Menu } from "./Menu";
 import { useState } from "react";
 import SearchBar from "./listingInput.jsx";
 
+import { Questionnaire } from "./questionnaire";
+
+import { ComparisonTable } from "./comparisonTable.jsx";
+
+
 const TABNAMES = {
   MY_LISTINGS: "My Listings",
   MY_COLLECTIONS: "My Collections",
@@ -35,6 +40,12 @@ export function Dashboard() {
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings />}
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
       <Menu />
+
+      <Questionnaire />
+
+      <ComparisonTable />
+      {/* just calling this here so I can see it, will ultimately be called from collection details page --Freddie */}
+
     </>
   );
 }
