@@ -44,3 +44,14 @@
 .detailsCard {
   border: solid blue 2px;
 }
+
+.previewCard {
+  border: solid pink 3px;
+}
+
+.listing-thumbnail {
+  max-width: 150px;
+  max-height: 150px;
+  border: solid aqua 2px;
+  font-size:x-small;
+}
