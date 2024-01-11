@@ -11,12 +11,16 @@ export function UserListings( ) {
     const thumbWidth = "100px";
     const thumbHeight = "100px";
 
+    const handleOpenThumbnail = () => {
+        <DetailsCard />
+    }
+
     return (
         <>
         <h1> My Listings </h1>
 {/* listing thumbnail could be a component wrapped in a context provider? */}
 
-        <div className='listing-thumbnail'>
+        <div onClick={handleOpenThumbnail} className='listing-thumbnail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[0].UnparsedAddress}</p>
         </div>
