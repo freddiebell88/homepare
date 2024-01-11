@@ -54,4 +54,10 @@
   max-height: 150px;
   border: solid aqua 2px;
   font-size:x-small;
+  margin: 15px;
+}
+
+.userCollection {
+  display: flex;
+  margin: 5px;
 }
