@@ -14,11 +14,7 @@ export function UserListings( ) {
     return (
         <>
         <h1> My Listings </h1>
-        <div> 
-            {/* <p>🏠</p>
-            <p >Address 1</p> */}
-            {/* <Preview /> */}
-        </div>
+{/* listing thumbnail could be a component wrapped in a context provider? */}
 
         <div className='listing-thumbnail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>

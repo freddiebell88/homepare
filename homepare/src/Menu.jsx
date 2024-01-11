@@ -13,7 +13,7 @@ export function Menu() {
         <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />
         <p>🍔 Menu:</p>
         <p>Add Listing</p>
-        <ListingInput />
+        {/* <ListingInput /> */}
         <p>Checklist</p>
         {/* <Checklist /> */}
         <p>My Account</p>
