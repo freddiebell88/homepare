@@ -9,7 +9,7 @@ export function UserCollections() {
     return (
         <>
         <h1> My Collections </h1>
-        Collection Name
+        Collection 1 Name
         <div className='userCollection'>
         <div className='listing-thumbnail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
@@ -30,7 +30,76 @@ export function UserCollections() {
         <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[2].UnparsedAddress}</p>
         </div>
+        
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[0].UnparsedAddress}</p>
         </div>
+        
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[1].UnparsedAddress}</p>
+        </div>
+
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[2].UnparsedAddress}</p>
+        </div>
+
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[2].UnparsedAddress}</p>
+        </div>
+
+        </div>
+
+        <p>See more</p>
+
+        Collection 2 Name
+        <div className='userCollection'>
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[0].UnparsedAddress}</p>
+        </div>
+        
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[1].UnparsedAddress}</p>
+        </div>
+
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[2].UnparsedAddress}</p>
+        </div>
+
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[2].UnparsedAddress}</p>
+        </div>
+        
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[0].UnparsedAddress}</p>
+        </div>
+        
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[1].UnparsedAddress}</p>
+        </div>
+
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[2].UnparsedAddress}</p>
+        </div>
+
+        <div className='listing-thumbnail'>
+        <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
+        <p>{homeData.value[2].UnparsedAddress}</p>
+        </div>
+
+        </div>
+        
+        <p>See more</p>
         {/* <CollectionDetail />
         <ComparisonTable /> */}
         </>

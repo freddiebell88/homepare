@@ -61,3 +61,10 @@
   display: flex;
   margin: 5px;
 }
+
+div.userCollection {
+  background-color: salmon;
+  overflow: auto;
+  white-space: nowrap;
+}
+
