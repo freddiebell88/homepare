@@ -15,6 +15,7 @@ import { ListingDetails } from './ListingDetails'
 import { UserAccount } from './UserAccount'
 import { UserListings } from './UserListings'
 import { UserCollections } from './UserCollections'
+import { ListingInput } from './listingInput'
 
 function App() {
   
@@ -70,6 +71,10 @@ function App() {
       <Route
       path="UserListings"
       element={<UserListings />}
+      />
+      <Route
+      path="listingInput"
+      element={<ListingInput />}
       />
     </Routes>
     </MantineProvider>
