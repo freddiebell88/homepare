@@ -1,6 +1,7 @@
 import homeData from "./data/homes.json";
 import { DetailsCard } from "./detailsCard.jsx";
 import { useState } from 'react'
+import { Menu } from "./Menu";
 
 export function ListingDetails() {
   console.log(homeData);
@@ -23,6 +24,7 @@ export function ListingDetails() {
         bathrooms={homeData.value[0].BathroomsTotalInteger}
         propertyType={homeData.value[0].PropertySubType}
       />
+      <Menu />
       
     </>
   );

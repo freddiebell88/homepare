@@ -7,7 +7,7 @@ import { IconHome2, IconGauge, IconChevronRight, IconActivity, IconCircleOff, Ic
 import { Menu as MantineMenu } from '@mantine/core';
 import { Link } from "react-router-dom";
 
-export function Menu() {
+export function Menu({children}) {
     const [opened, { toggle }] = useDisclosure();
 
     return (
@@ -18,14 +18,15 @@ export function Menu() {
         </MantineMenu.Target>
 
         <MantineMenu.Dropdown>
-            <MantineMenu.Item>
-                <Link to="listingInput"><IconHome2/> Add a Listing</Link></MantineMenu.Item>
-            <MantineMenu.Item>
-                <Link to="dashboard"><IconFolderHeart/> My Dashboard</Link></MantineMenu.Item>
-            <MantineMenu.Item>
-                <Link to="checklist"><IconHeartCheck/> Checklist</Link></MantineMenu.Item>
+            <Link to="/listingInput"><MantineMenu.Item>
+                <IconHome2/> Add a Listing </MantineMenu.Item></Link>
+            <Link to="/"><MantineMenu.Item>
+                <IconFolderHeart/> My Dashboard</MantineMenu.Item></Link>
+            <Link to="/checklist"> <MantineMenu.Item>
+                <IconHeartCheck/> Checklist</MantineMenu.Item></Link>
         </MantineMenu.Dropdown>
         </MantineMenu>
+        {children}
         </>
     )
 }

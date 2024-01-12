@@ -2,13 +2,7 @@ import { UserListings } from "./UserListings";
 import { UserCollections } from "./UserCollections.jsx";
 import { Menu } from "./Menu";
 import { useState } from "react";
-import SearchBar from "./listingInput.jsx";
-
-import { Questionnaire } from "./questionnaire";
-
-import { ComparisonTable } from "./comparisonTable.jsx";
-import { Checklist } from "./checklist";
-
+import { Tabs } from '@mantine/core';
 
 const TABNAMES = {
   MY_LISTINGS: "My Listings",
@@ -17,30 +11,21 @@ const TABNAMES = {
 
 export function Dashboard() {
   const [activeTab, setActiveTab] = useState(TABNAMES.MY_LISTINGS);
-
-  const handleUserListingsClick = () => {
-    // if my listings tab is clicked
-    // then active tab is my listings
-    setActiveTab(TABNAMES.MY_LISTINGS)
-  };
-
-  const handleUserCollectionsClick = () => {
-    // if my collections tab is clicked
-    // then active tab is my collections
-    setActiveTab(TABNAMES.MY_COLLECTIONS)
-
-  };
-
   return (
     <>
-      <h2>User's Dashboard</h2>
+      <h2>User's Dashboard</h2>   
       <div className="tabs">
-          <button onClick={handleUserListingsClick}>My Listings</button>
-          <button onClick={handleUserCollectionsClick}>My Collections</button>
+      <Tabs
+        onChange={(value) => setActiveTab(value)}
+      >
+      <Tabs.List>
+        <Tabs.Tab value={TABNAMES.MY_LISTINGS}>My Listings</Tabs.Tab>
+        <Tabs.Tab value={TABNAMES.MY_COLLECTIONS}>My Collections</Tabs.Tab>
+      </Tabs.List>
+      </Tabs> 
       </div>
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings />}
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
-      <Menu />
 
       
 
