@@ -23,7 +23,7 @@ export function Menu() {
             <MantineMenu.Item>
                 <Link to="dashboard"><IconFolderHeart/> My Dashboard</Link></MantineMenu.Item>
             <MantineMenu.Item>
-                <Link to="checklist"><IconHeartCheck/>Checklist</Link></MantineMenu.Item>
+                <Link to="checklist"><IconHeartCheck/> Checklist</Link></MantineMenu.Item>
         </MantineMenu.Dropdown>
         </MantineMenu>
         </>
