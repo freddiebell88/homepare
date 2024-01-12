@@ -15,7 +15,8 @@ import { ListingDetails } from './ListingDetails'
 import { UserAccount } from './UserAccount'
 import { UserListings } from './UserListings'
 import { UserCollections } from './UserCollections'
-import { ListingInput } from './listingInput'
+import { ListingInput } from './listingInput';
+import { Menu } from './Menu'
 
 function App() {
   
@@ -26,7 +27,7 @@ function App() {
     <Routes> 
       <Route
         path="/"
-        element={<Dashboard />}
+        element={<Menu><Dashboard /></Menu>}
         />
       <Route
         path="/register"
@@ -42,7 +43,7 @@ function App() {
       />
       <Route
       path="checklist"
-      element={<Checklist />}
+      element={<Menu><Checklist /></Menu>}
       />
       <Route
       path="CollectionDetail"
@@ -58,7 +59,7 @@ function App() {
       />
       <Route
       path="ListingDetails"
-      element={<ListingDetails />}
+      element={<Menu><ListingDetails /></Menu>}
       />
       <Route
       path="UserAccount"
@@ -66,7 +67,8 @@ function App() {
       />
       <Route
       path="UserCollections"
-      element={<UserCollections />}
+      element={
+      <Menu><UserCollections /></Menu>}
       />
       <Route
       path="UserListings"
@@ -74,7 +76,7 @@ function App() {
       />
       <Route
       path="listingInput"
-      element={<ListingInput />}
+      element={<Menu><ListingInput /></Menu>}
       />
     </Routes>
     </MantineProvider>
