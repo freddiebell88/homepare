@@ -1,15 +1,11 @@
 import { useState } from "react";
 import homeData from "./data/homes.json";
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core';
+import { DetailsCard } from "./detailsCard";
 
 export function ListingInput() {
-    // const preview = (
-    //     <>
-    //     <img /> 
-    //     {/* src is media image from json - can pass that prop */}
-    //     <p>Address</p>
-    //     {/* address also from json */}
-    //     </>
-    // )
+
     return (
         <>
         <h2>Input Your Listing Address</h2>
@@ -27,14 +23,21 @@ export function ListingInput() {
 export function Preview( {thumbnail, streetAddress} ) {
 
     const previewWidth = "100px";
+    const [opened, { open, close }] = useDisclosure(false);
+
 
     return (
-        <div className="previewCard">
+        <>
+        <Modal opened={opened} onClose={close} centered>
+            <DetailsCard />
+        </Modal>
+        <div onClick={open} className="previewCard">
             <img src={thumbnail} alt="thumbnail photo of house" width={previewWidth}/>
             <p>{streetAddress}</p>
             <button>View Listing Details</button>
             <button>Add to My Listings</button>
         </div>
+        </>
     )
 }
 

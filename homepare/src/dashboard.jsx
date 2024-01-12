@@ -42,12 +42,7 @@ export function Dashboard() {
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
       <Menu />
 
-      <Questionnaire />
-      <Checklist />
-    
-
-      <ComparisonTable />
-      {/* just calling this here so I can see it, will ultimately be called from collection details page --Freddie */}
+      
 
     </>
   );
