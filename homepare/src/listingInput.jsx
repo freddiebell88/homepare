@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import homeData from "./data/homes.json";
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
@@ -44,19 +45,25 @@ export function Preview( {thumbnail, streetAddress} ) {
 const SearchBar = () => {
     const [input, setInput] = useState('');
 
-    
+    const fetchData = (value) => {
+        axios.get('https://homepare-backend.onrender.com/homes').then()
+    }
 
-    
+    const handleChange = (value) => {
+        setInput(value)
+        fetchData(value)
+
+    }
 
     return (
         <form>
             <input
                 type="search"
                 placeholder="Input Listing"
-                onChange={(e) => setInput(e.target.value)}
+                onChange={handleChange}
                 value={input}
             />
-            <button>Search</button>
+            <button>Look Up</button>
 
         </form>
     )
