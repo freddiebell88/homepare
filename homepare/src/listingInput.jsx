@@ -21,25 +21,35 @@ export function ListingInput() {
     )
 }
 
-export function Preview( { address, previewImage, listingID} ) {
+export function Preview( { address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage} ) {
 
     const previewWidth = "100px";
     const [opened, { open, close }] = useDisclosure(false);
 
-    const handlePreviewClick = (e) => {
-        console.log(address)
-    }
+    // const handlePreviewClick = (e) => {
+    //     console.log(address, listingID)
+    // }
 
     return (
         <>
         <Modal opened={opened} onClose={close} centered>
-            <DetailsCard />
+            <DetailsCard 
+            address={address}
+            previewImage={previewImage}
+            squareFootage={squareFootage}
+            bathrooms={bathrooms}
+            bedrooms={bedrooms}
+            propertyType={propertyType}
+            hoa={hoa}
+            garage={garage}
+            />
         </Modal>
         <div
-        onClick={() => {
-            open;
-            handlePreviewClick();
-        }}
+        // onClick={() => {
+        //     open;
+        //     handlePreviewClick();
+        // }}
+        onClick={open}
         className="previewCard">
         <img src={previewImage}/>
         <h3>{address}</h3>
@@ -53,13 +63,12 @@ export function Preview( { address, previewImage, listingID} ) {
 const SearchBar = () => {
     const [input, setInput] = useState('');
     const [listingList, setListingList] = useState([]);
-    // const [opened, { open, close }] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
         axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
     },[])
 
-    // setListingList(response.data.results)
 
     return (
         <form>
@@ -82,13 +91,23 @@ const SearchBar = () => {
                     return (
                     <>
                     {/* <Modal opened={opened} onClose={close} centered>
-                    <DetailsCard />
+                    <DetailsCard 
+                    address={listing.address}
+                    thumbImage={listing.images[0].Thumbnail}
+                    />
                     </Modal> */}
                     <Preview 
                         key={listing._id}
                         address={listing.address}
                         previewImage={listing.images[0].Thumbnail}
-                        listingID={listing._id}/>
+                        listingID={listing._id}
+                        squareFootage={listing.living_area}
+                        bathrooms={listing.bathrooms}
+                        bedrooms={listing.bedrooms}
+                        propertyType={listing.property_type}
+                        hoa={listing.hoa}
+                        garage={listing.garage}
+                        />
                     {/* <div key={listing._id} onClick={open}>
                         <img src={listing.images[0].Thumbnail}/>
                         <h3>{listing.address}</h3>
@@ -101,3 +120,4 @@ const SearchBar = () => {
     )
 }
 
+export default SearchBar

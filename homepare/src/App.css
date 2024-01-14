@@ -9,6 +9,7 @@ img {
 
 .previewCard {
   border: solid pink 3px;
+  max-width: 250px;
 }
 
 .listing-thumbnail {
