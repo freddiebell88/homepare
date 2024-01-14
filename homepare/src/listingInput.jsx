@@ -21,26 +21,26 @@ export function ListingInput() {
     )
 }
 
-// export function Preview( {thumbnail, streetAddress} ) {
+export function Preview( { address, previewImage} ) {
 
-//     const previewWidth = "100px";
-//     const [opened, { open, close }] = useDisclosure(false);
+    const previewWidth = "100px";
+    const [opened, { open, close }] = useDisclosure(false);
 
 
-//     return (
-//         <>
-//         <Modal opened={opened} onClose={close} centered>
-//             <DetailsCard />
-//         </Modal>
-//         <div onClick={open} className="previewCard">
-//             <img src={thumbnail} alt="thumbnail photo of house" width={previewWidth}/>
-//             <p>{streetAddress}</p>
-//             <button>View Listing Details</button>
-//             <button>Add to My Listings</button>
-//         </div>
-//         </>
-//     )
-// }
+    return (
+        <>
+        <Modal opened={opened} onClose={close} centered>
+            <DetailsCard />
+        </Modal>
+        <div onClick={open} className="previewCard">
+        <img src={previewImage}/>
+        <h3>{address}</h3>
+            <button>View Listing Details</button>
+            <button>Add to My Listings</button>
+        </div>
+        </>
+    )
+}
 
 const SearchBar = () => {
     const [input, setInput] = useState('');
@@ -73,13 +73,17 @@ const SearchBar = () => {
                 .map((listing) => {
                     return (
                     <>
-                    <Modal opened={opened} onClose={close} centered>
+                    {/* <Modal opened={opened} onClose={close} centered>
                     <DetailsCard />
-                    </Modal>
-                    <div key={listing._id} onClick={open}>
+                    </Modal> */}
+                    <Preview 
+                        key={listing._id}
+                        address={listing.address}
+                        previewImage={listing.images[0].Thumbnail}/>
+                    {/* <div key={listing._id} onClick={open}>
                         <img src={listing.images[0].Thumbnail}/>
                         <h3>{listing.address}</h3>
-                    </div>
+                    </div> */}
                     </>
                     )
             })}
