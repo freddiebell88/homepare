@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Preview from "./listingInput"
 
-export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage}) {
+export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price}) {
 
     const [addListing, setAddListing] = useState([])
     
@@ -26,7 +26,7 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
             <img src={previewImage} alt="thumbnail of home" width={imgWidth}/>
             
             <p>Street Address:{address}</p>
-            <p>$$$:</p>
+            <p>$$$: {price} </p>
             <p>SQ Footage: {squareFootage}</p>
             <p>Bedrooms: {bedrooms} </p>
             <p>Bathrooms: {bathrooms}</p>
