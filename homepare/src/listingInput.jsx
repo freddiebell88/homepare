@@ -11,10 +11,10 @@ export function ListingInput() {
         <>
         <h2>Input Your Listing Address</h2>
         <SearchBar />
-        <Preview 
+        {/* <Preview 
             thumbnail={homeData.value[0].Media[0].Thumbnail}
             streetAddress={homeData.value[0].UnparsedAddress}
-        />
+        /> */}
         {/* <SearchBarFilter /> */}
         {/* <div>{preview}</div> */}
         </>
@@ -44,29 +44,41 @@ export function Preview( {thumbnail, streetAddress} ) {
 
 const SearchBar = () => {
     const [input, setInput] = useState('');
+    const [listingList, setListingList] = useState([])
 
-    const fetchData = (value) => {
-        axios.get('https://homepare-backend.onrender.com/homes').then()
-    }
+    useEffect(() => {
+        axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
+    },[])
 
-    const handleChange = (value) => {
-        setInput(value)
-        fetchData(value)
-
-    }
+    // setListingList(response.data.results)
 
     return (
         <form>
             <input
                 type="search"
                 placeholder="Input Listing"
-                onChange={handleChange}
+                onChange={(e)=>setInput(e.target.value)}
                 value={input}
             />
             <button>Look Up</button>
+            <h2>Results:</h2>
+            {listingList.filter((listing) => {
+                if(input===""){
+                    return listing
+                 } else if (listing.address.toLowerCase().includes(input.toLowerCase())){
+                    return listing
+                    }
+                    })
+                .map((listing) => {
+                    return (
+                    <div key={listing._id}>
+                    <img src={listing.images[0].Thumbnail}/>
+                    <h3>{listing.address}</h3>
+                    </div>
+                    )
+            })}
 
         </form>
     )
 }
-
 
