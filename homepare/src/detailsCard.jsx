@@ -1,6 +1,7 @@
 import { useState } from "react"
+import { Preview } from "./listingInput"
 
-export function DetailsCard({streetAddress, sqFootage, listPrice, city, zipCode, thumbnail, bedrooms, bathrooms, propertyType}) {
+export function DetailsCard({address, sqFootage, listPrice, city, zipCode, thumbnail, bedrooms, bathrooms, propertyType}) {
 
     const [addListing, setAddListing] = useState([])
     
@@ -24,7 +25,7 @@ export function DetailsCard({streetAddress, sqFootage, listPrice, city, zipCode,
             
             <img src={thumbnail} alt="thumbnail of home" width={imgWidth}/>
             
-            <p>Street Address:{streetAddress}</p>
+            <p>Street Address:{address}</p>
             <p>City: {city}</p>
             <p>Zip Code: {zipCode}</p>
             <p>$$$: ${listPrice}</p>

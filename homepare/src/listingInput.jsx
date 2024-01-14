@@ -21,18 +21,26 @@ export function ListingInput() {
     )
 }
 
-export function Preview( { address, previewImage} ) {
+export function Preview( { address, previewImage, listingID} ) {
 
     const previewWidth = "100px";
     const [opened, { open, close }] = useDisclosure(false);
 
+    const handlePreviewClick = (e) => {
+        console.log(address)
+    }
 
     return (
         <>
         <Modal opened={opened} onClose={close} centered>
             <DetailsCard />
         </Modal>
-        <div onClick={open} className="previewCard">
+        <div
+        onClick={() => {
+            open;
+            handlePreviewClick();
+        }}
+        className="previewCard">
         <img src={previewImage}/>
         <h3>{address}</h3>
             <button>View Listing Details</button>
@@ -45,7 +53,7 @@ export function Preview( { address, previewImage} ) {
 const SearchBar = () => {
     const [input, setInput] = useState('');
     const [listingList, setListingList] = useState([]);
-    const [opened, { open, close }] = useDisclosure(false);
+    // const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
         axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
@@ -79,7 +87,8 @@ const SearchBar = () => {
                     <Preview 
                         key={listing._id}
                         address={listing.address}
-                        previewImage={listing.images[0].Thumbnail}/>
+                        previewImage={listing.images[0].Thumbnail}
+                        listingID={listing._id}/>
                     {/* <div key={listing._id} onClick={open}>
                         <img src={listing.images[0].Thumbnail}/>
                         <h3>{listing.address}</h3>
