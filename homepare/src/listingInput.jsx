@@ -21,30 +21,31 @@ export function ListingInput() {
     )
 }
 
-export function Preview( {thumbnail, streetAddress} ) {
+// export function Preview( {thumbnail, streetAddress} ) {
 
-    const previewWidth = "100px";
-    const [opened, { open, close }] = useDisclosure(false);
+//     const previewWidth = "100px";
+//     const [opened, { open, close }] = useDisclosure(false);
 
 
-    return (
-        <>
-        <Modal opened={opened} onClose={close} centered>
-            <DetailsCard />
-        </Modal>
-        <div onClick={open} className="previewCard">
-            <img src={thumbnail} alt="thumbnail photo of house" width={previewWidth}/>
-            <p>{streetAddress}</p>
-            <button>View Listing Details</button>
-            <button>Add to My Listings</button>
-        </div>
-        </>
-    )
-}
+//     return (
+//         <>
+//         <Modal opened={opened} onClose={close} centered>
+//             <DetailsCard />
+//         </Modal>
+//         <div onClick={open} className="previewCard">
+//             <img src={thumbnail} alt="thumbnail photo of house" width={previewWidth}/>
+//             <p>{streetAddress}</p>
+//             <button>View Listing Details</button>
+//             <button>Add to My Listings</button>
+//         </div>
+//         </>
+//     )
+// }
 
 const SearchBar = () => {
     const [input, setInput] = useState('');
-    const [listingList, setListingList] = useState([])
+    const [listingList, setListingList] = useState([]);
+    const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
         axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
@@ -71,10 +72,15 @@ const SearchBar = () => {
                     })
                 .map((listing) => {
                     return (
-                    <div key={listing._id}>
-                    <img src={listing.images[0].Thumbnail}/>
-                    <h3>{listing.address}</h3>
+                    <>
+                    <Modal opened={opened} onClose={close} centered>
+                    <DetailsCard />
+                    </Modal>
+                    <div key={listing._id} onClick={open}>
+                        <img src={listing.images[0].Thumbnail}/>
+                        <h3>{listing.address}</h3>
                     </div>
+                    </>
                     )
             })}
 

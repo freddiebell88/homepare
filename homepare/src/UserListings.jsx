@@ -1,6 +1,6 @@
 import { ListingDetails } from './ListingDetails'
 import { DetailsCard } from './detailsCard'
-import { ListingInput, Preview } from './listingInput'
+import { ListingInput } from './listingInput'
 import homeData from './data/homes.json'
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
