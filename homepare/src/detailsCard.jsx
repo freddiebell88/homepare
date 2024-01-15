@@ -2,14 +2,15 @@ import { useState } from "react"
 import Preview from "./listingInput"
 import { list } from "postcss"
 
-export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, myListings}) {
+export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, }) {
 
     const [selectedListing, setSelectedListing] = useState([])
     const [selectedListingId, setSelectedListingId] = useState("")
+    const [myListings, setMyListings] = useState([])
     
     // setSelectedListingId("xyz1")
-
-    const myListingsCopy = myListings
+    
+    // const myListingsCopy = myListings
     
     const getListingId = (listingId) => {
         // setSelectedListingId("xyz1")
@@ -21,10 +22,12 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
         console.log("add listing button")
         // setSelectedListingId();
         getListingId(listingId)
+        // const myListingsCopy = myListings.concat(listingId)
+        // console.log(myListingsCopy)
         setMyListings(
-            [...myListings,
-            { }]
+            [...myListings, listingId]
         )
+        console.log(myListings)
         // add listingId to myListingsCopy then use setMyListings to update myListings
 
     }
