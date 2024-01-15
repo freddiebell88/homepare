@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 
-export function UserListings( ) {
+export function UserListings( {myListings} ) {
     
     
     const thumbWidth = "100px";
@@ -20,7 +20,8 @@ export function UserListings( ) {
         <h1> My Listings </h1>
 {/* listing thumbnail could be a component wrapped in a context provider? */}
         <Modal opened={opened} onClose={close} centered>
-            <DetailsCard />
+            <DetailsCard 
+            myListings={myListings} />
         </Modal>
         
         <div  onClick={open} className='listing-thumbnail'>

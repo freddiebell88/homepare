@@ -1,18 +1,33 @@
 import { useState } from "react"
 import Preview from "./listingInput"
+import { list } from "postcss"
 
-export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price}) {
+export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, myListings}) {
 
-    const [addListing, setAddListing] = useState([])
+    const [selectedListing, setSelectedListing] = useState([])
+    const [selectedListingId, setSelectedListingId] = useState("")
     
-    const handleAddListingClick = () => {
-        console.log("add listing button")
-        setAddListing()
-        //when this button is clicked
-        //the detail card is copied -- secondary
-        //the thumbnail image and street address are then displayed on the 'my listings' page
+    // setSelectedListingId("xyz1")
+
+    const myListingsCopy = myListings
+    
+    const getListingId = (listingId) => {
+        // setSelectedListingId("xyz1")
+        console.log(listingId)
+        // console.log(selectedListingId)
     }
 
+    const handleAddListingClick = () => {
+        console.log("add listing button")
+        // setSelectedListingId();
+        getListingId(listingId)
+        setMyListings(
+            [...myListings,
+            { }]
+        )
+        // add listingId to myListingsCopy then use setMyListings to update myListings
+
+    }
     const handleSaveNotes = () => {
         // post notes to API
     }
@@ -33,20 +48,13 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
             <p>Property Type: {propertyType}</p>
             <p>HOA: {hoa}</p>
             <p>Garage: {garage}</p>
-            {/* <p>City: {city}</p>
-            <p>Zip Code: {zipCode}</p>
-            <p>$$$: ${listPrice}</p>
-            <p>SQ Footage: {sqFootage}</p>
-            <div>CHECKLIST</div>
-            <p> Bedrooms: {bedrooms} ✅ </p>
-            <p> Bathrooms: {bathrooms} ❌</p>
-            <p> Property Type: {propertyType} </p> */}
             <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
                 <button onClick={handleSaveNotes}>Save</button>
             </label>
-            <button onClick={handleAddListingClick}>Add to My Listings</button>
+            <button onClick={handleAddListingClick}>
+                Add to My Listings</button>
             </div>
     
         )

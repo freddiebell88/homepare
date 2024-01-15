@@ -20,6 +20,7 @@ import { Menu } from './Menu'
 
 function App() {
   
+  const [myListings, setMyListings] = useState([])
 
   return (
     <>
@@ -27,7 +28,7 @@ function App() {
     <Routes> 
       <Route
         path="/"
-        element={<Menu><Dashboard /></Menu>}
+        element={<Menu><Dashboard myListings={myListings}/></Menu>}
         />
       <Route
         path="/register"
