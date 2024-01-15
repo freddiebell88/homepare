@@ -1,6 +1,7 @@
 import { useState } from "react"
+import Preview from "./listingInput"
 
-export function DetailsCard({streetAddress, sqFootage, listPrice, city, zipCode, thumbnail, bedrooms, bathrooms, propertyType}) {
+export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price}) {
 
     const [addListing, setAddListing] = useState([])
     
@@ -22,17 +23,24 @@ export function DetailsCard({streetAddress, sqFootage, listPrice, city, zipCode,
             <div className="detailsCard">
             <h1>Listing Details</h1>
             
-            <img src={thumbnail} alt="thumbnail of home" width={imgWidth}/>
+            <img src={previewImage} alt="thumbnail of home" width={imgWidth}/>
             
-            <p>Street Address:{streetAddress}</p>
-            <p>City: {city}</p>
+            <p>Street Address:{address}</p>
+            <p>$$$: {price} </p>
+            <p>SQ Footage: {squareFootage}</p>
+            <p>Bedrooms: {bedrooms} </p>
+            <p>Bathrooms: {bathrooms}</p>
+            <p>Property Type: {propertyType}</p>
+            <p>HOA: {hoa}</p>
+            <p>Garage: {garage}</p>
+            {/* <p>City: {city}</p>
             <p>Zip Code: {zipCode}</p>
             <p>$$$: ${listPrice}</p>
             <p>SQ Footage: {sqFootage}</p>
             <div>CHECKLIST</div>
             <p> Bedrooms: {bedrooms} ✅ </p>
             <p> Bathrooms: {bathrooms} ❌</p>
-            <p> Property Type: {propertyType} </p>
+            <p> Property Type: {propertyType} </p> */}
             <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
