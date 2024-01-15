@@ -19,6 +19,8 @@ export function Register() {
 
     return (
         <>
+        <div className="w-full h-screen flex items-center justify-center">
+        <div className="w-3/12">
         <form onSubmit={form.onSubmit((values) => console.log(values))}>
             <TextInput 
             label="Username"
@@ -48,6 +50,8 @@ export function Register() {
         </form>
         <Button type="submit">Register</Button>
         {/* <Questionnaire /> */}
+        </div>
+        </div>
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks"
-import { Input, CloseButton, PasswordInput, Stack } from "@mantine/core"
+import { Input, CloseButton, PasswordInput, Stack, Button } from "@mantine/core"
 import { IconAt } from "@tabler/icons-react";
 
 export function Login() {
@@ -9,6 +9,8 @@ export function Login() {
 
     return (
         <>
+        <div className="w-full flex justify-center h-screen items-center">
+        <div className="w-3/12">
         <h1>Login:</h1>
         <p>Username</p>
         <Input placeholder="Your Email" leftSection={<IconAt size={16} />} />
@@ -27,7 +29,9 @@ export function Login() {
         />
         </Stack>
         <p>Don't have an account? Sign up!</p>
-        <button>Register</button>
+        <Button>Register</Button>
+        </div>
+        </div>
         </>
     )
 }
