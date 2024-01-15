@@ -6,52 +6,76 @@ export function Questionnaire() {
   console.log(questionnaireData);
   //this is so we can cycle through our questions
   const [index, setIndex] = useState(0);
-  const [recordedAnswers, setRecordedAnswers] = useState([])
+  const [recordedAnswers, setRecordedAnswers] = useState([]);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-//when a user clicks the next button
-//we need their answer to get pushed up to an empty array
-//if they change their answer
-// the array needs to be updated
-// the final array is sent to the backend when a user hits confirm on the last question
+  // user can only select one answer at a time -- the actual act of selecting [selectedanswers]
+  //when a user clicks the next button
+  //we need their answer to get pushed up to an empty array [recorded answers]
+  //if they change their answer and hit next again, their previous  selection gets popped off and
+  // the array needs to be updated
+  // the final array is sent to the backend when a user hits confirm on the last question
+
+  const handleSelectedAnswer = () => {
+    console.log("selected answer");
+  };
+
+  //when we hit index 5 (just past our very last question)
+  //we want to show the user all of their answers
+  //and give them the option to go back and change them
+  // or confirm and post to the back end
 
   const handleNextClick = () => {
-    console.log('Questionnaire data lenght', questionnaireData.length)
-    setIndex(index === questionnaireData.length - 1 ? index : index + 1)
-  }
+    setIndex(index === questionnaireData.length ? index : index + 1);
+  };
 
   const handleBackClick = () => {
-    console.log('back click')
-    setIndex(index === 0 ? index : index -1)
-    //if this is not the first question
-    //when this button is clicked
-    //index is -1
-    // setIndex(index === )
-  }
+    setIndex(index === 0 ? index : index - 1);
+  };
 
   const handleConfirmClick = () => {
-    console.log('confirm click')
+    console.log("confirm click");
     //if this is the last question
     //index === questionnaireData.length - 1
     //show this button
     // when this button is clicked
-    // post recorded answers
-  }
-
-  const answerString = questionnaireData[index].answers
+    // post recorded answers to the back end
+  };
 
   return (
     <>
-      <h1>Questonnaire</h1>
-      <h3>{questionnaireData[index].question}</h3>
-      {/* <button>{questionnaireData[index].answers}</button> */}
-      {answerString.map((answer) => <button>{answer}</button>)}
-      <br></br>
-      {index === questionnaireData.length - 1 ?
-      <button onClick={handleConfirmClick}>Confirm</button> : <button onClick={handleNextClick}>Next</button>
-      }
-      {index != 0 && <button onClick={handleBackClick}>Back</button>}
-      
+      {index === questionnaireData.length ? (
+        <h1>I'm showing my answers</h1>
+      ) : (
+        <>
+          <h1>Questonnaire</h1>
+          <form>
+            <h3>{questionnaireData[index].question}</h3>
+            {/* <button>{questionnaireData[index].answers}</button> */}
+            {questionnaireData[index].answers.map((answer) => (
+              // eslint-disable-next-line react/jsx-key
+              <div>
+                <label>
+                  <input
+                    type="radio"
+                    value="{answer}"
+                    checked={null}
+                    name={`question${index}`}
+                    onClick={handleSelectedAnswer}
+                  />
+                  {answer}
+                </label>
+              </div>
+            ))}
+          </form>
+          {index === questionnaireData.length ? (
+            <button onClick={handleConfirmClick}>Confirm</button>
+          ) : (
+            <button onClick={handleNextClick}>Next</button>
+          )}
+          {index != 0 && <button onClick={handleBackClick}>Back</button>}
+        </>
+      )}
     </>
-    // checklist is list of results from questionnaire
   );
 }
