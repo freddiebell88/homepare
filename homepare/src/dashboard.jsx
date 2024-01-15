@@ -3,6 +3,7 @@ import { UserCollections } from "./UserCollections.jsx";
 import { Menu } from "./Menu";
 import { useState } from "react";
 import { Tabs } from '@mantine/core';
+import { Questionnaire } from "./questionnaire";
 
 const TABNAMES = {
   MY_LISTINGS: "My Listings",
@@ -23,6 +24,7 @@ export function Dashboard() {
         <Tabs.Tab value={TABNAMES.MY_COLLECTIONS}>My Collections</Tabs.Tab>
       </Tabs.List>
       </Tabs> 
+      <Questionnaire />
       </div>
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings />}
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
