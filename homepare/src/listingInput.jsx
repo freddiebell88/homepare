@@ -54,7 +54,6 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
         className="previewCard">
         <img src={previewImage}/>
         <h3>{address}</h3>
-            <button>View Listing Details</button>
             <button>Add to My Listings</button>
         </div>
         </>
@@ -64,7 +63,8 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
 const SearchBar = () => {
     const [input, setInput] = useState('');
     const [listingList, setListingList] = useState([]);
-    const [opened, { open, close }] = useDisclosure(false);
+    const [loading, setLoading] = useState(true)
+    // const [opened, { open, close }] = useDisclosure(false);
 
     useEffect(() => {
         axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
