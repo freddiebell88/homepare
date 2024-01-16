@@ -24,7 +24,6 @@ export function Dashboard() {
         <Tabs.Tab value={TABNAMES.MY_COLLECTIONS}>My Collections</Tabs.Tab>
       </Tabs.List>
       </Tabs> 
-      <Questionnaire />
       </div>
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings />}
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
