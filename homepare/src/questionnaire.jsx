@@ -17,6 +17,8 @@ export function Questionnaire() {
   // the final array is sent to the backend when a user hits confirm on the last question
 
   //on next and back if our new array has a value already, the selected answer should use that value so our user's previous selected answer is still highlighted
+  //if (selectedAnswer != null)
+  //setSelectedAnswer === 
 
   const handleSelectedAnswer = (answer) => {
     console.log("selected answer", answer);
@@ -39,10 +41,17 @@ export function Questionnaire() {
     console.log('newAnswersArray', newAnswersArray)
     console.log('selected answer', selectedAnswer)
     //we have to give set recorded answers our new array
+
+    setSelectedAnswer(newAnswersArray[index + 1])
+    console.log('newAnswersArray[index + 1]', newAnswersArray[index + 1])
   };
 
   const handleBackClick = () => {
     setIndex(index === 0 ? index : index - 1);
+
+    setSelectedAnswer(recordedAnswers[index - 1])
+    console.log('newAnswersArray[index - 1]', recordedAnswers[index + 1])
+
   };
 
   const handleConfirmClick = () => {
@@ -71,7 +80,7 @@ export function Questionnaire() {
                   <input
                     type="radio"
                     value="{answer}"
-                    checked={null}
+                    checked={selectedAnswer === answer}
                     name={`question${index}`}
                     onClick={() => handleSelectedAnswer(answer)}
                   />
