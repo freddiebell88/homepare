@@ -66,10 +66,18 @@ const SearchBar = () => {
     const [loading, setLoading] = useState(true)
     // const [opened, { open, close }] = useDisclosure(false);
 
-    useEffect(() => {
-        axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
-    },[])
+    // useEffect(() => {
+    //     axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
+    // },[])
 
+    useEffect(() => {
+        axios.get('https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=1311%20Carolina%20Loop%20Hillsborough%20NC', {
+            headers: {
+                Accept: 'application/json',
+                apikey: '2b1e86b638620bf2404521e6e9e1b19e',
+            }
+        }).then((response) =>{console.log(response.data)})
+    })
 
     return (
         <form>
