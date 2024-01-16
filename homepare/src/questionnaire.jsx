@@ -66,7 +66,11 @@ export function Questionnaire() {
   return (
     <>
       {index === questionnaireData.length ? (
-        <h1>I'm showing my answers</h1>
+        <>
+        <h1>You are looking for:</h1>
+        {recordedAnswers.map((answer) => 
+        <li>{answer}</li>)}
+      </>
       ) : (
         <>
           <h1>Questonnaire</h1>
