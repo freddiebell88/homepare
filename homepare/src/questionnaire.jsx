@@ -6,7 +6,7 @@ export function Questionnaire() {
   console.log(questionnaireData);
   //this is so we can cycle through our questions
   const [index, setIndex] = useState(0);
-  const [recordedAnswers, setRecordedAnswers] = useState([]);
+  const [recordedAnswers, setRecordedAnswers] = useState(new Array(questionnaireData.length));
   const [selectedAnswer, setSelectedAnswer] = useState(null);
 
   // user can only select one answer at a time -- the actual act of selecting [selectedanswers]
@@ -16,9 +16,13 @@ export function Questionnaire() {
   // the array needs to be updated
   // the final array is sent to the backend when a user hits confirm on the last question
 
-  const handleSelectedAnswer = () => {
-    console.log("selected answer");
+  //on next and back if our new array has a value already, the selected answer should use that value so our user's previous selected answer is still highlighted
+
+  const handleSelectedAnswer = (answer) => {
+    console.log("selected answer", answer);
+    setSelectedAnswer(answer)
   };
+  //selected answer needs to communicate what the answer is
 
   //when we hit index 5 (just past our very last question)
   //we want to show the user all of their answers
@@ -27,6 +31,14 @@ export function Questionnaire() {
 
   const handleNextClick = () => {
     setIndex(index === questionnaireData.length ? index : index + 1);
+    
+    const newAnswersArray = recordedAnswers
+    newAnswersArray[index] = selectedAnswer
+    
+    setRecordedAnswers(newAnswersArray)
+    console.log('newAnswersArray', newAnswersArray)
+    console.log('selected answer', selectedAnswer)
+    //we have to give set recorded answers our new array
   };
 
   const handleBackClick = () => {
@@ -61,7 +73,7 @@ export function Questionnaire() {
                     value="{answer}"
                     checked={null}
                     name={`question${index}`}
-                    onClick={handleSelectedAnswer}
+                    onClick={() => handleSelectedAnswer(answer)}
                   />
                   {answer}
                 </label>
