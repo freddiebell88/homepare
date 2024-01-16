@@ -3,6 +3,7 @@ import { UserCollections } from "./UserCollections.jsx";
 import { Menu } from "./Menu";
 import { useState } from "react";
 import { Tabs } from '@mantine/core';
+import { Questionnaire } from "./questionnaire";
 
 const TABNAMES = {
   MY_LISTINGS: "My Listings",
