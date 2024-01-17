@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Preview from "./listingInput"
+import axios from "axios"
 
 export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price}) {
 
@@ -8,9 +9,8 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
     const handleAddListingClick = () => {
         console.log("add listing button")
         setAddListing()
-        //when this button is clicked
-        //the detail card is copied -- secondary
-        //the thumbnail image and street address are then displayed on the 'my listings' page
+        // POST listing to database
+        axios.post()
     }
 
     const handleSaveNotes = () => {
