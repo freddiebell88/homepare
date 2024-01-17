@@ -1,36 +1,20 @@
 import { useState } from "react"
 import Preview from "./listingInput"
 import { list } from "postcss"
+import axios from "axios"
 
 export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, }) {
 
-    const [selectedListing, setSelectedListing] = useState([])
-    const [selectedListingId, setSelectedListingId] = useState("")
-    const [myListings, setMyListings] = useState([])
+    const [addListing, setAddListing] = useState([])
     
-    // setSelectedListingId("xyz1")
-    
-    // const myListingsCopy = myListings
-    
-    const getListingId = (listingId) => {
-        // setSelectedListingId("xyz1")
-        console.log(listingId)
-        // console.log(selectedListingId)
-    }
-
     const handleAddListingClick = () => {
         console.log("add listing button")
-        // setSelectedListingId();
-        getListingId(listingId)
-        // const myListingsCopy = myListings.concat(listingId)
-        // console.log(myListingsCopy)
-        setMyListings(
-            [...myListings, listingId]
-        )
-        console.log(myListings)
-        // add listingId to myListingsCopy then use setMyListings to update myListings
-
+        setAddListing()
+        //when this button is clicked
+        //the detail card is copied -- secondary
+        //the thumbnail image and street address are then displayed on the 'my listings' page
     }
+
     const handleSaveNotes = () => {
         // post notes to API
     }
