@@ -74,14 +74,16 @@ const SearchBar = () => {
         axios.get('https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=1601%20East%20Barden%20Rd%20Charlotte%20NC', {
             headers: {
                 Accept: 'application/json',
-                apikey: '2b1e86b638620bf2404521e6e9e1b19e',
+                apikey: '8a27f74ad8a3190542411b44de720777',
             }
         })
         .then((response) =>{
             console.log(response.data);
-            setListingList(response.data.property[0].address.oneLine);
+            setListingList(response.data.property);
+            console.log(listingList)
             })
         }, [])
+
 
 
     return (
@@ -96,7 +98,26 @@ const SearchBar = () => {
             <button>Look Up</button>
         </form>
             <h2>Results:</h2>
+        
+        {listingList.map((listing) => {
+            return (
+                <div key={listing.identifier.Id}>
+                    <p>{listing.address.oneLine}</p>
+                </div>
+            )
+        })}
+        {/* {listingList.filter((listing) => {
+            if (input === "") {
+                return listing
+            } else if (
+                listing.property[0].address.oneLine.includes(input.toUpperCase())) {
+                    return listing
+                }
+                }
+            )
 
+        } */}
+        
         </>
             // {listingList.filter((listing) => {
             //     if(input===""){
