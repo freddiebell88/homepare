@@ -30,7 +30,6 @@ img {
 }
 
 div.userCollection {
-  background-color: salmon;
   overflow: auto;
   white-space: nowrap;
 }
@@ -48,4 +47,12 @@ hr.rounded-divider-in-user-collections {
   border-radius: 5px;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.listing-thumbnail-in-user-collections {
+  max-width: 150px;
+  max-height: 150px;
+  border: solid aqua 2px;
+  font-size:x-small;
+  margin: 15px;
 }

@@ -16,7 +16,7 @@ export function CollectionDetail() {
     return (
         <>
         <p>This is the collection detail page, cards containing house image thumbnail and address will be mapped out here</p>
-        <h1> My Listings </h1>
+        <h1> Collection Title </h1>
 {/* listing thumbnail could be a component wrapped in a context provider? */}
         <Modal opened={opened} onClose={close} centered>
             <DetailsCard />
