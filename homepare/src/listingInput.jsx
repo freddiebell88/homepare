@@ -9,14 +9,8 @@ export function ListingInput() {
 
     return (
         <>
-        <h2>Input Your Listing Address</h2>
+        <h2>Input the street address, city, and state of the listing you are trying to find:</h2>
         <SearchBar />
-        {/* <Preview 
-            thumbnail={homeData.value[0].Media[0].Thumbnail}
-            streetAddress={homeData.value[0].UnparsedAddress}
-        /> */}
-        {/* <SearchBarFilter /> */}
-        {/* <div>{preview}</div> */}
         </>
     )
 }
@@ -26,9 +20,6 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
     const previewWidth = "100px";
     const [opened, { open, close }] = useDisclosure(false);
 
-    // const handlePreviewClick = (e) => {
-    //     console.log(address, listingID)
-    // }
 
     return (
         <>
@@ -46,10 +37,6 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
             />
         </Modal>
         <div
-        // onClick={() => {
-        //     open;
-        //     handlePreviewClick();
-        // }}
         onClick={open}
         className="previewCard">
         <img src={previewImage}/>
@@ -62,14 +49,8 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
 
 const SearchBar = () => {
     const [input, setInput] = useState('');
-    const [searchTerm, setSearchTerm] = useState('');
     const [listingList, setListingList] = useState([]);
     const [loading, setLoading] = useState(true)
-    // const [opened, { open, close }] = useDisclosure(false);
-
-    // useEffect(() => {
-    //     axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
-    // },[])
 
     
     const handleSearchSubmit = (e) => {
@@ -85,9 +66,6 @@ const SearchBar = () => {
             setListingList(response.data.property);
             console.log(listingList)
             })
-         
-        // useState to set as search term with %20
-        // add search term to url
     }
 
     return (
@@ -118,60 +96,13 @@ const SearchBar = () => {
                     // garage={listing.garage}
                     price={listing.assessment.market.mktTtlValue}
                 />
-                // <div key={listing.identifier.Id}>
-                //     <p>{listing.address.oneLine}</p>
-                // </div>
+                
             )
         })}
-        {/* {listingList.filter((listing) => {
-            if (input === "") {
-                return listing
-            } else if (
-                listing.property[0].address.oneLine.includes(input.toUpperCase())) {
-                    return listing
-                }
-                }
-            )
 
-        } */}
         
         </>
-            // {listingList.filter((listing) => {
-            //     if(input===""){
-            //         return listing
-            //      } else if (listing.address.toLowerCase().includes(input.toLowerCase())){
-            //         return listing
-            //         }
-            //         })
-            //     .map((listing) => {
-            //         return (
-            //         <>
-            //         {/* <Modal opened={opened} onClose={close} centered>
-            //         <DetailsCard 
-            //         address={listing.address}
-            //         thumbImage={listing.images[0].Thumbnail}
-            //         />
-            //         </Modal> */}
-            //         <Preview 
-            //             key={listing._id}
-            //             address={listing.address}
-            //             previewImage={listing.images[0].Thumbnail}
-            //             listingID={listing._id}
-            //             squareFootage={listing.living_area}
-            //             bathrooms={listing.bathrooms}
-            //             bedrooms={listing.bedrooms}
-            //             propertyType={listing.property_type}
-            //             hoa={listing.hoa}
-            //             garage={listing.garage}
-            //             price={listing.price}
-            //             />
-            //         {/* <div key={listing._id} onClick={open}>
-            //             <img src={listing.images[0].Thumbnail}/>
-            //             <h3>{listing.address}</h3>
-            //         </div> */}
-            //         </>
-            //         )
-            // })}
+
 
     )
 }
