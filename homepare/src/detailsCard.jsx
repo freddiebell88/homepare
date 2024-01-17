@@ -10,9 +10,12 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
     const handleAddListingClick = () => {
         console.log("add listing button")
         setAddListing()
-        //when this button is clicked
-        //the detail card is copied -- secondary
-        //the thumbnail image and street address are then displayed on the 'my listings' page
+        // post listing to db
+        axios.post('https://homepare-backend.onrender.com/homes', {
+            address: {address},
+            price: {price},
+            property_type: {propertyType},
+        })
     }
 
     const handleSaveNotes = () => {
