@@ -35,3 +35,17 @@ div.userCollection {
   white-space: nowrap;
 }
 
+.see-more-in-user-collections {
+  text-align: right;
+}
+
+.collections-wrapper-in-user-collections {
+  padding: 10px;
+}
+
+hr.rounded-divider-in-user-collections {
+  border-top: 3px solid #bbb;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
