@@ -52,6 +52,7 @@ export function Login(  ) {
         <Box maw={340} mx="auto">
             <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
             <TextInput
+            id="username-field"
             label="Username"
             placeholder="Your Username"
             leftSection={<IconUserCircle size={16} />}
