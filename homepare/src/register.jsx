@@ -32,16 +32,17 @@ export function Register() {
 
     const handleSubmit = (values) => {
         const { username, password, email, first_name, last_name } = values;
-        console.log('submitting registration')
         console.log(username);
         console.log(password);
         console.log(email);
         console.log(first_name);
         console.log(last_name);
         axios.post('https://homepare-backend.onrender.com/register', {
-            username: username,
-            password: password,
-            email: email
+            "username": username,
+            "password": password,
+            "email": email,
+            "first_name": first_name,
+            "last_name": last_name
         }).then((res) => { 
             navigate('/login')}
             ).catch((err) => setError(err.response.data.non_field_errors))

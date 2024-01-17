@@ -1,17 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { matchesField, useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks"
 import { Input, TextInput, CloseButton, PasswordInput, Stack, Button, Box } from "@mantine/core"
 import { IconMail, IconUserCircle } from "@tabler/icons-react";
 
-export function Login(  ) {
+export function Login({ setAuth }) {
     const [value, setValue] = useState('Clear me');
     const [visible, {toggle}] = useDisclosure(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const form = useForm({
         initialValues: {
@@ -33,15 +34,16 @@ export function Login(  ) {
         console.log(username)
         console.log(password)
         console.log(email);
-        // axios
-        //     .post('https://homepare-backend.onrender.com/login', {
-        //         username: username,
-        //         password: password,
-        //     })
-        //     .then((res) => {
-        //         setAuth(username, res.data.auth_token)
-        //     })
-        //     .catch((err) => setError(err.response.data.non_field_errors[0]))
+        axios
+            .post('https://homepare-backend.onrender.com/login', {
+                "username": username,
+                "password": password,
+            })
+            .then((res) => {
+                setAuth(username, res.data.auth_token)
+                navigate('/')
+            })
+            .catch((err) => setError(err.response.data.non_field_errors[0]))
     }
 
     return (
@@ -52,7 +54,6 @@ export function Login(  ) {
         <Box maw={340} mx="auto">
             <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
             <TextInput
-            id="username-field"
             label="Username"
             placeholder="Your Username"
             leftSection={<IconUserCircle size={16} />}
