@@ -62,6 +62,7 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
 
 const SearchBar = () => {
     const [input, setInput] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
     const [listingList, setListingList] = useState([]);
     const [loading, setLoading] = useState(true)
     // const [opened, { open, close }] = useDisclosure(false);
@@ -84,7 +85,11 @@ const SearchBar = () => {
             })
         }, [])
 
-
+    const handleSearchSubmit = (input) => {
+        // make user input uppercase 
+        // useState to set as search term
+        // add search term to url
+    }
 
     return (
         <>
@@ -95,10 +100,9 @@ const SearchBar = () => {
                 onChange={(e)=>setInput(e.target.value)}
                 value={input}
             />
-            <button>Look Up</button>
+            <button type="submit" onSubmit={handleSearchSubmit}>Look Up</button>
         </form>
             <h2>Results:</h2>
-        
         {listingList.map((listing) => {
             return (
                 <div key={listing.identifier.Id}>
