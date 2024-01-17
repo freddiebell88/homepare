@@ -71,8 +71,10 @@ const SearchBar = () => {
     //     axios.get('https://homepare-backend.onrender.com/homes').then((response)=>{setListingList(response.data.homes)})
     // },[])
 
-    useEffect(() => {
-        axios.get('https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=1601%20East%20Barden%20Rd%20Charlotte%20NC', {
+    
+    const handleSearchSubmit = (e) => {
+        e.preventDefault()
+        axios.get(`https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=${input}`, {
             headers: {
                 Accept: 'application/json',
                 apikey: '8a27f74ad8a3190542411b44de720777',
@@ -83,24 +85,21 @@ const SearchBar = () => {
             setListingList(response.data.property);
             console.log(listingList)
             })
-        }, [])
-
-    const handleSearchSubmit = (input) => {
-        // make user input uppercase 
-        // useState to set as search term
+         
+        // useState to set as search term with %20
         // add search term to url
     }
 
     return (
         <>
-        <form>
+        <form onSubmit={handleSearchSubmit}>
             <input
                 type="text"
                 placeholder="Input Listing"
                 onChange={(e)=>setInput(e.target.value)}
                 value={input}
             />
-            <button type="submit" onSubmit={handleSearchSubmit}>Look Up</button>
+            <button type="submit" >Look Up</button>
         </form>
             <h2>Results:</h2>
         {listingList.map((listing) => {
