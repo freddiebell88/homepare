@@ -99,14 +99,28 @@ const SearchBar = () => {
                 onChange={(e)=>setInput(e.target.value)}
                 value={input}
             />
-            <button type="submit" >Look Up</button>
+            <button type="submit" >Find Listing</button>
         </form>
             <h2>Results:</h2>
         {listingList.map((listing) => {
             return (
-                <div key={listing.identifier.Id}>
-                    <p>{listing.address.oneLine}</p>
-                </div>
+                <Preview 
+                    key={listing.identifier.Id}
+                    address={listing.address.oneLine}
+                    // previewImage={listing.images[0].Thumbnail}
+                    listingID={listing.identifier.Id}
+                    squareFootage={listing.building.size.livingSize}
+                    bathrooms={listing.building.rooms.bathsFull}
+                    halfBathrooms={listing.building.rooms.bathsPartial}
+                    bedrooms={listing.building.rooms.beds}
+                    propertyType={listing.summary.propertyType}
+                    hoa={listing.hoa}
+                    // garage={listing.garage}
+                    price={listing.assessment.market.mktTtlValue}
+                />
+                // <div key={listing.identifier.Id}>
+                //     <p>{listing.address.oneLine}</p>
+                // </div>
             )
         })}
         {/* {listingList.filter((listing) => {
