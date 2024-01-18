@@ -24,7 +24,6 @@ export function UserCollections() {
 //Show only 6 listings in the collections scroll before the user has to click see more
 //Possibly change 'see more' to 'see x number of listings'
 // add a 3 dot menu right aligned on the same line as collection name that allows you to EDIT or DELETE the collection
-//Add divider lines between collections
 
     return (
         <>
@@ -35,42 +34,42 @@ export function UserCollections() {
         Collection 1 Name
         <div className='userCollection'>
         {/* The name of the collection comes directly from the user */}
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[0].UnparsedAddress}</p>
         </div>
         
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[1].UnparsedAddress}</p>
         </div>
 
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[2].UnparsedAddress}</p>
         </div>
 
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[2].UnparsedAddress}</p>
         </div>
         
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[0].UnparsedAddress}</p>
         </div>
         
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[1].UnparsedAddress}</p>
         </div>
 
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[2].UnparsedAddress}</p>
         </div>
 
-        <div onClick={open} className='listing-thumbnail'>
+        <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[2].UnparsedAddress}</p>
         </div>
