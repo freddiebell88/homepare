@@ -11,7 +11,10 @@ export function Questionnaire() {
   const [recordedAnswers, setRecordedAnswers] = useState(
     new Array(questionnaireData.length)
   );
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState({
+    value: null,
+    text: null
+  });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -28,7 +31,10 @@ export function Questionnaire() {
 
     setRecordedAnswers(newAnswersArray);
 
-    setSelectedAnswer(newAnswersArray[index + 1]);
+    setSelectedAnswer( newAnswersArray[index + 1] ? newAnswersArray[index + 1] : {
+      value: null,
+      text: null
+    });
     console.log("newAnswersArray[index + 1]", newAnswersArray[index + 1]);
   };
 
@@ -41,7 +47,7 @@ export function Questionnaire() {
 
   const handleConfirmClick = () => {
     console.log("confirm click");
-    console.log("recordedanswers", recordedAnswers)
+    console.log("recordedanswers", recordedAnswers);
     //if this is the last question
     //index === questionnaireData.length - 1
     //show this button
@@ -50,11 +56,11 @@ export function Questionnaire() {
 
     axios
       .post("https://homepare-backend.onrender.com/user-preference", {
-        bedrooms: recordedAnswers[0],
-        bathrooms: recordedAnswers[1],
-        yard: recordedAnswers[2],
-        garage: recordedAnswers[3],
-        hoa: recordedAnswers[4],
+        bedrooms: recordedAnswers[0].value,
+        bathrooms: recordedAnswers[1].value,
+        yard: recordedAnswers[2].value,
+        garage: recordedAnswers[3].value,
+        hoa: recordedAnswers[4].value,
         UserID: "I don't have a way to get the UserID right now",
       })
       .then((result) => {
@@ -68,10 +74,10 @@ export function Questionnaire() {
     <>
       {index === questionnaireData.length ? (
         <>
-          <h1>You are looking for:</h1>
-          {recordedAnswers.map((answer) => (
+          <h1>You are looking for a:</h1>
+          {recordedAnswers.map((answerObject) => (
             <>
-              <li>{answer}</li>
+              <li>{answerObject.text}</li>
             </>
           ))}
           <button onClick={handleConfirmClick}>Confirm</button>
@@ -81,21 +87,24 @@ export function Questionnaire() {
           <h1>Questonnaire</h1>
           <form>
             <h3>{questionnaireData[index].question}</h3>
-            {questionnaireData[index].answers.map((answer) => (
-              // eslint-disable-next-line react/jsx-key
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    value="{answer}"
-                    checked={selectedAnswer === answer}
-                    name={`question${index}`}
-                    onClick={() => handleSelectedAnswer(answer)}
-                  />
-                  {answer}
-                </label>
-              </div>
-            ))}
+            {questionnaireData[index].answers.map((answerObject) => {
+              console.log(answerObject);
+              return (
+                // eslint-disable-next-line react/jsx-key
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      value={answerObject.value}
+                      checked={selectedAnswer.value === answerObject.value}
+                      name={`question${index}`}
+                      onClick={() => handleSelectedAnswer(answerObject)}
+                    />
+                    {answerObject.text}
+                  </label>
+                </div>
+              );
+            })}
           </form>
           {
             <button

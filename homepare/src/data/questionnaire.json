@@ -17,32 +17,42 @@
     "questionID" : "1",
     "question": "How many bathrooms?",
     "answers" : [
-        "4+",
-        "3+",
-        "2+",
-        "1+"
+        {"value": 4,
+        "text": "4 bathrooms"},
+        {"value": 3,
+        "text": "3 bathrooms"},
+        {"value": 2,
+        "text": "2 bathrooms"},
+        {"value": 1,
+        "text": "1 bathroom"}
 ]
     },
     {
         "questionID" : "2",
-        "question": "Do you need a yard?",
+        "question": "Do you want a home with or without a yard?",
         "answers" : [
-            "Yes",
-            "No"
+            {"value": "true",
+            "text": "with a yard"},
+            {"value": "false",
+            "text" : "without a yard"}
             ]
 },
 {
     "questionID" : "3",
-    "question": "Do you want a home with a garage?",
+    "question": "With or without a garage?",
     "answers" : [
-        "Yes",
-        "No"]
+        {"value": "true",
+            "text": "with a garage"},
+            {"value": "false",
+            "text" : "without a garage"}]
 },
 {
     "questionID" : "4",
-    "question": "Do you want a home with an HOA (Home Owner's Association)?",
+    "question": "With or without an HOA (Home Owner's Association)?",
     "answers" : [
-        "Yes",
-        "No"]
+        {"value": "true",
+            "text": "with an HOA"},
+            {"value": "false",
+            "text" : "without an HOA"}]
 }
 ]
