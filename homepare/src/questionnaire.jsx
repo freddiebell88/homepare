@@ -56,12 +56,17 @@ export function Questionnaire() {
 
     axios
       .post("https://homepare-backend.onrender.com/user-preference", {
+        address: null,
         bedrooms: recordedAnswers[0].value,
         bathrooms: recordedAnswers[1].value,
         yard: recordedAnswers[2].value,
         garage: recordedAnswers[3].value,
         hoa: recordedAnswers[4].value,
-        UserID: "I don't have a way to get the UserID right now",
+        UserID: "",
+      }, {
+        headers: {
+          authorization: "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXI5IiwiaWF0IjoxNzA1NTk1NDY5LCJleHAiOjE3MDU2ODE4Njl9.S1kPErLtGajmty_NF5sOUEle56onmCjpZ9svk-K1eOc"
+        }
       })
       .then((result) => {
         console.log("result", result);

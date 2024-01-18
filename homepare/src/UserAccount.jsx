@@ -1,4 +1,5 @@
 import { TextInput, Button } from "@mantine/core"
+import { Link } from "react-router-dom"
 
 
 export function UserAccount() {
@@ -19,7 +20,10 @@ export function UserAccount() {
     label="Update Password:"
     placeholder="Password:"
     />
+    <br></br>
     <Button>Save</Button>
+    &nbsp;
+    <Link to="/logout"><Button>Logout?</Button></Link>
     </div>
     </div>
     </>
