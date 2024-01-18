@@ -4,6 +4,8 @@ import homeData from './data/homes.json'
 import { Modal, Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { DetailsCard } from './detailsCard';
+import { useState } from 'react';
+import axios from 'axios';
 
 export function UserCollections() {
     const thumbWidth = "100px";
@@ -11,12 +13,12 @@ export function UserCollections() {
 
     const [opened, { open, close }] = useDisclosure(false);
 
-    const handleNewCollection = () => {
-        return (
-            <Modal>
-                <NewCollection />
-            </Modal>
-        )
+    const handleNewCollectionClick = () => {
+        console.log("new collection button clicked");
+        <Modal opened={opened} onClose={close} centered>
+            <NewCollection />
+        </Modal>
+        
     }
 //TO DO
 
@@ -88,28 +90,40 @@ export function UserCollections() {
         <hr className="rounded-divider-in-user-collections"></hr>
         
         <div className='collections-wrapper-in-user-collections'>
-            <button>New Collection</button>
+            <button onClick={handleNewCollectionClick} >New Collection</button>
         </div>
         {/* <CollectionDetail />
         <ComparisonTable /> */}
+        <NewCollection />
         </>
     )
 }
 
-export default NewCollection() {
-    const handleSaveCollection = () => {
+export function NewCollection() {
+    const [collectionInput, setCollectionInput] = useState("")
+
+    const handleSaveCollection = (e) => {
+        console.log("save button clicked")
         axios.post('https://homepare-backend.onrender.com/collections', {
+            search_name: collectionInput
+        }, {
             headers: {
-                
+                authorization: "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXI5IiwiaWF0IjoxNzA1NTk1NDY5LCJleHAiOjE3MDU2ODE4Njl9.S1kPErLtGajmty_NF5sOUEle56onmCjpZ9svk-K1eOc"
             }
         })
     }
 
     return (
+        <>
         <form onSubmit={handleSaveCollection} >
-            <input>
-            </input>
-            <button type={submit}>Save</button>
+            <input 
+                type='text'
+                placeholder='Name your new collection'
+                onChange={(e)=>setCollectionInput(e.target.value)}
+                value={collectionInput}
+            />
+            <button type="submit">Save</button>
         </form>
+        </>
     )
 }
