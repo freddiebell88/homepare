@@ -3,7 +3,7 @@ import Preview from "./listingInput"
 import { list } from "postcss"
 import axios from "axios"
 
-export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, }) {
+export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, halfBathrooms }) {
 
     const [addListing, setAddListing] = useState([])
     
@@ -35,6 +35,7 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
             <p>SQ Footage: {squareFootage}</p>
             <p>Bedrooms: {bedrooms} </p>
             <p>Bathrooms: {bathrooms}</p>
+            <p>Half Bathrooms: {halfBathrooms}</p>
             <p>Property Type: {propertyType}</p>
             <p>HOA: {hoa}</p>
             <p>Garage: {garage}</p>
