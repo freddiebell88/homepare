@@ -26,7 +26,7 @@ function App() {
   const [username, setUsername] = useLocalStorageState('');
 
 
-  const setAuth = (username,token) => {
+  const setAuth = (username, token) => {
     setUsername(username);
     setToken(token);
     console.log(token);

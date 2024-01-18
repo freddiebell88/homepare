@@ -4,6 +4,8 @@ import homeData from './data/homes.json'
 import { Modal, Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { DetailsCard } from './detailsCard';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export function UserCollections() {
     const thumbWidth = "100px";
@@ -11,7 +13,13 @@ export function UserCollections() {
 
     const [opened, { open, close }] = useDisclosure(false);
 
-
+    const handleNewCollectionClick = () => {
+        console.log("new collection button clicked");
+        <Modal opened={opened} onClose={close} centered>
+            <NewCollection />
+        </Modal>
+        
+    }
 //TO DO
 
 // ALTERNATE VIEWS
@@ -81,8 +89,44 @@ export function UserCollections() {
         </div>
         <hr className="rounded-divider-in-user-collections"></hr>
         
+        <div className='collections-wrapper-in-user-collections'>
+        </div>
         {/* <CollectionDetail />
         <ComparisonTable /> */}
+        
+        <NewCollection />
+        </>
+    )
+}
+// I would like for the new collection form to be in a modal that pops up but I can't figure that out in this moment. I think it's because there is already a modal on that component for the detailsCard - Freddie 
+
+export function NewCollection() {
+    const [collectionInput, setCollectionInput] = useState("")
+
+    const handleSaveCollection = (e) => {
+        console.log("save button clicked")
+        console.log(collectionInput)
+        e.preventDefault()
+        axios.post('https://homepare-backend.onrender.com/collections', {
+            search_name: collectionInput
+        }, {
+            headers: {
+                authorization: "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXI5IiwiaWF0IjoxNzA1NTk1NDY5LCJleHAiOjE3MDU2ODE4Njl9.S1kPErLtGajmty_NF5sOUEle56onmCjpZ9svk-K1eOc"
+            }
+        })
+    }
+
+    return (
+        <>
+        <form onSubmit={handleSaveCollection} >
+            <input 
+                type='text'
+                placeholder='Name your new collection'
+                onChange={(e)=>setCollectionInput(e.target.value)}
+                value={collectionInput}
+            />
+            <button type="submit">Save</button>
+        </form>
         </>
     )
 }
