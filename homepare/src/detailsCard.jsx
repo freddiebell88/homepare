@@ -12,9 +12,13 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
         setAddListing()
         // post listing to db
         axios.post('https://homepare-backend.onrender.com/homes', {
-            address: {address},
-            price: {price},
-            property_type: {propertyType},
+            address: address,
+            price: price,
+            property_type: propertyType
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
     }
 
