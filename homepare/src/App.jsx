@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import useLocalStorageState from 'use-local-storage-state'
 import { Dashboard } from './dashboard'
 import { Register } from './register'
 import { Login } from './login'
@@ -17,17 +18,27 @@ import { UserListings } from './UserListings'
 import { UserCollections } from './UserCollections'
 import { ListingInput } from './listingInput';
 import { Menu } from './Menu'
+import { Logout } from './logout'
+
 
 function App() {
-  
+  const [token, setToken] = useLocalStorageState("");
+  const [username, setUsername] = useLocalStorageState('');
+
+
+  const setAuth = (username,token) => {
+    setUsername(username);
+    setToken(token);
+    console.log(token);
+  };
 
   return (
     <>
     <MantineProvider>
     <Routes> 
-      <Route
+      <Route 
         path="/"
-        element={<Menu><Dashboard /></Menu>}
+        element={<Menu><Dashboard token={token} /></Menu>}
         />
       <Route
         path="/register"
@@ -35,48 +46,52 @@ function App() {
       />
       <Route
         path="/login"
-        element={<Login />}
+        element={<Login setAuth={setAuth} />}
         />
       <Route 
       path="/questionnaire"
-      element={<Questionnaire />}
+      element={<Questionnaire username={username} token={token} />}
       />
       <Route
       path="checklist"
-      element={<Menu><Checklist /></Menu>}
+      element={<Menu><Checklist username={username} token={token}/></Menu>}
       />
       <Route
       path="CollectionDetail"
-      element={<CollectionDetail />}
+      element={<CollectionDetail username={username} token={token}/>}
       />
       <Route
       path="comparisonTable"
-      element={<ComparisonTable />}
+      element={<ComparisonTable username={username} token={token}/>}
       />
       <Route
       path="detailsCard"
-      element={<DetailsCard />}
+      element={<DetailsCard username={username} token={token}/>}
       />
       <Route
       path="ListingDetails"
-      element={<Menu><ListingDetails /></Menu>}
+      element={<Menu><ListingDetails username={username} token={token}/></Menu>}
       />
       <Route
       path="UserAccount"
-      element={<UserAccount />}
+      element={<UserAccount username={username} token={token}/>}
       />
       <Route
       path="UserCollections"
       element={
-      <Menu><UserCollections /></Menu>}
+      <Menu><UserCollections username={username} token={token}/></Menu>}
       />
       <Route
       path="UserListings"
-      element={<UserListings />}
+      element={<UserListings username={username} token={token}/>}
       />
       <Route
       path="listingInput"
-      element={<Menu><ListingInput /></Menu>}
+      element={<Menu><ListingInput username={username} token={token}/></Menu>}
+      />
+      <Route
+      path="logout"
+      element={<Logout username={username} token={token}/>}
       />
     </Routes>
     </MantineProvider>
