@@ -1,27 +1,40 @@
 import dbhomes from "./data/homesfromDB.json";
 import { Table } from '@mantine/core'
 
-// const tableData: TableData = {
-//     head: ['Checklist', `${homeData.value[0].UnparsedAddress}`, `${homeData.value[1].UnparsedAddress}`, `${homeData.value[2].UnparsedAddress}`],
-//     body: [
-//         [`${homeData.value[0].ListPrice}`, `${homeData.value[1].ListPrice}`, `${homeData.value[2].ListPrice}`],
-//         [`${homeData.value[0].BedroomsTotal}`, `${homeData.value[0].BedroomsTotal}`, `${homeData.value[0].BedroomsTotal}`]
-//     ]
-// }
+// useState for array of selected listings and map through those to build table?
 
 export function ComparisonTable () {
     const rows = dbhomes.homes.map((listing) => (
         <Table.Tr key={listing.id}>
             <Table.Td>{listing.address}</Table.Td>
+            <Table.Td>{listing.price}</Table.Td>
+            <Table.Td>{listing.bedrooms}</Table.Td>
+            <Table.Td>{listing.bathrooms}</Table.Td>
+            <Table.Td>{listing.living_area}</Table.Td>
+            <Table.Td>{listing.hoa}</Table.Td>
+            <Table.Td>{listing.yard}</Table.Td>
+            <Table.Td>{listing.garage}</Table.Td>
         </Table.Tr>
     ))
 
     return (
-        <Table>
+        <Table.ScrollContainer maxWidth={500}>
+            <Table>
             <Table.Thead>
+                <Table.Tr>
                 <Table.Th>CHECKLIST</Table.Th>
+                <Table.Th>Price</Table.Th>
+                <Table.Th>Bedrooms</Table.Th>
+                <Table.Th>Bathrooms</Table.Th>
+                <Table.Th>SQ Footage</Table.Th>
+                <Table.Th>HOA</Table.Th>
+                <Table.Th>Yard</Table.Th>
+                <Table.Th>Garage</Table.Th>
+                </Table.Tr>
             </Table.Thead>
+            <Table.Tbody>{rows}</Table.Tbody>
         </Table>
+        </Table.ScrollContainer>
         // <Table data={tableData}/> 
         // <>
         // <table>
