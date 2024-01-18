@@ -17,6 +17,7 @@ export function CollectionDetail() {
     const handleCheckChange = () => {
         setCompareChecked(!compareChecked)
         //when the main compare button is clicked, disable the thumbnail details pop out
+        //if handlecheckchange is clicked, show compare checks on thumbnails
     }
 
     const handleThumbnailCheckChange = () => {
@@ -40,39 +41,41 @@ export function CollectionDetail() {
         <div  onClick={open} className='listing-thumbnail-in-collections-detail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[0].UnparsedAddress}</p>
-        <input 
+        {compareChecked === true && <><input 
         type="checkbox"
         checked={thumbailCompareChecked}
         onChange={handleThumbnailCheckChange}
-        /><label>Compare</label>
+        /><label>Compare</label></>}
         </div>
-        
+
         <div  onClick={open} className='listing-thumbnail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[0].UnparsedAddress}</p>
-        <input 
+        {compareChecked === true && <><input 
         type="checkbox"
         checked={thumbailCompareChecked}
         onChange={handleThumbnailCheckChange}
-        /><label>Compare</label>
+        /><label>Compare</label></>}
         </div>
+
         <div  onClick={open} className='listing-thumbnail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[0].UnparsedAddress}</p>
-        <input 
+        {compareChecked === true && <><input 
         type="checkbox"
         checked={thumbailCompareChecked}
         onChange={handleThumbnailCheckChange}
-        /><label>Compare</label>
+        /><label>Compare</label></>}
         </div>
+
         <div  onClick={open} className='listing-thumbnail'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
         <p>{homeData.value[0].UnparsedAddress}</p>
-        <input 
+        {compareChecked === true && <><input 
         type="checkbox"
         checked={thumbailCompareChecked}
         onChange={handleThumbnailCheckChange}
-        /><label>Compare</label>
+        /><label>Compare</label></>}
         </div>
         </div>
         </>
