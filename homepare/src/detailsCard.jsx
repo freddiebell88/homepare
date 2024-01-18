@@ -14,7 +14,14 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
         axios.post('https://homepare-backend.onrender.com/homes', {
             address: address,
             price: price,
-            property_type: propertyType
+            property_type: propertyType,
+            bedrooms: bedrooms,
+            half_bath: halfBathrooms,
+            full_bath: bathrooms,
+            living_area: squareFootage, 
+            garage: garage,
+            hoa: hoa,
+            images: previewImage
         }, {
             headers: {
                 'Content-Type': 'application/json'
