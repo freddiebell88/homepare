@@ -18,6 +18,7 @@ import { UserListings } from './UserListings'
 import { UserCollections } from './UserCollections'
 import { ListingInput } from './listingInput';
 import { Menu } from './Menu'
+import { Logout } from './logout'
 
 
 function App() {
@@ -87,6 +88,10 @@ function App() {
       <Route
       path="listingInput"
       element={<Menu><ListingInput username={username} token={token}/></Menu>}
+      />
+      <Route
+      path="logout"
+      element={<Logout username={username} token={token}/>}
       />
     </Routes>
     </MantineProvider>
