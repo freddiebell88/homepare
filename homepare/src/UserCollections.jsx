@@ -79,7 +79,7 @@ export function UserCollections() {
         <p className='see-more-in-user-collections'>See More</p>
         {/* See more should pull up collection details */}
         </div>
-        <hr class="rounded-divider-in-user-collections"></hr>
+        <hr className="rounded-divider-in-user-collections"></hr>
         
         {/* <CollectionDetail />
         <ComparisonTable /> */}

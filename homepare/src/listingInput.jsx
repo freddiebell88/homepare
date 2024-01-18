@@ -44,6 +44,7 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
         <img src={previewImage}/>
         <h3>{address}</h3>
             <button>Add to My Listings</button>
+            {/* add a conditional here so add to my listings button does not render inside my listings and a add to a collection button does instead */}
         </div>
         </>
     )
