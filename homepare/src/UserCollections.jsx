@@ -4,7 +4,7 @@ import homeData from './data/homes.json'
 import { Modal, Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { DetailsCard } from './detailsCard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export function UserCollections() {
@@ -90,20 +90,23 @@ export function UserCollections() {
         <hr className="rounded-divider-in-user-collections"></hr>
         
         <div className='collections-wrapper-in-user-collections'>
-            <button onClick={handleNewCollectionClick} >New Collection</button>
         </div>
         {/* <CollectionDetail />
         <ComparisonTable /> */}
+        
         <NewCollection />
         </>
     )
 }
+// I would like for the new collection form to be in a modal that pops up but I can't figure that out in this moment. I think it's because there is already a modal on that component for the detailsCard - Freddie 
 
 export function NewCollection() {
     const [collectionInput, setCollectionInput] = useState("")
 
     const handleSaveCollection = (e) => {
         console.log("save button clicked")
+        console.log(collectionInput)
+        e.preventDefault()
         axios.post('https://homepare-backend.onrender.com/collections', {
             search_name: collectionInput
         }, {
