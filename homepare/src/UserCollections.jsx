@@ -11,7 +11,13 @@ export function UserCollections() {
 
     const [opened, { open, close }] = useDisclosure(false);
 
-
+    const handleNewCollection = () => {
+        return (
+            <Modal>
+                <NewCollection />
+            </Modal>
+        )
+    }
 //TO DO
 
 // ALTERNATE VIEWS
@@ -79,10 +85,31 @@ export function UserCollections() {
         <p className='see-more-in-user-collections'>See More</p>
         {/* See more should pull up collection details */}
         </div>
-        <hr class="rounded-divider-in-user-collections"></hr>
+        <hr className="rounded-divider-in-user-collections"></hr>
         
+        <div className='collections-wrapper-in-user-collections'>
+            <button>New Collection</button>
+        </div>
         {/* <CollectionDetail />
         <ComparisonTable /> */}
         </>
+    )
+}
+
+export default NewCollection() {
+    const handleSaveCollection = () => {
+        axios.post('https://homepare-backend.onrender.com/collections', {
+            headers: {
+                
+            }
+        })
+    }
+
+    return (
+        <form onSubmit={handleSaveCollection} >
+            <input>
+            </input>
+            <button type={submit}>Save</button>
+        </form>
     )
 }
