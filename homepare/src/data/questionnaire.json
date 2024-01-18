@@ -3,10 +3,14 @@
     "questionID" : "0",
     "question": "How many bedrooms are you looking for?",
     "answers" : [
-        "4+",
-        "3+",
-        "2+",
-        "1+"
+        {"value": 4,
+        "text": "4 bedrooms"},
+        {"value": 3,
+        "text": "3 bedrooms"},
+        {"value": 2,
+        "text": "2 bedrooms"},
+        {"value": 1,
+        "text": "1 bedroom"}
 ]
 },
     {
@@ -24,23 +28,21 @@
         "question": "Do you need a yard?",
         "answers" : [
             "Yes",
-            "No",
-            "Not sure"]
+            "No"
+            ]
 },
 {
     "questionID" : "3",
     "question": "Do you want a home with a garage?",
     "answers" : [
         "Yes",
-        "No",
-        "Not sure"]
+        "No"]
 },
 {
     "questionID" : "4",
     "question": "Do you want a home with an HOA (Home Owner's Association)?",
     "answers" : [
         "Yes",
-        "No",
-        "Not sure"]
+        "No"]
 }
 ]
