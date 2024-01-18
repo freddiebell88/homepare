@@ -15,7 +15,7 @@ export function ListingInput() {
     )
 }
 
-export function Preview( { address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price} ) {
+export function Preview( { address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, halfBathrooms} ) {
 
     const previewWidth = "100px";
     const [opened, { open, close }] = useDisclosure(false);
@@ -29,11 +29,13 @@ export function Preview( { address, previewImage, squareFootage, bathrooms, bedr
             previewImage={previewImage}
             squareFootage={squareFootage}
             bathrooms={bathrooms}
+            halfBathrooms={halfBathrooms}
             bedrooms={bedrooms}
             propertyType={propertyType}
             hoa={hoa}
             garage={garage}
             price={price}
+            listingId={listingId}
             />
         </Modal>
         <div

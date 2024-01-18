@@ -1,16 +1,32 @@
 import { useState } from "react"
 import Preview from "./listingInput"
+import { list } from "postcss"
 import axios from "axios"
 
-export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price}) {
+export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, halfBathrooms }) {
 
     const [addListing, setAddListing] = useState([])
     
     const handleAddListingClick = () => {
         console.log("add listing button")
         setAddListing()
-        // POST listing to database
-        axios.post()
+        // post listing to db
+        axios.post('https://homepare-backend.onrender.com/homes', {
+            address: address,
+            price: price,
+            property_type: propertyType,
+            bedrooms: bedrooms,
+            half_bath: halfBathrooms,
+            full_bath: bathrooms,
+            living_area: squareFootage, 
+            garage: garage,
+            hoa: hoa,
+            images: previewImage
+        }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
     }
 
     const handleSaveNotes = () => {
@@ -30,23 +46,17 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
             <p>SQ Footage: {squareFootage}</p>
             <p>Bedrooms: {bedrooms} </p>
             <p>Bathrooms: {bathrooms}</p>
+            <p>Half Bathrooms: {halfBathrooms}</p>
             <p>Property Type: {propertyType}</p>
             <p>HOA: {hoa}</p>
             <p>Garage: {garage}</p>
-            {/* <p>City: {city}</p>
-            <p>Zip Code: {zipCode}</p>
-            <p>$$$: ${listPrice}</p>
-            <p>SQ Footage: {sqFootage}</p>
-            <div>CHECKLIST</div>
-            <p> Bedrooms: {bedrooms} ✅ </p>
-            <p> Bathrooms: {bathrooms} ❌</p>
-            <p> Property Type: {propertyType} </p> */}
             <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
                 <button onClick={handleSaveNotes}>Save</button>
             </label>
-            <button onClick={handleAddListingClick}>Add to My Listings</button>
+            <button onClick={handleAddListingClick}>
+                Add to My Listings</button>
             </div>
     
         )

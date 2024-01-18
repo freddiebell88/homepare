@@ -10,8 +10,10 @@ const TABNAMES = {
   MY_COLLECTIONS: "My Collections",
 };
 
-export function Dashboard() {
+export function Dashboard( {myListings} ) {
   const [activeTab, setActiveTab] = useState(TABNAMES.MY_LISTINGS);
+
+
   return (
     <>
       <h2>User's Dashboard</h2>   
@@ -25,7 +27,9 @@ export function Dashboard() {
       </Tabs.List>
       </Tabs> 
       </div>
-        {activeTab === TABNAMES.MY_LISTINGS && <UserListings />}
+        {activeTab === TABNAMES.MY_LISTINGS && <UserListings 
+        myListings={myListings}
+        />}
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
 
       
