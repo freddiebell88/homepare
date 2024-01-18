@@ -1,0 +1,346 @@
+{
+	"homes": [
+		{
+			"_id": "659f0f31fa8bacdccfa5c336",
+			"address": "123 Panini Lane, Raleigh, NC",
+			"property_type": "House (Detached)",
+			"bedrooms": 3,
+			"bathrooms": 2,
+			"living_area": 1750,
+			"garage": false,
+			"hoa": false,
+			"images": [
+				{
+					"Order": 1,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/1.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-1.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "0305978a-bf82-4667-9a32-0199566c67c0"
+				},
+				{
+					"Order": 2,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/2.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-2.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "0c1c5313-8418-4bb2-8a48-7c0466c10859"
+				},
+				{
+					"Order": 3,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/3.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-3.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "01a45fde-2a35-4558-9570-92295fa3b898"
+				},
+				{
+					"Order": 4,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/4.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-4.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "bdb8ec45-760f-46d6-aa6e-02ad96a6edae"
+				},
+				{
+					"Order": 5,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/5.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-5.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "cf8f7bcb-1978-4b33-a9a2-243bb6bc037b"
+				},
+				{
+					"Order": 6,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/6.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-6.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "019ce57b-d148-4c8b-b063-cadd21584a4c"
+				}
+			],
+			"notes": "House is cluttered, but spacious",
+			"archived": false,
+			"__v": 0,
+			"price": 750000
+		},
+		{
+			"_id": "659f10eef8c6ab4d266d043e",
+			"address": "15 AMESBURY PARKE,MEDFORD,NJ",
+			"property_type": "House (Detached)",
+			"bedrooms": 3,
+			"bathrooms": 3,
+			"living_area": 1760,
+			"yard": true,
+			"garage": true,
+			"hoa": true,
+			"images": [
+				{
+					"Order": 1,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/1.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-1.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "0305978a-bf82-4667-9a32-0199566c67c0"
+				},
+				{
+					"Order": 2,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/2.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-2.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "0c1c5313-8418-4bb2-8a48-7c0466c10859"
+				},
+				{
+					"Order": 3,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/3.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-3.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "01a45fde-2a35-4558-9570-92295fa3b898"
+				},
+				{
+					"Order": 4,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/4.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-4.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "bdb8ec45-760f-46d6-aa6e-02ad96a6edae"
+				},
+				{
+					"Order": 5,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/5.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-5.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "cf8f7bcb-1978-4b33-a9a2-243bb6bc037b"
+				},
+				{
+					"Order": 6,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/6.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-6.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "019ce57b-d148-4c8b-b063-cadd21584a4c"
+				},
+				{
+					"Order": 7,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/7.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-7.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "fc6f3637-a061-4606-b6aa-8c223516bc54"
+				},
+				{
+					"Order": 8,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/8.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-8.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "23dfb60f-ab35-42d0-9c7f-1691f3997f72"
+				},
+				{
+					"Order": 9,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/9.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-9.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "5a4a47ce-fb09-46ab-96e3-133ad9ebdaf7"
+				},
+				{
+					"Order": 10,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/10.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-10.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "43f09564-8ffe-4c38-866f-72501c52c761"
+				}
+			],
+			"notes": "spacious front yard, large fenced in back yard, attached 3 car garage",
+			"archived": false,
+			"__v": 0
+		},
+		{
+			"_id": "659f12c3f8c6ab4d266d0441",
+			"address": "1537 Zuehl Crossing La Vernia, Texas",
+			"property_type": "House (Detached)",
+			"bedrooms": 4,
+			"bathrooms": 3.5,
+			"living_area": 2698,
+			"yard": true,
+			"garage": true,
+			"hoa": true,
+			"images": [
+				{
+					"Order": 1,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/1.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-1.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "0305978a-bf82-4667-9a32-0199566c67c0"
+				},
+				{
+					"Order": 2,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/2.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-2.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "0c1c5313-8418-4bb2-8a48-7c0466c10859"
+				},
+				{
+					"Order": 3,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/3.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-3.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "01a45fde-2a35-4558-9570-92295fa3b898"
+				},
+				{
+					"Order": 4,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/4.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-4.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "bdb8ec45-760f-46d6-aa6e-02ad96a6edae"
+				},
+				{
+					"Order": 5,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/5.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-5.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "cf8f7bcb-1978-4b33-a9a2-243bb6bc037b"
+				},
+				{
+					"Order": 6,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/6.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-6.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "019ce57b-d148-4c8b-b063-cadd21584a4c"
+				},
+				{
+					"Order": 7,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/7.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-7.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "fc6f3637-a061-4606-b6aa-8c223516bc54"
+				},
+				{
+					"Order": 8,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/8.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-8.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "23dfb60f-ab35-42d0-9c7f-1691f3997f72"
+				},
+				{
+					"Order": 9,
+					"MediaURL": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/9.jpeg",
+					"ResourceRecordKey": "11091826",
+					"ResourceName": "Property",
+					"ClassName": null,
+					"MediaType": "jpeg",
+					"Thumbnail": "https://dx41nk9nsacii.cloudfront.net/cdn/4/11091826/thumbnail-9.jpeg",
+					"MediaCategory": "Photo",
+					"MediaObjectID": "5a4a47ce-fb09-46ab-96e3-133ad9ebdaf7"
+				}
+			],
+			"notes": "beatiful 14 acre lot, detached garage too far from home. plenty of space to expand. beautifully remodoled",
+			"archived": false,
+			"__v": 0
+		},
+		{
+			"_id": "65a1b49ecd74915c0f41137b",
+			"address": "304 LINDEN AVE, RALEIGH, NC 27601",
+			"price": 600000,
+			"property_type": "SINGLE FAMILY RESIDENCE",
+			"full_bath": 2,
+			"living_area": 1778,
+			"yard": true,
+			"garage": true,
+			"hoa": false,
+			"images": [
+				{}
+			],
+			"notes": "large back yard. interior needs updating. and exterior needs paint job",
+			"sentiment": null,
+			"archived": null,
+			"__v": 0,
+			"half_bath": 1
+		}
+	]
+}
