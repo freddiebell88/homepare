@@ -6,9 +6,11 @@ import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 
-export function UserListings( {myListings} ) {
+export function UserListings( {myListings, token, username } ) {
     
+    //api call 
     
+
     const thumbWidth = "100px";
     const thumbHeight = "100px";
 

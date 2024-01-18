@@ -41,7 +41,7 @@ export function Login({ setAuth }) {
                 "password": password,
             })
             .then((res) => {
-                setAuth(username, res.data.auth_token)
+                setAuth(username, res.data.token)
                 navigate('/')
             })
             .catch((err) => setError(err.response.data.non_field_errors[0]))

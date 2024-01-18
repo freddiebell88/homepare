@@ -3,7 +3,7 @@ import { Checklist } from "./checklist";
 import { ListingInput } from "./listingInput";
 import { useDisclosure } from '@mantine/hooks';
 import { Burger } from '@mantine/core';
-import { IconHome2, IconGauge, IconChevronRight, IconActivity, IconCircleOff, IconFolderHeart, IconHeartCheck} from '@tabler/icons-react';
+import { IconHome2, IconGauge, IconChevronRight, IconActivity, IconCircleOff, IconFolderHeart, IconHeartCheck, IconUserCircle} from '@tabler/icons-react';
 import { Menu as MantineMenu } from '@mantine/core';
 import { Link } from "react-router-dom";
 
@@ -24,6 +24,8 @@ export function Menu({children}) {
                 <IconFolderHeart/> My Dashboard</MantineMenu.Item></Link>
             <Link to="/checklist"> <MantineMenu.Item>
                 <IconHeartCheck/> Checklist</MantineMenu.Item></Link>
+            <Link to="/UserAccount"><MantineMenu.Item>
+                <IconUserCircle/> My Account</MantineMenu.Item></Link>
         </MantineMenu.Dropdown>
         </MantineMenu>
         {children}
