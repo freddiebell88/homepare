@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
 import axios from 'axios';
+import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 
 export function UserListings() {
     
@@ -13,7 +14,6 @@ export function UserListings() {
     const thumbHeight = "100px";
     const [myListings, setMyListings] = useState([])
     const [opened, { open, close }] = useDisclosure(false);
-    const placeholderImage = "homepare/src/data/pexels-kelly-2950003.jpg"
 
     const usePlaceHolder = (e) => {
         e.target.src = placeholderImage
@@ -53,7 +53,10 @@ export function UserListings() {
         </Modal>
         
         <div  key={mylisting._id} onClick={open} className='listing-thumbnail'>
-        <img src={mylisting.images[0]} width={thumbWidth} height={thumbHeight}/>
+        { mylisting.images && mylisting.images.length >0 && Object.keys(mylisting.images[0]).length >0 && <img src={mylisting.images[0].Thumbnail}
+        onError={usePlaceHolder}
+        width={thumbWidth} height={thumbHeight}/> }
+        { mylisting.images && mylisting.images.length === 0 && <img src={placeholderImage}/> }
         <p>{mylisting.address}</p>
         </div>
         </>
