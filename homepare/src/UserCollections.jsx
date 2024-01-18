@@ -36,42 +36,42 @@ export function UserCollections() {
         {/* The name of the collection comes directly from the user */}
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[0].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[0].UnparsedAddress}</p>
         </div>
         
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[1].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[1].UnparsedAddress}</p>
         </div>
 
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[2].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[2].UnparsedAddress}</p>
         </div>
 
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[2].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[2].UnparsedAddress}</p>
         </div>
         
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[0].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[0].UnparsedAddress}</p>
         </div>
         
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[1].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[1].UnparsedAddress}</p>
         </div>
 
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[2].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[2].UnparsedAddress}</p>
         </div>
 
         <div onClick={open} className='listing-thumbnail-in-user-collections'>
         <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[2].UnparsedAddress}</p>
+        <p className='thumbnail-text-in-user-collections'>{homeData.value[2].UnparsedAddress}</p>
         </div>
 
         </div>
@@ -79,7 +79,7 @@ export function UserCollections() {
         <p className='see-more-in-user-collections'>See More</p>
         {/* See more should pull up collection details */}
         </div>
-        <hr class="rounded-divider-in-user-collections"></hr>
+        <hr className="rounded-divider-in-user-collections"></hr>
         
         {/* <CollectionDetail />
         <ComparisonTable /> */}

@@ -56,3 +56,20 @@ hr.rounded-divider-in-user-collections {
   font-size:x-small;
   margin: 15px;
 }
+
+.thumbnail-text-in-user-collections {
+  text-wrap: wrap;
+}
+
+.thumnail-grid-in-collections-detail {
+  display: grid;
+  grid-template-columns: 200px 200px;
+}
+
+.listing-thumbnail-in-collections-detail {
+  max-width: 150px;
+  max-height: 150px;
+  border: solid aqua 2px;
+  font-size:x-small;
+  margin: 15px;
+}
