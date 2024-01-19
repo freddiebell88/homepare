@@ -73,3 +73,9 @@ hr.rounded-divider-in-user-collections {
   font-size:x-small;
   margin: 15px;
 }
+
+button {
+  border: solid black 2px;
+  padding: 3px;
+  margin: 5px;
+}
