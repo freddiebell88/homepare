@@ -11,7 +11,7 @@ export function CollectionDetail() {
     const thumbHeight = "100px";
 
     const [compareChecked, setCompareChecked] = useState(false)
-    const [thumbailCompare, setThumbailCompare] = useState(new Array(4).fill(false))
+    const [listingCheckBoxes, setlistingCheckBoxes] = useState(new Array(4).fill(false))
     //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
     const [selectedThumbnails, setSelectedThumbnails] = useState([])
     const [opened, { open, close }] = useDisclosure(false);
@@ -21,10 +21,14 @@ export function CollectionDetail() {
     }
 
     const handleThumbnailCheckOnChange = (position) => {
-        const updatedThumbnailCompare = thumbailCompare.map((listing, index) =>
+        const updatedListingCheckBoxes = listingCheckBoxes.map((listing, index) =>
         index === position ? !listing : listing )
 
-        setThumbailCompare(updatedThumbnailCompare)
+        setlistingCheckBoxes(updatedListingCheckBoxes)
+        setSelectedThumbnails()
+        console.log('selectedThumbnails', selectedThumbnails)
+
+
     }
 
     const previewSelectedThumbnails = () => {
@@ -62,7 +66,7 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompare[0]}
+        checked={listingCheckBoxes[0]}
         onChange={() => handleThumbnailCheckOnChange(0)}
         /><label>Compare</label></>}
         </div>
@@ -72,7 +76,7 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompare[1]}
+        checked={listingCheckBoxes[1]}
         onChange={() => handleThumbnailCheckOnChange(1)}
         /><label>Compare</label></>}
         </div>
@@ -82,7 +86,7 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompare[2]}
+        checked={listingCheckBoxes[2]}
         onChange={() => handleThumbnailCheckOnChange(2)}
         /><label>Compare</label></>}
         </div>
@@ -92,7 +96,7 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompare[3]}
+        checked={listingCheckBoxes[3]}
         onChange={() => handleThumbnailCheckOnChange(3)}
         /><label>Compare</label></>}
         </div>
