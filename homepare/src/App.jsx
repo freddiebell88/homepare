@@ -22,8 +22,8 @@ import { Logout } from './logout'
 
 
 function App() {
-  const [token, setToken] = useLocalStorageState("");
-  const [username, setUsername] = useLocalStorageState('');
+  const [token, setToken] = useLocalStorageState('token');
+  const [username, setUsername] = useLocalStorageState('username');
 
 
   const setAuth = (username, token) => {

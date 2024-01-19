@@ -1,10 +1,23 @@
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Container } from "@mantine/core";
+import { Button, Container, Flex } from "@mantine/core";
 
-export function Logout({token}) {
 
+export function Logout({ token, setAuth, username }) {
+    const navigate = useNavigate()
     console.log({token})
+
+    const handleClick = () => {
+        axios.post('https://homepare-backend.onrender.com/logout',
+        {
+            headers:{
+                authorization: "x-access token",
+            }
+        })
+        .then(() => {
+            console.log("Logged out")
+        })
+    }
 
     return (
         <>

@@ -8,8 +8,9 @@ import { Modal, Button } from '@mantine/core';
 import axios from 'axios';
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 
-export function UserListings() {
+export function UserListings({token}) {
     
+
     const thumbWidth = "100px";
     const thumbHeight = "100px";
     const [myListings, setMyListings] = useState([])
@@ -22,7 +23,7 @@ export function UserListings() {
     useEffect(() => {
     axios.get("https://homepare-backend.onrender.com/homes", {
         headers: {
-            authorization: "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXI5IiwiaWF0IjoxNzA1NTk1NDY5LCJleHAiOjE3MDU2ODE4Njl9.S1kPErLtGajmty_NF5sOUEle56onmCjpZ9svk-K1eOc"
+            authorization: `x-access-token ${token}`
             }
     }).then((res) => {
     console.log(res.data.homes);

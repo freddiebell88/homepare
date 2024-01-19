@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
-export function Questionnaire() {
+export function Questionnaire( {token}) {
   console.log(questionnaireData);
 
   const [index, setIndex] = useState(0);
@@ -65,7 +65,7 @@ export function Questionnaire() {
         UserID: "",
       }, {
         headers: {
-          authorization: "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWExYjUzMjJmNzYzM2Q4MDZmNjFjMGYiLCJpYXQiOjE3MDU2Mjg0MjcsImV4cCI6MTcwNTcxNDgyN30._5Ql6FLu32qgTy_vs1mE0vyN_bUUppPmSdmshsDB4Bw"
+          authorization: `x-access-token ${token}`
         }
       })
       .then((result) => {
