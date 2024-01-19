@@ -11,17 +11,35 @@ export function CollectionDetail() {
     const thumbHeight = "100px";
 
     const [compareChecked, setCompareChecked] = useState(false)
-    const [thumbailCompareChecked, setThumbailCompareChecked] = useState(false)
+    const [thumbailCompare, setThumbailCompare] = useState(new Array(4).fill(false))
+    //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
+    const [selectedThumbnails, setSelectedThumbnails] = useState([])
     const [opened, { open, close }] = useDisclosure(false);
 
     const handleCheckChange = () => {
         setCompareChecked(!compareChecked)
-        //when the main compare button is clicked, disable the thumbnail details pop out
-        //if handlecheckchange is clicked, show compare checks on thumbnails
     }
 
-    const handleThumbnailCheckChange = () => {
-        setThumbailCompareChecked(!thumbailCompareChecked)
+    const handleThumbnailCheckOnChange = (position) => {
+        const updatedThumbnailCompare = thumbailCompare.map((listing, index) =>
+        index === position ? !listing : listing )
+
+        setThumbailCompare(updatedThumbnailCompare)
+    }
+
+    const previewSelectedThumbnails = () => {
+        //when the are clicked/checked
+        //our selected thumbnails should go up into the
+        //new selected thumbnails array
+        //and be shown as in the size auto modal
+    }
+
+    const handleCompareClick = () => {
+        console.log('compare click')
+        //after checking which listings they want to compare
+        //user hits the compare button (ideally on the preview)
+        //and a full screen modal pops out
+        //with the comparison table
     }
 
     return (
@@ -33,9 +51,10 @@ export function CollectionDetail() {
         checked={compareChecked}
         onChange={handleCheckChange}
         /><label>Compare?</label>
+        {!compareChecked &&
         <Modal opened={opened} onClose={close} centered>
             <DetailsCard />
-        </Modal>
+        </Modal>}
         
         <div className='thumnail-grid-in-collections-detail'>
         <div  onClick={open} className='listing-thumbnail-in-collections-detail'>
@@ -43,8 +62,8 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompareChecked}
-        onChange={handleThumbnailCheckChange}
+        checked={thumbailCompare[0]}
+        onChange={() => handleThumbnailCheckOnChange(0)}
         /><label>Compare</label></>}
         </div>
 
@@ -53,8 +72,8 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompareChecked}
-        onChange={handleThumbnailCheckChange}
+        checked={thumbailCompare[1]}
+        onChange={() => handleThumbnailCheckOnChange(1)}
         /><label>Compare</label></>}
         </div>
 
@@ -63,8 +82,8 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompareChecked}
-        onChange={handleThumbnailCheckChange}
+        checked={thumbailCompare[2]}
+        onChange={() => handleThumbnailCheckOnChange(2)}
         /><label>Compare</label></>}
         </div>
 
@@ -73,8 +92,8 @@ export function CollectionDetail() {
         <p>{homeData.value[0].UnparsedAddress}</p>
         {compareChecked === true && <><input 
         type="checkbox"
-        checked={thumbailCompareChecked}
-        onChange={handleThumbnailCheckChange}
+        checked={thumbailCompare[3]}
+        onChange={() => handleThumbnailCheckOnChange(3)}
         /><label>Compare</label></>}
         </div>
         </div>
