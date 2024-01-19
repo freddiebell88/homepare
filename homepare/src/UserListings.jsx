@@ -2,52 +2,68 @@ import { ListingDetails } from './ListingDetails'
 import { DetailsCard } from './detailsCard'
 import { ListingInput } from './listingInput'
 import homeData from './data/homes.json'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
+import axios from 'axios';
+import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 
-export function UserListings( {myListings, token, username } ) {
-    
-    //api call 
+export function UserListings({token}) {
     
 
     const thumbWidth = "100px";
     const thumbHeight = "100px";
-
-
+    const [myListings, setMyListings] = useState([])
     const [opened, { open, close }] = useDisclosure(false);
+
+    const usePlaceHolder = (e) => {
+        e.target.src = placeholderImage
+    }
+
+    useEffect(() => {
+    axios.get("https://homepare-backend.onrender.com/homes", {
+        headers: {
+            authorization: `x-access-token ${token}`
+            }
+    }).then((res) => {
+    console.log(res.data.homes);
+    setMyListings(res.data.homes)})
+    }, [])
 
     return (
         <>
         <h1> My Listings </h1>
-{/* listing thumbnail could be a component wrapped in a context provider? */}
+        {myListings.map((mylisting) => {
+            return (
+        <>
         <Modal opened={opened} onClose={close} centered>
             <DetailsCard 
-            myListings={myListings} />
+            // myListings={myListings}
+            address={mylisting.address}
+            previewImage={mylisting.images[0]}
+            squareFootage={mylisting.living_area}
+            halfBathrooms={mylisting.half_bath}
+            bathrooms={mylisting.full_bath}
+            bedrooms={mylisting.bedrooms}
+            propertyType={mylisting.property_type}
+            hoa={mylisting.hoa}
+            garage={mylisting.garage}
+            price={mylisting.price}
+            listingId={mylisting._id}
+            />
         </Modal>
         
-        <div  onClick={open} className='listing-thumbnail'>
-        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[0].UnparsedAddress}</p>
+        <div  key={mylisting._id} onClick={open} className='listing-thumbnail'>
+        { mylisting.images && mylisting.images.length >0 && Object.keys(mylisting.images[0]).length >0 && <img src={mylisting.images[0].Thumbnail}
+        onError={usePlaceHolder}
+        width={thumbWidth} height={thumbHeight}/> }
+        { mylisting.images && mylisting.images.length === 0 && <img src={placeholderImage}/> }
+        <p>{mylisting.address}</p>
         </div>
+        </>
+            )
+        })}
         
-        
-        
-        
-        <div onClick={open} className='listing-thumbnail'>
-        <img src={homeData.value[1].Media[2].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[1].UnparsedAddress}</p>
-        </div>
-
-        <div onClick={open} className='listing-thumbnail'>
-        <img src={homeData.value[2].Media[5].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[2].UnparsedAddress}</p>
-        </div>
-
-        <div onClick={open} className='listing-thumbnail'>
-        <img src={homeData.value[2].Media[7].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[2].UnparsedAddress}</p>
-        </div>
         
         </>
     )

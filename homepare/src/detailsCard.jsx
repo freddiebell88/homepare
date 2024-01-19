@@ -21,10 +21,11 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
             living_area: squareFootage, 
             garage: garage,
             hoa: hoa,
-            images: previewImage
+            images: previewImage,
+            _id: "65a964860d510426f17e193e"
         }, {
             headers: {
-                'Content-Type': 'application/json'
+                authorization: "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXI5IiwiaWF0IjoxNzA1NTk1NDY5LCJleHAiOjE3MDU2ODE4Njl9.S1kPErLtGajmty_NF5sOUEle56onmCjpZ9svk-K1eOc"
             }
         })
     }
