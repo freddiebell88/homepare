@@ -1,6 +1,5 @@
 import { UserAccount } from "./UserAccount";
 import { Checklist } from "./checklist";
-import { ListingInput } from "./listingInput";
 import { useDisclosure } from '@mantine/hooks';
 import { Burger } from '@mantine/core';
 import { IconHome2, IconGauge, IconChevronRight, IconActivity, IconCircleOff, IconFolderHeart, IconHeartCheck, IconUserCircle} from '@tabler/icons-react';

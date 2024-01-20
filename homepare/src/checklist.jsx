@@ -36,6 +36,8 @@ export function Checklist ({token}) {
         <h3>{`Yard: ${preferences.yard === true ? 'Yes' : 'No'}`}</h3>
         <h3>{`Garage: ${preferences.garage === true ? 'Yes' : 'No'}`}</h3>
         <h3>{`HOA: ${preferences.hoa === true ? 'Yes' : 'No'}`}</h3>
+        &nbsp;
+        <Button>Edit?</Button>
         </Container>
         </>
     )

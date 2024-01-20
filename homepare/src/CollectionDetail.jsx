@@ -1,11 +1,9 @@
-import { ListingDetails } from "./ListingDetails";
 import { DetailsCard } from "./detailsCard";
-import { ListingInput } from "./listingInput";
 import { ComparisonTable } from "./comparisonTable";
 import homeData from "./data/homesfromDB.json";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Modal, Button } from "@mantine/core";
+import { Modal } from "@mantine/core";
 
 export function CollectionDetail() {
   const thumbWidth = "100px";

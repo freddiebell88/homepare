@@ -1,10 +1,7 @@
-import { ListingDetails } from './ListingDetails'
 import { DetailsCard } from './detailsCard'
-import { ListingInput } from './listingInput'
-import homeData from './data/homes.json'
 import { useEffect, useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { Modal } from '@mantine/core';
 import axios from 'axios';
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 
@@ -15,6 +12,7 @@ export function UserListings({token}) {
     const thumbHeight = "100px";
     const [myListings, setMyListings] = useState([])
     const [opened, { open, close }] = useDisclosure(false);
+    const [activeListing, setActiveListing] = useState(null);
 
     const usePlaceHolder = (e) => {
         e.target.src = placeholderImage
@@ -30,30 +28,40 @@ export function UserListings({token}) {
     setMyListings(res.data.homes)})
     }, [])
 
+    console.log('here - in user listings')
+
+    const handleModalOpen = (listing) => {
+        setActiveListing(listing);
+        open();
+    }
+
     return (
         <>
         <h1> My Listings </h1>
-        {myListings.map((mylisting) => {
+        <Modal opened={opened} onClose={close} centered>
+            {activeListing && <DetailsCard 
+            // myListings={myListings}
+            address={activeListing.address}
+            previewImage={activeListing.images[0]}
+            squareFootage={activeListing.living_area}
+            halfBathrooms={activeListing.half_bath}
+            bathrooms={activeListing.full_bath}
+            bedrooms={activeListing.bedrooms}
+            propertyType={activeListing.property_type}
+            hoa={activeListing.hoa}
+            garage={activeListing.garage}
+            price={activeListing.price}
+            listingId={activeListing._id}
+            inMyListing={true}
+            token={token}
+            />}
+        </Modal>
+
+
+        {myListings.map((mylisting,idx) => {
             return (
         <>
-        <Modal opened={opened} onClose={close} centered>
-            <DetailsCard 
-            // myListings={myListings}
-            address={mylisting.address}
-            previewImage={mylisting.images[0]}
-            squareFootage={mylisting.living_area}
-            halfBathrooms={mylisting.half_bath}
-            bathrooms={mylisting.full_bath}
-            bedrooms={mylisting.bedrooms}
-            propertyType={mylisting.property_type}
-            hoa={mylisting.hoa}
-            garage={mylisting.garage}
-            price={mylisting.price}
-            listingId={mylisting._id}
-            />
-        </Modal>
-        
-        <div  key={mylisting._id} onClick={open} className='listing-thumbnail'>
+        <div  key={mylisting._id} onClick={()=>handleModalOpen(mylisting)} className='listing-thumbnail'>
         { mylisting.images && mylisting.images.length >0 && Object.keys(mylisting.images[0]).length >0 && <img src={mylisting.images[0].Thumbnail}
         onError={usePlaceHolder}
         width={thumbWidth} height={thumbHeight}/> }

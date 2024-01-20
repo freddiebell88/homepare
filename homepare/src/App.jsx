@@ -12,7 +12,6 @@ import { Checklist } from './checklist'
 import { CollectionDetail } from './CollectionDetail'
 import { ComparisonTable } from './comparisonTable'
 import { DetailsCard } from './detailsCard'
-import { ListingDetails } from './ListingDetails'
 import { UserAccount } from './UserAccount'
 import { UserListings } from './UserListings'
 import { UserCollections } from './UserCollections'
@@ -69,10 +68,6 @@ function App() {
       element={<DetailsCard username={username} token={token}/>}
       />
       <Route
-      path="ListingDetails"
-      element={<Menu><ListingDetails username={username} token={token}/></Menu>}
-      />
-      <Route
       path="UserAccount"
       element={<UserAccount username={username} token={token}/>}
       />
@@ -87,7 +82,7 @@ function App() {
       />
       <Route
       path="listingInput"
-      element={<Menu><ListingInput username={username} token={token}/></Menu>}
+      element={<Menu><ListingInput token={token} username={username} token={token}/></Menu>}
       />
       <Route
       path="logout"

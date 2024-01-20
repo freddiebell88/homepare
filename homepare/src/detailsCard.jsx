@@ -1,11 +1,41 @@
-import { useState } from "react"
-import Preview from "./listingInput"
-import { list } from "postcss"
-import axios from "axios"
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-export function DetailsCard({address, previewImage, squareFootage, bathrooms, bedrooms, propertyType, hoa, garage, price, listingId, halfBathrooms }) {
+
+export function DetailsCard({
+    token, 
+    inMyListing, 
+    address, 
+    previewImage, 
+    squareFootage, 
+    bathrooms, 
+    bedrooms, 
+    propertyType, 
+    hoa, 
+    garage, 
+    price, 
+    listingId, 
+    halfBathrooms }) {
 
     const [addListing, setAddListing] = useState([])
+    const [preferences, setPreferences] = useState({
+        bathrooms : 0,
+        bedrooms : 0,
+        garage : false ,
+        hoa : false,
+        yard : false})
+
+    useEffect(() => {
+        axios.get('https://homepare-backend.onrender.com/user-preference',{
+            headers: {
+              authorization: `x-access-token ${token}`
+            }
+          }).then((res) => {
+            setPreferences(res.data)
+            console.log(res.data)
+     })}, [token])
+    
+
     
     const handleAddListingClick = () => {
         console.log("add listing button")
@@ -25,7 +55,7 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
             _id: "65a964860d510426f17e193e"
         }, {
             headers: {
-                authorization: "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXI5IiwiaWF0IjoxNzA1NTk1NDY5LCJleHAiOjE3MDU2ODE4Njl9.S1kPErLtGajmty_NF5sOUEle56onmCjpZ9svk-K1eOc"
+                authorization: `x-access-token ${token}`
             }
         })
     }
@@ -35,6 +65,8 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
     }
 
     const imgWidth = "200px";
+
+    console.log('here in details card')
     
         return (
             <div className="detailsCard">
@@ -51,11 +83,11 @@ export function DetailsCard({address, previewImage, squareFootage, bathrooms, be
             <p>Property Type: {propertyType}</p>
             <p>HOA: {hoa}</p>
             <p>Garage: {garage}</p>
-            <label>
+            {inMyListing && <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
                 <button onClick={handleSaveNotes}>Save</button>
-            </label>
+            </label>}
             <button onClick={handleAddListingClick}>
                 Add to My Listings</button>
             </div>
