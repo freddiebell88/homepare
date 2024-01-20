@@ -2,7 +2,7 @@ import { ListingDetails } from "./ListingDetails";
 import { DetailsCard } from "./detailsCard";
 import { ListingInput } from "./listingInput";
 import { ComparisonTable } from "./comparisonTable";
-import homeData from "./data/homes.json";
+import homeData from "./data/homesfromDB.json";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
@@ -16,7 +16,6 @@ export function CollectionDetail() {
     new Array(4).fill(false)
   );
   //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
-  const [selectedThumbnails, setSelectedThumbnails] = useState([]);
   const [
     thumbnailModalOpened,
     { open: thumbnailModalOpen, close: thumbnailModalClose },
@@ -28,16 +27,18 @@ export function CollectionDetail() {
     setCompareChecked(!compareChecked);
   };
 
-  const handleThumbnailCheckOnChange = (position) => {
+  const handleThumbnailCheckOnChange = (listingIndex) => {
     const updatedListingCheckBoxes = listingCheckBoxes.map((listing, index) =>
-      index === position ? !listing : listing
+      index === listingIndex ? !listing : listing
     );
 
     setlistingCheckBoxes(updatedListingCheckBoxes);
-    setSelectedThumbnails();
-    //we need to send information from each checked box that identifies
-    console.log("selectedThumbnails", selectedThumbnails);
+    //we need to send information from each checked box that identifies the listings
   };
+
+  //if listingCheckBoxes value === true
+  //then send the whole data set
+  //to the compare table
 
   const previewSelectedThumbnails = () => {
     //after checking which listings they want to compare
@@ -79,38 +80,51 @@ export function CollectionDetail() {
       />
       <label>Compare?</label>
       {!compareChecked && (
-        <Modal opened={thumbnailModalOpened} onClose={thumbnailModalClose} centered>
+        <Modal
+          opened={thumbnailModalOpened}
+          onClose={thumbnailModalClose}
+          centered
+        >
           <DetailsCard />
         </Modal>
       )}
 
       <div className="thumnail-grid-in-collections-detail">
-        <div onClick={thumbnailModalOpen} className="listing-thumbnail-in-collections-detail">
-          <img
-            src={homeData.value[0].Media[0].Thumbnail}
-            width={thumbWidth}
-            height={thumbHeight}
-          />
-          <p>{homeData.value[0].UnparsedAddress}</p>
-          {compareChecked === true && (
-            <>
-              <input
-                type="checkbox"
-                checked={listingCheckBoxes[0]}
-                onChange={() => handleThumbnailCheckOnChange(0)}
+        {homeData.homes.map((listing, index) => {
+          console.log('listing', listing)
+          return (
+            <div
+              onClick={thumbnailModalOpen}
+              key="id"
+              className="listing-thumbnail-in-collections-detail"
+            >
+              <img
+                src={listing.images[0].Thumbnail}
+                width={thumbWidth}
+                height={thumbHeight}
               />
-              <label>Compare</label>
-            </>
-          )}
-        </div>
+              <p>{listing.address}</p>
+              {compareChecked === true && (
+                <>
+                  <input
+                    type="checkbox"
+                    checked={listingCheckBoxes[index]}
+                    onChange={() => handleThumbnailCheckOnChange(index)}
+                  />
+                  <label>Compare</label>
+                </>
+              )}
+            </div>
+          );
+        })}
 
-        <div onClick={thumbnailModalOpen} className="listing-thumbnail">
+        {/* <div onClick={thumbnailModalOpen} className="listing-thumbnail">
           <img
-            src={homeData.value[0].Media[0].Thumbnail}
+            src={homeData.homes[1].images[1].Thumbnail}
             width={thumbWidth}
             height={thumbHeight}
           />
-          <p>{homeData.value[0].UnparsedAddress}</p>
+          <p>{homeData.homes[1].address}</p>
           {compareChecked === true && (
             <>
               <input
@@ -125,11 +139,11 @@ export function CollectionDetail() {
 
         <div onClick={thumbnailModalOpen} className="listing-thumbnail">
           <img
-            src={homeData.value[0].Media[0].Thumbnail}
+            src={homeData.homes[2].images[2].Thumbnail}
             width={thumbWidth}
             height={thumbHeight}
           />
-          <p>{homeData.value[0].UnparsedAddress}</p>
+          <p>{homeData.homes[2].address}</p>
           {compareChecked === true && (
             <>
               <input
@@ -144,11 +158,11 @@ export function CollectionDetail() {
 
         <div onClick={thumbnailModalOpen} className="listing-thumbnail">
           <img
-            src={homeData.value[0].Media[0].Thumbnail}
+            src={homeData.homes[0].images[0].Thumbnail}
             width={thumbWidth}
             height={thumbHeight}
           />
-          <p>{homeData.value[0].UnparsedAddress}</p>
+          <p>{homeData.homes[0].address}</p>
           {compareChecked === true && (
             <>
               <input
@@ -159,7 +173,7 @@ export function CollectionDetail() {
               <label>Compare</label>
             </>
           )}
-        </div>
+        </div> */}
       </div>
     </>
   );
