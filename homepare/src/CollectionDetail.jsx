@@ -1,106 +1,168 @@
-import { ListingDetails } from './ListingDetails'
-import { DetailsCard } from './detailsCard'
-import { ListingInput } from './listingInput'
-import homeData from './data/homes.json'
-import { useState } from 'react';
-import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { ListingDetails } from "./ListingDetails";
+import { DetailsCard } from "./detailsCard";
+import { ListingInput } from "./listingInput";
+import { ComparisonTable } from "./comparisonTable";
+import homeData from "./data/homesfromDB.json";
+import { useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, Button } from "@mantine/core";
 
 export function CollectionDetail() {
-    const thumbWidth = "100px";
-    const thumbHeight = "100px";
+  const thumbWidth = "100px";
+  const thumbHeight = "100px";
 
-    const [compareChecked, setCompareChecked] = useState(false)
-    const [listingCheckBoxes, setlistingCheckBoxes] = useState(new Array(4).fill(false))
-    //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
-    const [selectedThumbnails, setSelectedThumbnails] = useState([])
-    const [opened, { open, close }] = useDisclosure(false);
+  const [compareChecked, setCompareChecked] = useState(false);
+  const [listingCheckBoxes, setlistingCheckBoxes] = useState(
+    new Array(homeData.homes.length).fill(false)
+  );
+  //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
+  const [
+    thumbnailModalOpened,
+    { open: thumbnailModalOpen, close: thumbnailModalClose },
+  ] = useDisclosure(false);
+  const [opened, { open, close }] = useDisclosure(false);
+  //this useDisclosure is for Mantine
 
-    const handleCheckChange = () => {
-        setCompareChecked(!compareChecked)
-    }
+  const handleCheckChange = () => {
+    setCompareChecked(!compareChecked);
+  };
 
-    const handleThumbnailCheckOnChange = (position) => {
-        const updatedListingCheckBoxes = listingCheckBoxes.map((listing, index) =>
-        index === position ? !listing : listing )
+  const handleThumbnailCheckOnChange = (listingIndex) => {
+    const updatedListingCheckBoxes = listingCheckBoxes.map((listing, index) =>
+      index === listingIndex ? !listing : listing
+    );
 
-        setlistingCheckBoxes(updatedListingCheckBoxes)
-        setSelectedThumbnails()
-        console.log('selectedThumbnails', selectedThumbnails)
+    setlistingCheckBoxes(updatedListingCheckBoxes);
+    //we need to send information from each checked box that identifies the listings
+  };
 
-
-    }
-
-    const previewSelectedThumbnails = () => {
-        //when the are clicked/checked
-        //our selected thumbnails should go up into the
-        //new selected thumbnails array
-        //and be shown as in the size auto modal
-    }
-
-    const handleCompareClick = () => {
-        console.log('compare click')
-        //after checking which listings they want to compare
-        //user hits the compare button (ideally on the preview)
-        //and a full screen modal pops out
-        //with the comparison table
-    }
-
-    return (
-        <>
-        <p>This is the collection detail page, cards containing house image thumbnail and address will be mapped out here</p>
-        <h1> Collection Title </h1>
-        <input 
+  return (
+    <>
+      <p>
+        This is the collection detail page, cards containing house image
+        thumbnail and address will be mapped out here
+      </p>
+      <h1> Collection Title </h1>
+      {listingCheckBoxes.find((checkedbox) => checkedbox === true) && <button onClick={open}>Compare</button>}
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="This is a fullscreen modal"
+        fullScreen
+        radius={0}
+        transitionProps={{ transition: "fade", duration: 200 }}
+      >
+        <ComparisonTable 
+        homeData={homeData.homes.filter((listing, index) => 
+          {if (listingCheckBoxes[index] === true) {
+            return true;
+          } return false;
+        })}
+  />
+      </Modal>
+      <br></br>
+      <input
         type="checkbox"
         checked={compareChecked}
         onChange={handleCheckChange}
-        /><label>Compare?</label>
-        {!compareChecked &&
-        <Modal opened={opened} onClose={close} centered>
-            <DetailsCard />
-        </Modal>}
-        
-        <div className='thumnail-grid-in-collections-detail'>
-        <div  onClick={open} className='listing-thumbnail-in-collections-detail'>
-        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[0].UnparsedAddress}</p>
-        {compareChecked === true && <><input 
-        type="checkbox"
-        checked={listingCheckBoxes[0]}
-        onChange={() => handleThumbnailCheckOnChange(0)}
-        /><label>Compare</label></>}
+      />
+      <label>Compare?</label>
+      {!compareChecked && (
+        <Modal
+          opened={thumbnailModalOpened}
+          onClose={thumbnailModalClose}
+          centered
+        >
+          <DetailsCard />
+        </Modal>
+      )}
+
+      <div className="thumnail-grid-in-collections-detail">
+        {homeData.homes.map((listing, index) => {
+          console.log('listing', listing)
+          return (
+            <div
+              onClick={thumbnailModalOpen}
+              key="id"
+              className="listing-thumbnail-in-collections-detail"
+            >
+              <img
+                src={listing.images[0].Thumbnail}
+                width={thumbWidth}
+                height={thumbHeight}
+              />
+              <p>{listing.address}</p>
+              {compareChecked === true && (
+                <>
+                  <input
+                    type="checkbox"
+                    checked={listingCheckBoxes[index]}
+                    onChange={() => handleThumbnailCheckOnChange(index)}
+                  />
+                  <label>Compare</label>
+                </>
+              )}
+            </div>
+          );
+        })}
+
+        {/* <div onClick={thumbnailModalOpen} className="listing-thumbnail">
+          <img
+            src={homeData.homes[1].images[1].Thumbnail}
+            width={thumbWidth}
+            height={thumbHeight}
+          />
+          <p>{homeData.homes[1].address}</p>
+          {compareChecked === true && (
+            <>
+              <input
+                type="checkbox"
+                checked={listingCheckBoxes[1]}
+                onChange={() => handleThumbnailCheckOnChange(1)}
+              />
+              <label>Compare</label>
+            </>
+          )}
         </div>
 
-        <div  onClick={open} className='listing-thumbnail'>
-        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[0].UnparsedAddress}</p>
-        {compareChecked === true && <><input 
-        type="checkbox"
-        checked={listingCheckBoxes[1]}
-        onChange={() => handleThumbnailCheckOnChange(1)}
-        /><label>Compare</label></>}
+        <div onClick={thumbnailModalOpen} className="listing-thumbnail">
+          <img
+            src={homeData.homes[2].images[2].Thumbnail}
+            width={thumbWidth}
+            height={thumbHeight}
+          />
+          <p>{homeData.homes[2].address}</p>
+          {compareChecked === true && (
+            <>
+              <input
+                type="checkbox"
+                checked={listingCheckBoxes[2]}
+                onChange={() => handleThumbnailCheckOnChange(2)}
+              />
+              <label>Compare</label>
+            </>
+          )}
         </div>
 
-        <div  onClick={open} className='listing-thumbnail'>
-        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[0].UnparsedAddress}</p>
-        {compareChecked === true && <><input 
-        type="checkbox"
-        checked={listingCheckBoxes[2]}
-        onChange={() => handleThumbnailCheckOnChange(2)}
-        /><label>Compare</label></>}
-        </div>
-
-        <div  onClick={open} className='listing-thumbnail'>
-        <img src={homeData.value[0].Media[0].Thumbnail} width={thumbWidth} height={thumbHeight}/>
-        <p>{homeData.value[0].UnparsedAddress}</p>
-        {compareChecked === true && <><input 
-        type="checkbox"
-        checked={listingCheckBoxes[3]}
-        onChange={() => handleThumbnailCheckOnChange(3)}
-        /><label>Compare</label></>}
-        </div>
-        </div>
-        </>
-    )
+        <div onClick={thumbnailModalOpen} className="listing-thumbnail">
+          <img
+            src={homeData.homes[0].images[0].Thumbnail}
+            width={thumbWidth}
+            height={thumbHeight}
+          />
+          <p>{homeData.homes[0].address}</p>
+          {compareChecked === true && (
+            <>
+              <input
+                type="checkbox"
+                checked={listingCheckBoxes[3]}
+                onChange={() => handleThumbnailCheckOnChange(3)}
+              />
+              <label>Compare</label>
+            </>
+          )}
+        </div> */}
+      </div>
+    </>
+  );
 }
