@@ -1,7 +1,7 @@
 import { ListingDetails } from "./ListingDetails";
 import { DetailsCard } from "./detailsCard";
 import { ListingInput } from "./listingInput";
-import { ComparisonTable } from "./comparisonTable"
+import { ComparisonTable } from "./comparisonTable";
 import homeData from "./data/homes.json";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
@@ -17,8 +17,12 @@ export function CollectionDetail() {
   );
   //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
   const [selectedThumbnails, setSelectedThumbnails] = useState([]);
+  const [
+    thumbnailModalOpened,
+    { open: thumbnailModalOpen, close: thumbnailModalClose },
+  ] = useDisclosure(false);
   const [opened, { open, close }] = useDisclosure(false);
-  
+  //this useDisclosure is for Mantine
 
   const handleCheckChange = () => {
     setCompareChecked(!compareChecked);
@@ -31,6 +35,7 @@ export function CollectionDetail() {
 
     setlistingCheckBoxes(updatedListingCheckBoxes);
     setSelectedThumbnails();
+    //we need to send information from each checked box that identifies
     console.log("selectedThumbnails", selectedThumbnails);
   };
 
@@ -74,13 +79,13 @@ export function CollectionDetail() {
       />
       <label>Compare?</label>
       {!compareChecked && (
-        <Modal opened={opened} onClose={close} centered>
+        <Modal opened={thumbnailModalOpened} onClose={thumbnailModalClose} centered>
           <DetailsCard />
         </Modal>
       )}
 
       <div className="thumnail-grid-in-collections-detail">
-        <div onClick={open} className="listing-thumbnail-in-collections-detail">
+        <div onClick={thumbnailModalOpen} className="listing-thumbnail-in-collections-detail">
           <img
             src={homeData.value[0].Media[0].Thumbnail}
             width={thumbWidth}
@@ -99,7 +104,7 @@ export function CollectionDetail() {
           )}
         </div>
 
-        <div onClick={open} className="listing-thumbnail">
+        <div onClick={thumbnailModalOpen} className="listing-thumbnail">
           <img
             src={homeData.value[0].Media[0].Thumbnail}
             width={thumbWidth}
@@ -118,7 +123,7 @@ export function CollectionDetail() {
           )}
         </div>
 
-        <div onClick={open} className="listing-thumbnail">
+        <div onClick={thumbnailModalOpen} className="listing-thumbnail">
           <img
             src={homeData.value[0].Media[0].Thumbnail}
             width={thumbWidth}
@@ -137,7 +142,7 @@ export function CollectionDetail() {
           )}
         </div>
 
-        <div onClick={open} className="listing-thumbnail">
+        <div onClick={thumbnailModalOpen} className="listing-thumbnail">
           <img
             src={homeData.value[0].Media[0].Thumbnail}
             width={thumbWidth}
