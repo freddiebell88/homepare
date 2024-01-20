@@ -77,12 +77,13 @@ export function DetailsCard({
             <p>Street Address:{address}</p>
             <p>$$$: {price} </p>
             <p>SQ Footage: {squareFootage}</p>
-            <p>Bedrooms: {bedrooms} </p>
-            <p>Bathrooms: {bathrooms}</p>
+            <p>Bedrooms: {`${bedrooms} ${getCompareIcon(bedrooms, preferences.bedrooms)}`
+            } </p>
+            <p>Bathrooms: {getCompareIcon(bathrooms, preferences.bathrooms)}</p>
             <p>Half Bathrooms: {halfBathrooms}</p>
             <p>Property Type: {propertyType}</p>
-            <p>HOA: {hoa}</p>
-            <p>Garage: {garage}</p>
+            <p>HOA: {getCompareIcon(hoa, preferences.hoa)}</p>
+            <p>Garage: {getCompareIcon(garage, preferences.garage)}</p>
             {inMyListing && <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
@@ -94,3 +95,9 @@ export function DetailsCard({
     
         )
     }
+
+
+const getCompareIcon = (a,b) => {
+    if(a === b) return "✅";
+    else return "❌";
+}
