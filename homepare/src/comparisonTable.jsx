@@ -3,8 +3,8 @@ import { Table } from '@mantine/core'
 
 // useState for array of selected listings and map through those to build table?
 
-export function ComparisonTable () {
-    const rows = dbhomes.homes.map((listing) => (
+export function ComparisonTable ( {homeData} ) {
+    const rows = homeData.map((listing) => (
         <Table.Tr key={listing.id}>
             <Table.Td>{listing.address}</Table.Td>
             <Table.Td>{listing.price}</Table.Td>

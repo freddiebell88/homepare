@@ -36,9 +36,9 @@ export function CollectionDetail() {
     //we need to send information from each checked box that identifies the listings
   };
 
-  //if listingCheckBoxes value === true
-  //then send the whole data set
-  //to the compare table
+ 
+
+
 
   const previewSelectedThumbnails = () => {
     //after checking which listings they want to compare
@@ -70,7 +70,18 @@ export function CollectionDetail() {
         radius={0}
         transitionProps={{ transition: "fade", duration: 200 }}
       >
-        <ComparisonTable />
+        <ComparisonTable 
+        homeData={homeData.homes.filter((listing, index) => 
+          {if (listingCheckBoxes[index] === true) {
+            return true;
+          } return false;
+        })}
+  // filter the data by listingCheckBoxes being true
+  // then send the whole data set
+  // to the compare table
+    
+
+  />
       </Modal>
       <br></br>
       <input
