@@ -13,7 +13,7 @@ export function CollectionDetail() {
 
   const [compareChecked, setCompareChecked] = useState(false);
   const [listingCheckBoxes, setlistingCheckBoxes] = useState(
-    new Array(4).fill(false)
+    new Array(homeData.homes.length).fill(false)
   );
   //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
   const [
@@ -36,24 +36,6 @@ export function CollectionDetail() {
     //we need to send information from each checked box that identifies the listings
   };
 
- 
-
-
-
-  const previewSelectedThumbnails = () => {
-    //after checking which listings they want to compare
-    //the bottom of the screen pops up a modal
-    //with a compare button
-  };
-
-  const handleCompareClick = () => {
-    console.log("compare click");
-
-    //when the user hits that
-    //a full screen modal pops out
-    //with the comparison table
-  };
-
   return (
     <>
       <p>
@@ -61,7 +43,7 @@ export function CollectionDetail() {
         thumbnail and address will be mapped out here
       </p>
       <h1> Collection Title </h1>
-      <button onClick={open}>Compare</button>
+      {listingCheckBoxes.find((checkedbox) => checkedbox === true) && <button onClick={open}>Compare</button>}
       <Modal
         opened={opened}
         onClose={close}
@@ -76,11 +58,6 @@ export function CollectionDetail() {
             return true;
           } return false;
         })}
-  // filter the data by listingCheckBoxes being true
-  // then send the whole data set
-  // to the compare table
-    
-
   />
       </Modal>
       <br></br>
