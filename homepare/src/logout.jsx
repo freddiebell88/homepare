@@ -9,7 +9,7 @@ export function Logout({ token, username }) {
     console.log({token})
 
     const handleClick = () => {
-        axios.post('https://homepare-backend.onrender.com/logout',
+        axios.get('https://homepare-backend.onrender.com/logout',
         {
             headers:{
                 authorization: `x-access-token ${token}`,
