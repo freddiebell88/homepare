@@ -15,12 +15,12 @@ export function UserCollections( {token}) {
   const [opened, { open, close }] = useDisclosure(false);
  
 
-  const handleNewCollectionClick = () => {
-    console.log("new collection button clicked");
-    <Modal opened={opened} onClose={close} centered>
-      <NewCollection token={token} />
-    </Modal>;
-  };
+  // const handleNewCollectionClick = () => {
+  //   console.log("new collection button clicked");
+  //   <Modal opened={opened} onClose={close} centered>
+  //     <NewCollection token={token} />
+  //   </Modal>;
+  // };
 
   return (
     <>
@@ -144,12 +144,11 @@ export function NewCollection( {token}) {
     axios.post(
       "https://homepare-backend.onrender.com/collections",
       {
-        search_name: collectionInput,
+        search_name: collectionInput
       },
       {
         headers: {
-          authorization:
-            `x-access-token ${token}`,
+          authorization: `x-access-token ${token}`
         },
       }
     );
