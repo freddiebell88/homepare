@@ -41,7 +41,7 @@ function App() {
         />
       <Route
         path="/register"
-        element={<Register />}
+        element={<Register setAuth={setAuth} />}
       />
       <Route
         path="/login"
@@ -69,7 +69,7 @@ function App() {
       />
       <Route
       path="UserAccount"
-      element={<UserAccount username={username} token={token}/>}
+      element={<Menu><UserAccount username={username} token={token}/></Menu>}
       />
       <Route
       path="UserCollections"

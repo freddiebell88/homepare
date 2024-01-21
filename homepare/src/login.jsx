@@ -60,12 +60,6 @@ export function Login({ setAuth }) {
             leftSection={<IconUserCircle size={16} />}
             {...form.getInputProps('username')}
             />
-            <TextInput
-            label="Email"
-            placeholder="Your Email"
-            leftSection={<IconMail size={16}/>}
-            {...form.getInputProps('email')}
-            />
         <Stack>
             <PasswordInput
             label="Password"
