@@ -69,7 +69,7 @@ function App() {
       />
       <Route
       path="UserAccount"
-      element={<UserAccount username={username} token={token}/>}
+      element={<Menu><UserAccount username={username} token={token}/></Menu>}
       />
       <Route
       path="UserCollections"
