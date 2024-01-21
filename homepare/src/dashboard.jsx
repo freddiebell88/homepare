@@ -26,7 +26,7 @@ export function Dashboard( {myListings, token} ) {
         <Tabs.Tab value={TABNAMES.MY_LISTINGS}>My Listings</Tabs.Tab>
         <Tabs.Tab value={TABNAMES.MY_COLLECTIONS}>My Collections</Tabs.Tab>
       </Tabs.List>
-      </Tabs> 
+      </Tabs>
       </div>
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings token={token}
         myListings={myListings}
