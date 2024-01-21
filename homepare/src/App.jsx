@@ -41,7 +41,7 @@ function App() {
         />
       <Route
         path="/register"
-        element={<Register />}
+        element={<Register setAuth={setAuth} />}
       />
       <Route
         path="/login"

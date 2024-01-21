@@ -7,7 +7,7 @@ import { IconAt, IconUserCircle, IconAsterisk } from "@tabler/icons-react";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 
-export function Register() {
+export function Register({setAuth}) {
     const [value, setValue] = useState('');
     const [visible, {toggle}] = useDisclosure(false)
     const [newUsername, setNewUsername] = useState('');
@@ -43,9 +43,16 @@ export function Register() {
             "email": email,
             "first_name": first_name,
             "last_name": last_name
-        }).then((res) => { 
-            navigate('/login')}
-            ).catch((err) => setError(err.response.data.non_field_errors))
+        }).catch((err) => setError(err.response.data.non_field_errors[0])).then((res) => {
+        return axios
+        .post('https://homepare-backend.onrender.com/login', {
+            "username": username,
+            "password": password,
+        })}).then((res) => {
+            console.log(res);
+            setAuth(username, res.data.token)
+            navigate('/questionnaire')
+        })
 
     };
 
