@@ -46,14 +46,6 @@ export function Questionnaire( {token}) {
   };
 
   const handleConfirmClick = () => {
-    console.log("confirm click");
-    console.log("recordedanswers", recordedAnswers);
-    //if this is the last question
-    //index === questionnaireData.length - 1
-    //show this button
-    // when this button is clicked
-    // post recorded answers to the back end
-
     axios
       .post("https://homepare-backend.onrender.com/user-preference", {
         address: null,
@@ -69,7 +61,6 @@ export function Questionnaire( {token}) {
         }
       })
       .then((result) => {
-        console.log("result", result);
         navigate("/");
       });
     // .catch((error) => setError(error.response.data.))
@@ -79,25 +70,30 @@ export function Questionnaire( {token}) {
     <>
       {index === questionnaireData.length ? (
         <>
-          <h1>You are looking for a:</h1>
+          {/* <h1>You are looking for a:</h1>
           {recordedAnswers.map((answerObject) => (
             <>
-              <li>{answerObject.text}</li>
+              <li className="confirm-results-list-in-questionnaire">{answerObject.text}</li>
             </>
-          ))}
-          <button onClick={handleConfirmClick}>Confirm</button>
+          ))} */}
+          <div className="confirm-summary-div-in-questionnaire">
+          <p className="confirm-summary-in-questionnaire">You are looking for a <b>{recordedAnswers[0].text}</b>, <b>{recordedAnswers[1].text}</b> home <b>{recordedAnswers[2].text}</b>, <b>{recordedAnswers[3].text}</b>, and <b>{recordedAnswers[4].text}</b>.</p>
+          <br></br>
+          <button className="buttons-in-questionnaire" onClick={handleBackClick}>Back</button>
+          <button className="buttons-in-questionnaire" onClick={handleConfirmClick}>Confirm</button>
+          </div>
         </>
       ) : (
         <>
-          <h1>Questonnaire</h1>
+        <div className="div-around-questions-answers-and-buttons-in-questionnaire">
           <form>
-            <h3>{questionnaireData[index].question}</h3>
+            <p className="questions-in-questionnaire">{questionnaireData[index].question}</p>
             {questionnaireData[index].answers.map((answerObject) => {
               console.log(answerObject);
               return (
                 // eslint-disable-next-line react/jsx-key
                 <div>
-                  <label>
+                  <label className="answers-in-questionnaire">
                     <input
                       type="radio"
                       value={answerObject.value}
@@ -111,15 +107,18 @@ export function Questionnaire( {token}) {
               );
             })}
           </form>
+          {index != 0 && <button className="buttons-in-questionnaire" onClick={handleBackClick}>Back</button>}
           {
             <button
               onClick={handleNextClick}
-              disabled={selectedAnswer ? false : true}
+              disabled={selectedAnswer.value ? false : true}
+              className="buttons-in-questionnaire"
             >
               Next
             </button>
           }
-          {index != 0 && <button onClick={handleBackClick}>Back</button>}
+          
+          </div>
         </>
       )}
     </>

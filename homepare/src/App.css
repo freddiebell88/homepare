@@ -74,8 +74,57 @@ hr.rounded-divider-in-user-collections {
   margin: 15px;
 }
 
+/* this is all buttons right now */
 button {
   border: solid black 2px;
   padding: 3px;
   margin: 5px;
 }
+
+/* Questionnaire CSS */
+
+.div-around-questions-answers-and-buttons-in-questionnaire, .confirm-summary-div-in-questionnaire {
+
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+
+.buttons-in-questionnaire {
+  font-size: large;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 20px
+}
+
+.questions-in-questionnaire {
+  padding: 4px;
+  margin: 5px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.questions-in-questionnaire, .answers-in-questionnaire {
+  font-size: larger;  
+}
+
+.confirm-results-list-in-questionnaire {
+  list-style: none;
+}
+
+.confirm-summary-in-questionnaire {
+  font-size: larger;
+  text-align: center;
+}
+
+.confirm-summary-div-in-questionnaire {
+  text-align: center;
+  align-self: center;
+}
+

@@ -82,7 +82,7 @@ function App() {
       />
       <Route
       path="listingInput"
-      element={<Menu><ListingInput token={token} username={username} token={token}/></Menu>}
+      element={<Menu><ListingInput token={token} username={username} /></Menu>}
       />
       <Route
       path="logout"
