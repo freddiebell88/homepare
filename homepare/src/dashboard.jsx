@@ -6,6 +6,7 @@ import { Tabs } from '@mantine/core';
 import { Questionnaire } from "./questionnaire";
 import { Link } from "react-router-dom";
 
+
 const TABNAMES = {
   MY_LISTINGS: "My Listings",
   MY_COLLECTIONS: "My Collections",
@@ -31,10 +32,10 @@ export function Dashboard( {myListings, token} ) {
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings token={token}
         myListings={myListings}
         />}
-        {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections />}
+        {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections 
+        token={token}/>}
 
-      
-
+    
     </>
   );
 }
