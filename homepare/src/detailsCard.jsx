@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-
 export function DetailsCard({
     token, 
     inMyListing, 
@@ -35,7 +34,6 @@ export function DetailsCard({
             console.log(res.data)
      })}, [token])
     
-
     
     const handleAddListingClick = () => {
         console.log("add listing button")
@@ -52,7 +50,7 @@ export function DetailsCard({
             garage: garage,
             hoa: hoa,
             images: previewImage,
-            _id: "65a964860d510426f17e193e"
+            _id: ""
         }, {
             headers: {
                 authorization: `x-access-token ${token}`
@@ -84,15 +82,17 @@ export function DetailsCard({
             <p>Property Type: {propertyType}</p>
             <p>HOA: {getCompareIcon(hoa, preferences.hoa)}</p>
             <p>Garage: {getCompareIcon(garage, preferences.garage)}</p>
-            {inMyListing && <label>
+            {inMyListing && 
+            <>
+            <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
                 <button onClick={handleSaveNotes}>Save</button>
-            </label>}
+            </label>
+            </>}
             <button onClick={handleAddListingClick}>
                 Add to My Listings</button>
             </div>
-    
         )
     }
 
@@ -101,3 +101,4 @@ const getCompareIcon = (a,b) => {
     if(a === b) return "✅";
     else return "❌";
 }
+ 

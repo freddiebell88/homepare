@@ -26,10 +26,11 @@ export function UserListings({token}) {
     }).then((res) => {
     console.log(res.data.homes);
     setMyListings(res.data.homes)})
-    }, [])
+    }, [ token ])
 
     console.log('here - in user listings')
 
+    
     const handleModalOpen = (listing) => {
         setActiveListing(listing);
         open();
@@ -60,43 +61,52 @@ export function UserListings({token}) {
 
         {myListings.map((mylisting,idx) => {
             return (
-        <>
-        <div  key={mylisting._id} onClick={()=>handleModalOpen(mylisting)} className='listing-thumbnail'>
-        { mylisting.images && mylisting.images.length >0 && Object.keys(mylisting.images[0]).length >0 && <img src={mylisting.images[0].Thumbnail}
-        onError={usePlaceHolder}
-        width={thumbWidth} height={thumbHeight}/> }
-        { mylisting.images && mylisting.images.length === 0 && <img src={placeholderImage}/> }
-        <p>{mylisting.address}</p>
-        </div>
-        </>
-            )
+                <>
+                <div  key={mylisting._id} onClick={()=>handleModalOpen(mylisting)} className='listing-thumbnail'>
+                { mylisting.images && mylisting.images.length >0 && Object.keys(mylisting.images[0]).length >0 && <img src={mylisting.images[0].Thumbnail}
+                onError={usePlaceHolder}
+                width={thumbWidth} height={thumbHeight}/> }
+                { mylisting.images && mylisting.images.length === 0 && <img src={placeholderImage}/> }
+                <p>{mylisting.address}</p>
+                </div>
+                </>
+                    )
+            
         })}
-        
+        <AddToCollection />
         
         </>
     )
 }
 
-// export function UserListings({homeData}) {
-//     return (
-//         <div>
-//             {homeData.map((listing, index) => (
-//                 <ListingThumbnail 
-//                     key={index} 
-//                     thumbnail={listing.value[0].Media[0].Thumbnail}
-//                     streetAddress={listing.value[0].UnparsedAddress}
-//                     />
-//             ))}
-//         </div>
-//     )
-// }
+export function AddToCollection( {token} ) {
+    const [myCollections, setMyCollections] = useState([])
 
+    useEffect(() => {
+    axios.get('https://homepare-backend.onrender.com/collections',
+    {
+        headers: {
+            authorization: `x-access-token ${token}`
+        }
+    }).then((res) => {
+        setMyCollections(res.data.search)
+        console.log(`collections data ${res.data.search}`)
+        // console.log(myCollections)
+    }, [] )
+    })
+    
+    return (
+        <>
+                <label >
+                <select>
+                <option>Add To Collection</option>
+                {myCollections.map((collection) => {
+                <option>{collection.search_name}</option>
+                })}
+                </select>
+                </label>
 
-// export function ListingThumbnail({thumbnail, streetAddress}) {
-//     return (
-//         <div>
-//             <img src={thumbnail} />
-//             <p>{streetAddress}</p>
-//         </div>
-//     )
-// }
+       
+        </>
+    )
+ }

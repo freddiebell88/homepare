@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-export function UserCollections() {
+export function UserCollections( {token}) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
@@ -18,7 +18,7 @@ export function UserCollections() {
   const handleNewCollectionClick = () => {
     console.log("new collection button clicked");
     <Modal opened={opened} onClose={close} centered>
-      <NewCollection />
+      <NewCollection token={token} />
     </Modal>;
   };
 
@@ -128,13 +128,13 @@ export function UserCollections() {
       {/* <CollectionDetail />
         <ComparisonTable /> */}
 
-      <NewCollection />
+      <NewCollection token={token} />
     </>
   );
 }
 // I would like for the new collection form to be in a modal that pops up but I can't figure that out in this moment. I think it's because there is already a modal on that component for the detailsCard - Freddie
 
-export function NewCollection() {
+export function NewCollection( {token}) {
   const [collectionInput, setCollectionInput] = useState("");
 
   const handleSaveCollection = (e) => {
@@ -149,7 +149,7 @@ export function NewCollection() {
       {
         headers: {
           authorization:
-            "x-access-token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5ld3VzZXI5IiwiaWF0IjoxNzA1NTk1NDY5LCJleHAiOjE3MDU2ODE4Njl9.S1kPErLtGajmty_NF5sOUEle56onmCjpZ9svk-K1eOc",
+            `x-access-token ${token}`,
         },
       }
     );
