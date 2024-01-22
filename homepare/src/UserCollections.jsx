@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Divider } from '@mantine/core';
 
 export function UserCollections( {token}) {
   const thumbWidth = "100px";
@@ -120,10 +121,10 @@ export function UserCollections( {token}) {
             </p>
           </div>
         </div>
-        <Link to="/CollectionDetail">See More</Link>
+        <Link to="/CollectionDetail"><p className="see-more-in-user-collections">See More</p></Link>
         {/* See more should pull up collection details */}
+      <Divider size="xs" />
       </div>
-      <hr className="rounded-divider-in-user-collections"></hr>
 
       <div className="collections-wrapper-in-user-collections"></div>
       {/* <CollectionDetail />
