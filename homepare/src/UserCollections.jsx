@@ -10,7 +10,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Divider } from '@mantine/core';
 
-export function UserCollections( {token}) {
+export function UserCollections( {token} ) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
@@ -69,6 +69,17 @@ export function CollectionListings({token, index}) {
     console.log(`The listings inside this collection are: ${collectionListings}`)
     }, [])
 
+    return (
+      <>
+      {collectionListings.map((listings) => {
+        return(
+          <div key={listings.houseID}>
+            {listings}
+          </div>
+        )
+      })}
+      </>
+    )
 }
 
 export function NewCollection( {token} ) {
