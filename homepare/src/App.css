@@ -160,6 +160,15 @@ button {
 
 /* Table CSS */
 
-.table-test-class{
-  text-align: center;
+.match-in-comparison-table {
+  background-color: green;
+  color:white;
+  font-weight: bold;
+}
+
+.not-a-match-in-comparision-table {
+  background-color: red;
+  opacity: 1;
+  color: white;
+  font-weight: bold;
 }

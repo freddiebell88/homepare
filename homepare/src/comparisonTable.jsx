@@ -25,16 +25,19 @@ axios.get('https://homepare-backend.onrender.com/user-preference',{
     console.log(res.data)
   })}, [token])
   
+// if {listing.bedrooms === preference.bedrooms ? className="table-test-class" : className="table-test-class-pink"}
+//if listing.bedrooms has the same value as preference.bedrooms the classname is table-test-class else table-test-class-pink
+
     const rows = homeData.map((listing) => (
         <Table.Tr key={listing.id}>
             <Table.Td>{listing.address}</Table.Td>
             <Table.Td>{listing.price}</Table.Td>
             <Table.Td>{listing.living_area}</Table.Td>
-            <Table.Td>{listing.bedrooms}</Table.Td>
-            <Table.Td>{listing.bathrooms}</Table.Td>
-            <Table.Td>{listing.hoa}</Table.Td>
-            <Table.Td>{listing.yard}</Table.Td>
-            <Table.Td>{listing.garage}</Table.Td>
+            <Table.Td className={listing.bedrooms === preferences.bedrooms ? "match-in-comparison-table" : "not-a-match-in-comparision-table"}>{listing.bedrooms}</Table.Td>
+            <Table.Td className={listing.bathrooms === preferences.bathrooms ? "match-in-comparison-table" : "not-a-match-in-comparision-table"}>{listing.bathrooms}</Table.Td>
+            <Table.Td className={listing.hoa === preferences.hoa ? "match-in-comparison-table" : "not-a-match-in-comparision-table"}>{listing.hoa}</Table.Td>
+            <Table.Td className={listing.yard === preferences.yard ? "match-in-comparison-table" : "not-a-match-in-comparision-table"}>{listing.yard}</Table.Td>
+            <Table.Td className={listing.garage === preferences.garage ? "match-in-comparison-table" : "not-a-match-in-comparision-table"}>{listing.garage}</Table.Td>
         </Table.Tr>
     ))
 
