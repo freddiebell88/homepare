@@ -4,6 +4,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
 import axios from 'axios';
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
+import { Link } from "react-router-dom";
 
 export function UserListings({token}) {
     
@@ -34,6 +35,9 @@ export function UserListings({token}) {
     const handleModalOpen = (listing) => {
         setActiveListing(listing);
         open();
+    }
+
+    if (activeListing === null ) {return <div className='no-listings-div-in-user-listings'><p className='no-listings-text-in-user-listings'>No listings saved yet!</p><p className='link-in-no-listings-in-user-listings'><Link to="/listingInput">Click here to add a listing</Link></p></div>
     }
 
     return (
