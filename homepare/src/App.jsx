@@ -86,7 +86,7 @@ function App() {
       />
       <Route
       path="logout"
-      element={<Logout username={username} token={token}/>}
+      element={<Logout username={username} token={token} setAuth={setAuth} />}
       />
     </Routes>
     </MantineProvider>

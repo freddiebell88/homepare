@@ -3,7 +3,7 @@ import axios from "axios";
 import { Button, Container, Flex } from "@mantine/core";
 
 
-export function Logout({ token, username }) {
+export function Logout({ token, username, setAuth }) {
 
     const navigate = useNavigate()
     console.log({token})
@@ -16,6 +16,7 @@ export function Logout({ token, username }) {
             }
         })
         .then(() => {
+            setAuth("", "")
             console.log("Logged out")
             navigate('/login')
         })
