@@ -33,11 +33,16 @@ export function UserCollections( {token}) {
         <DetailsCard />
       </Modal> */}
 
-      {myCollections.map((collection) => {
+      {myCollections.map((collection, index) => {
+        index += 1
         return (
           <>
           <div key={collection._id} className="collections-wrapper-in-user-collections">
             {collection.search_name}
+            <CollectionListings 
+              token={token}
+              index={index}
+            />
           </div>
           </>
         )
@@ -47,9 +52,26 @@ export function UserCollections( {token}) {
     </>
   );
 }
-// I would like for the new collection form to be in a modal that pops up but I can't figure that out in this moment. I think it's because there is already a modal on that component for the detailsCard - Freddie
 
-export function NewCollection( {token}) {
+export function CollectionListings({token, index}) {
+
+  const [collectionListings, setCollectionListings] = useState([])
+
+  useEffect(() => {
+    axios.get("https://homepare-backend.onrender.com/collections", {
+        headers: {
+            authorization: `x-access-token ${token}`
+            }
+    }).then((res) => {
+    console.log(res.data.search[index - 1].houseID);
+    console.log(`index: ${index}`)
+    setCollectionListings(res.data.search[index - 1].houseID)})
+    console.log(`The listings inside this collection are: ${collectionListings}`)
+    }, [])
+
+}
+
+export function NewCollection( {token} ) {
   const [collectionInput, setCollectionInput] = useState("");
   const navigate = useNavigate();
 
