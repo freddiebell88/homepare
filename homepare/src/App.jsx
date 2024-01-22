@@ -4,7 +4,7 @@ import useLocalStorageState from 'use-local-storage-state'
 import { Dashboard } from './dashboard'
 import { Register } from './register'
 import { Login } from './login'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import { Questionnaire } from './questionnaire'
@@ -45,7 +45,7 @@ function App() {
       />
       <Route
         path="/login"
-        element={<Login setAuth={setAuth} />}
+        element={token ? <Navigate to="/" /> : <Login setAuth={setAuth} />}
         />
       <Route 
       path="/questionnaire"
