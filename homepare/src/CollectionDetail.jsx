@@ -6,7 +6,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { Modal } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-export function CollectionDetail() {
+export function CollectionDetail( {token}) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
@@ -44,12 +44,13 @@ export function CollectionDetail() {
         radius={0}
         transitionProps={{ transition: "fade", duration: 200 }}
       >
-        <ComparisonTable 
+        <ComparisonTable token={token}
         homeData={homeData.homes.filter((listing, index) => 
           {if (listingCheckBoxes[index] === true) {
             return true;
           } return false;
-        })}
+        })
+      }
   />
       </Modal>
       <br></br>

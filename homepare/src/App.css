@@ -157,3 +157,9 @@ button {
 .see-more-in-user-collections {
   text-align: right;
 }
+
+/* Table CSS */
+
+.table-test-class{
+  text-align: center;
+}

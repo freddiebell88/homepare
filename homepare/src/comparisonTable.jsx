@@ -1,16 +1,37 @@
 import dbhomes from "./data/homesfromDB.json";
 import { Table } from '@mantine/core'
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 // useState for array of selected listings and map through those to build table?
 
-export function ComparisonTable ( {homeData} ) {
+export function ComparisonTable ( {homeData, token} ) {
+  const [preferences, setPreferences] = useState({
+    bathrooms : 0,
+    bedrooms : 0,
+    garage : false ,
+    hoa : false,
+    yard : false
+});
+
+useEffect(() => {
+axios.get('https://homepare-backend.onrender.com/user-preference',{
+    headers: {
+      authorization: `x-access-token ${token}`
+    }
+  }).then((res) => {
+    setPreferences(res.data)
+    console.log(res.data)
+  })}, [token])
+  
     const rows = homeData.map((listing) => (
         <Table.Tr key={listing.id}>
             <Table.Td>{listing.address}</Table.Td>
             <Table.Td>{listing.price}</Table.Td>
+            <Table.Td>{listing.living_area}</Table.Td>
             <Table.Td>{listing.bedrooms}</Table.Td>
             <Table.Td>{listing.bathrooms}</Table.Td>
-            <Table.Td>{listing.living_area}</Table.Td>
             <Table.Td>{listing.hoa}</Table.Td>
             <Table.Td>{listing.yard}</Table.Td>
             <Table.Td>{listing.garage}</Table.Td>
@@ -18,70 +39,36 @@ export function ComparisonTable ( {homeData} ) {
     ))
 
     return (
+      <>
         <Table.ScrollContainer maxWidth={500}>
-            <Table>
+            <Table striped highlightOnHover>
             <Table.Thead>
                 <Table.Tr>
-                <Table.Th>CHECKLIST</Table.Th>
+                <Table.Th> </Table.Th>
                 <Table.Th>Price</Table.Th>
+                <Table.Th>SQ Footage</Table.Th>
                 <Table.Th>Bedrooms</Table.Th>
                 <Table.Th>Bathrooms</Table.Th>
-                <Table.Th>SQ Footage</Table.Th>
                 <Table.Th>HOA</Table.Th>
                 <Table.Th>Yard</Table.Th>
                 <Table.Th>Garage</Table.Th>
                 </Table.Tr>
             </Table.Thead>
+            <Table.Thead>
+            <Table.Tr>
+            <Table.Th>My Checklist</Table.Th>
+                <Table.Th>Price</Table.Th>
+                <Table.Th>SQ Footage</Table.Th>
+                <Table.Th>{preferences.bedrooms}</Table.Th>
+                <Table.Th>{preferences.bathrooms}</Table.Th>
+                <Table.Th>{preferences.hoa === true ? 'Yes' : 'No'}</Table.Th>
+                <Table.Th>{preferences.yard === true ? 'Yes' : 'No'}</Table.Th>
+                <Table.Th>{preferences.garage === true ? 'Yes' : 'No'}</Table.Th>
+            </Table.Tr>
+            </Table.Thead>
             <Table.Tbody>{rows}</Table.Tbody>
         </Table>
         </Table.ScrollContainer>
-        // <Table data={tableData}/> 
-        // <>
-        // <table>
-        //     <caption>Compare Listings</caption>
-        //     <tbody>
-        //     <tr>
-        //         <th scope="col">Checklist</th>
-        //         <th scope="col">{homeData.value[0].UnparsedAddress}</th>
-        //         <th scope="col">{homeData.value[1].UnparsedAddress}</th>
-        //         <th scope="col">{homeData.value[2].UnparsedAddress}</th>
-        //     </tr>
-        //     <tr>
-        //         <th scope="col">List Price</th>
-        //         <td>${homeData.value[0].ListPrice}</td>
-        //         <td>${homeData.value[1].ListPrice}</td>
-        //         <td>${homeData.value[2].ListPrice}</td>
-                
-        //     </tr>
-        //     <tr>
-        //         <th scope="row">Bedrooms</th>
-        //         <td>{homeData.value[0].BedroomsTotal}</td>
-        //         <td>{homeData.value[1].BedroomsTotal}</td>
-        //         <td>{homeData.value[2].BedroomsTotal}</td>
-        //     </tr>
-        //     <tr>
-        //         <th scope="row">Bathrooms</th>
-        //         <td>{homeData.value[0].BathroomsTotalInteger}</td>
-        //         <td>{homeData.value[1].BathroomsTotalInteger}</td>
-        //         <td>{homeData.value[2].BathroomsTotalInteger}</td>
-        //     </tr>
-        //     <tr>
-        //         <th scope="row">Yard</th>
-        //     </tr>
-        //     <tr>
-        //         <th scope="row">HOA</th>
-        //     </tr>
-        //     <tr>
-        //         <th scope="row">Garage</th>
-        //     </tr>
-        //     <tr>
-        //         <th scope="row">SQ Ft</th>
-        //         <td>sqFootage={homeData.value[0].LivingArea}</td>
-        //         <td>sqFootage={homeData.value[1].LivingArea}</td>
-        //         <td>sqFootage={homeData.value[2].LivingArea}</td>
-        //     </tr>
-        //     </tbody>
-        // </table>
-        // </>
+        </>
     )
 }
