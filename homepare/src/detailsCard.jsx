@@ -60,6 +60,14 @@ export function DetailsCard({
 
     const handleSaveNotes = () => {
         // post notes to API
+        // axios.put(`https://homepare-backend.onrender.com/homes/${listingID}`, {
+   //         notes: notesInput
+   //     }, {
+   //         headers: {
+   //             authorization: `x-access-token ${token}`
+   //         }
+   //     })
+   // }
     }
 
     const imgWidth = "200px";
