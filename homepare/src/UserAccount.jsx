@@ -8,7 +8,7 @@ import { useForm } from '@mantine/form';
 export function UserAccount({ token }) {
    const [userProfile, setUserProfile] = useState([]);
    const [savedData, setSavedData] = useState([]);
-   const [saveSuccess, setSaveSuccess] = useState('white');
+   const [message, setMessage] = useState("");
 
    const form = useForm({
       initialValues: {
@@ -45,7 +45,9 @@ export function UserAccount({ token }) {
                authorization: `x-access-token ${token}`
             }
          }).then((res) => {
-            setSaveSuccess("red")
+            setMessage("Save Successful!")
+         }).catch((err) => {
+            return setMessage(err.response.data.message)
          })
          
       }
@@ -54,7 +56,7 @@ export function UserAccount({ token }) {
     <>
     <div className="w-full h-screen flex justify-center items-center">
     <div className="w-3/12">
-      <Text c={saveSuccess}>Save successful!</Text>
+      <Text c="red">{ message }</Text>
     <h1>Your account details:</h1>
     <form onSubmit={form.onSubmit((values) => saveUpdates(values))}>
       <TextInput
