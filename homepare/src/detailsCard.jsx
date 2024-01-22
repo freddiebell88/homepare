@@ -82,16 +82,19 @@ export function DetailsCard({
             <p>Property Type: {propertyType}</p>
             <p>HOA: {getCompareIcon(hoa, preferences.hoa)}</p>
             <p>Garage: {getCompareIcon(garage, preferences.garage)}</p>
-            {inMyListing && 
+            {inMyListing ? 
             <>
             <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
                 <button onClick={handleSaveNotes}>Save</button>
             </label>
-            </>}
+            <AddToCollection token={token} />
+            </>
+            :
             <button onClick={handleAddListingClick}>
                 Add to My Listings</button>
+            }
             </div>
         )
     }
@@ -101,4 +104,36 @@ const getCompareIcon = (a,b) => {
     if(a === b) return "✅";
     else return "❌";
 }
- 
+
+export function AddToCollection( {token} ) {
+    const [myCollections, setMyCollections] = useState([])
+    const [selectedCollection, setSelectedCollection]= useState('')
+
+    useEffect(() => {
+    axios.get('https://homepare-backend.onrender.com/collections',
+    {
+        headers: {
+            authorization: `x-access-token ${token}`
+        }
+    }).then((res) => {
+        setMyCollections(res.data.search)
+        console.log(`collections data ${res.data.search}`)
+        console.log(myCollections)
+    })
+}, [])
+    
+    return (
+        <>
+                <label >
+                <select value={selectedCollection} onChange={e => setSelectedCollection(e.target.value)}>
+                <option>Add To Collection</option>
+                {myCollections.map((collection) => {
+                <option value={collection.search_name}>{collection.search_name}</option>
+                })}
+                </select>
+                </label>
+
+       
+        </>
+    )
+ }
