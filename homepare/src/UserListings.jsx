@@ -37,8 +37,8 @@ export function UserListings({token}) {
         open();
     }
 
-    if (activeListing === null ) {return <div className='no-listings-div-in-user-listings'><p className='no-listings-text-in-user-listings'>No listings saved yet!</p><p className='link-in-no-listings-in-user-listings'><Link to="/listingInput">Click here to add a listing</Link></p></div>
-    }
+    // if (activeListing === null ) {return <div className='no-listings-div-in-user-listings'><p className='no-listings-text-in-user-listings'>No listings saved yet!</p><p className='link-in-no-listings-in-user-listings'><Link to="/listingInput">Click here to add a listing</Link></p></div>
+    // }
 
     return (
         <>

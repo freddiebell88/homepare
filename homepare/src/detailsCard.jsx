@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export function DetailsCard({
     token, 
@@ -16,6 +17,7 @@ export function DetailsCard({
     listingId, 
     halfBathrooms }) {
 
+    const navigate = useNavigate()
     const [addListing, setAddListing] = useState([])
     const [preferences, setPreferences] = useState({
         bathrooms : 0,
@@ -49,13 +51,12 @@ export function DetailsCard({
             living_area: squareFootage, 
             garage: garage,
             hoa: hoa,
-            images: previewImage,
-            _id: ""
+            images: previewImage
         }, {
             headers: {
                 authorization: `x-access-token ${token}`
             }
-        })
+        }).then( navigate("/"))
     }
 
     const handleSaveNotes = () => {

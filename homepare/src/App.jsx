@@ -37,7 +37,7 @@ function App() {
     <Routes> 
       <Route 
         path="/"
-        element={<Menu><Dashboard token={token} /></Menu>}
+        element={!token ? <Navigate to="/login" /> : <Menu><Dashboard token={token} /></Menu>}
         />
       <Route
         path="/register"
