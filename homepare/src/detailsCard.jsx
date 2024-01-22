@@ -82,16 +82,21 @@ export function DetailsCard({
             <p>Property Type: {propertyType}</p>
             <p>HOA: {getCompareIcon(hoa, preferences.hoa)}</p>
             <p>Garage: {getCompareIcon(garage, preferences.garage)}</p>
-            {inMyListing && 
+            {inMyListing ? 
             <>
             <label>
                 Comments/Notes:
                 <textarea name="comments" rows={8} cols={40} />
                 <button onClick={handleSaveNotes}>Save</button>
             </label>
-            </>}
+            <AddToCollection 
+                listingId={listingId}
+                token={token} />
+            </>
+            :
             <button onClick={handleAddListingClick}>
                 Add to My Listings</button>
+            }
             </div>
         )
     }
@@ -101,4 +106,63 @@ const getCompareIcon = (a,b) => {
     if(a === b) return "✅";
     else return "❌";
 }
- 
+
+export function AddToCollection( {token, listingId} ) {
+    const [myCollections, setMyCollections] = useState([])
+    const [selectedCollection, setSelectedCollection]= useState('')
+    const [form, setForm] = useState({
+        search_name:''})
+
+    useEffect(() => {
+    axios.get('https://homepare-backend.onrender.com/collections',
+    {
+        headers: {
+            authorization: `x-access-token ${token}`
+        }
+    }).then((res) => {
+        setMyCollections(res.data.search)
+        console.log(`collections data ${res.data.search}`)
+        console.log(myCollections)
+    }).then(()=>{})
+}, [])
+    
+const handleCollectionChange = (e) => {
+    setForm({
+        ...form,
+        _id: e.target.value,
+        houseID: listingId
+    })
+}
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    const selectedCollection = myCollections.find((collection)=> collection._id === form._id)
+    console.log(selectedCollection)
+    selectedCollection.houseID.push(listingId)
+    axios.put(`https://homepare-backend.onrender.com/collections/${form._id}`,
+    {...selectedCollection},
+    { 
+        headers: {
+            authorization: `x-access-token ${token}`
+        }
+    }
+    ).then(
+    console.log(myCollections))
+}
+
+    return (
+        <>
+        <form method="post" onSubmit={handleSubmit}>
+            <label >
+            <select value={selectedCollection} onChange={handleCollectionChange}>
+            <option>Add To Collection</option>
+            {myCollections.map((collection) => (
+            <option key={collection._id} value={collection._id}>{collection.search_name}</option>
+            ))}
+            </select>
+            </label>
+            <button type="submit">Add</button>
+        </form>
+        </>
+    )
+ }

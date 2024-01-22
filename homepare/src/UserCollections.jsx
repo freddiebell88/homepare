@@ -7,6 +7,7 @@ import { DetailsCard } from "./detailsCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { Divider } from '@mantine/core';
 
 export function UserCollections( {token}) {
@@ -137,6 +138,7 @@ export function UserCollections( {token}) {
 
 export function NewCollection( {token}) {
   const [collectionInput, setCollectionInput] = useState("");
+  const navigate = useNavigate();
 
   const handleSaveCollection = (e) => {
     console.log("save button clicked");
@@ -152,7 +154,7 @@ export function NewCollection( {token}) {
           authorization: `x-access-token ${token}`
         },
       }
-    );
+    ).then(navigate("/UserCollections"))
   };
 
   return (

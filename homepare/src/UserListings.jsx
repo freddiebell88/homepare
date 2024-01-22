@@ -73,7 +73,6 @@ export function UserListings({token}) {
                 { mylisting.images && mylisting.images.length === 0 && <img src={placeholderImage}/> }
                 <p>{mylisting.address}</p>
                 </div>
-                <AddToCollection token={token} />
                 </>
                     )
                     
@@ -82,36 +81,3 @@ export function UserListings({token}) {
         </>
     )
 }
-
-export function AddToCollection( {token} ) {
-    const [myCollections, setMyCollections] = useState([])
-    const [selectedCollection, setSelectedCollection]= useState('')
-
-    useEffect(() => {
-    axios.get('https://homepare-backend.onrender.com/collections',
-    {
-        headers: {
-            authorization: {"x-access-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NWE5YTJiYmZmMDIxZGQwYmU0NDY3YWYiLCJpYXQiOjE3MDU4NzU4MzUsImV4cCI6MTcwNTk2MjIzNX0.INVOpKLldNLr_cgNylsRFNgC3euaCu8eyfVHw63OJFQ"}
-        }
-    }).then((res) => {
-        setMyCollections(res.data.search)
-        console.log(`collections data ${res.data.search}`)
-        // console.log(myCollections)
-    })
-}, [])
-    
-    return (
-        <>
-                <label >
-                <select value={selectedCollection} onChange={e => setSelectedCollection(e.target.value)}>
-                <option>Add To Collection</option>
-                {myCollections.map((collection) => {
-                <option value={collection.search_name}>{collection.search_name}</option>
-                })}
-                </select>
-                </label>
-
-       
-        </>
-    )
- }
