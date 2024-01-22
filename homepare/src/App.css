@@ -34,8 +34,9 @@ div.userCollection {
   white-space: nowrap;
 }
 
-.see-more-in-user-collections {
+.compare-listings-in-user-collections {
   text-align: right;
+  text-decoration: underline;
 }
 
 .collections-wrapper-in-user-collections {

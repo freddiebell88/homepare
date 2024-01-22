@@ -121,7 +121,7 @@ export function UserCollections( {token}) {
             </p>
           </div>
         </div>
-        <Link to="/CollectionDetail"><p className="see-more-in-user-collections">See More</p></Link>
+        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
         {/* See more should pull up collection details */}
       <Divider size="xs" />
       </div>
