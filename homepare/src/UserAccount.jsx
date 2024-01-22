@@ -1,27 +1,79 @@
-import { TextInput, Button } from "@mantine/core"
+import { TextInput, PasswordInput, Button, Group, Box, Text } from '@mantine/core';
 import { Link } from "react-router-dom"
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useForm } from '@mantine/form';
 
 
-export function UserAccount() {
+export function UserAccount({ token }) {
+   const [userProfile, setUserProfile] = useState([]);
+   const [savedData, setSavedData] = useState([]);
+   const [saveSuccess, setSaveSuccess] = useState('white');
+
+   const form = useForm({
+      initialValues: {
+      username: '',
+      password: '',
+      email: '',
+      first_name: '',
+      last_name: '',
+      },
+
+      validate: {
+
+      },
+  })
+
+   // Get existing user info to populate page
+   useEffect(() => {
+      axios.get("https://homepare-backend.onrender.com/user", {
+         headers: {
+            authorization: `x-access-token ${token}`
+         }}).then((res) => {
+            console.log(res.data.user[0])
+            setUserProfile(res.data.user[0])
+      })}, [token]);
+
+      const saveUpdates = (values) => {
+         const { username, password, email } = values;
+         axios.put("https://homepare-backend.onrender.com/user", {
+            "username": username,
+            "password": password,
+            "email": email
+         }, {
+            headers: {
+               authorization: `x-access-token ${token}`
+            }
+         }).then((res) => {
+            setSaveSuccess("red")
+         })
+         
+      }
+
    return (
     <>
     <div className="w-full h-screen flex justify-center items-center">
-    <div className="w-3/12"> 
+    <div className="w-3/12">
+      <Text c={saveSuccess}>Save successful!</Text>
     <h1>Your account details:</h1>
-    <TextInput
-    label="Update E-mail address"
-    placeholder="E-mail address"
-    />
-    <TextInput
-    label="Update Username:"
-    placeholder="Username"
-    />
-    <TextInput
-    label="Update Password:"
-    placeholder="Password:"
-    />
-    <br></br>
-    <Button>Save</Button>
+    <form onSubmit={form.onSubmit((values) => saveUpdates(values))}>
+      <TextInput
+      label="Update E-mail address"
+      placeholder={userProfile.email} 
+      {...form.getInputProps('email')}
+      />
+      <TextInput
+      label="Update Username:"
+      placeholder={userProfile.username}
+      {...form.getInputProps('username')}
+      />
+      <TextInput
+      label="Update Password:"
+      placeholder="Password:"
+      />
+      <br></br>
+      <Button type='submit'>Save</Button>
+    </form>
     &nbsp;
     <Link to="/logout"><Button>Logout?</Button></Link>
     </div>
