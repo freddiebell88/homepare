@@ -120,16 +120,16 @@ export function AddToCollection( {token} ) {
         console.log(`collections data ${res.data.search}`)
         console.log(myCollections)
     })
-}, [])
+}, [ myCollections, token ])
     
     return (
         <>
                 <label >
                 <select value={selectedCollection} onChange={e => setSelectedCollection(e.target.value)}>
                 <option>Add To Collection</option>
-                {myCollections.map((collection) => {
-                <option value={collection.search_name}>{collection.search_name}</option>
-                })}
+                {myCollections.map((collection) => (
+                <option key={collection._id} value={collection.search_name}>{collection.search_name}</option>
+                ))}
                 </select>
                 </label>
 
