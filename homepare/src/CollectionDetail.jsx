@@ -10,7 +10,6 @@ export function CollectionDetail() {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
-  const [compareChecked, setCompareChecked] = useState(false);
   const [listingCheckBoxes, setlistingCheckBoxes] = useState(
     new Array(homeData.homes.length).fill(false)
   );
@@ -22,9 +21,6 @@ export function CollectionDetail() {
   const [opened, { open, close }] = useDisclosure(false);
   //this useDisclosure is for Mantine
 
-  const handleCheckChange = () => {
-    setCompareChecked(!compareChecked);
-  };
 
   const handleThumbnailCheckOnChange = (listingIndex) => {
     const updatedListingCheckBoxes = listingCheckBoxes.map((listing, index) =>
@@ -57,21 +53,14 @@ export function CollectionDetail() {
   />
       </Modal>
       <br></br>
-      <input
-        type="checkbox"
-        checked={compareChecked}
-        onChange={handleCheckChange}
-      />
-      <label>Compare?</label>
-      {!compareChecked && (
-        <Modal
+
+        {/* <Modal
           opened={thumbnailModalOpened}
           onClose={thumbnailModalClose}
           centered
         >
           <DetailsCard />
-        </Modal>
-      )}
+        </Modal> */}
 
       <div className="thumnail-grid-in-collections-detail">
         {homeData.homes.map((listing, index) => {
@@ -88,7 +77,6 @@ export function CollectionDetail() {
                 height={thumbHeight}
               />
               <p>{listing.address}</p>
-              {compareChecked === true && (
                 <>
                   <input
                     type="checkbox"
@@ -97,7 +85,6 @@ export function CollectionDetail() {
                   />
                   <label>Compare</label>
                 </>
-              )}
             </div>
           );
         })}
