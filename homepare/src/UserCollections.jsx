@@ -9,134 +9,112 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Divider } from '@mantine/core';
+import { Dashboard } from "./dashboard";
 
-export function UserCollections( {token}) {
+export function UserCollections( {myListings, token, index} ) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
   const [opened, { open, close }] = useDisclosure(false);
+  const [myCollections, setMyCollections] = useState([]);
  
-
-  // const handleNewCollectionClick = () => {
-  //   console.log("new collection button clicked");
-  //   <Modal opened={opened} onClose={close} centered>
-  //     <NewCollection token={token} />
-  //   </Modal>;
-  // };
+  useEffect(() => {
+    axios.get("https://homepare-backend.onrender.com/collections", {
+        headers: {
+            authorization: `x-access-token ${token}`
+            }
+    }).then((res) => {
+    console.log(res.data.search);
+    setMyCollections(res.data.search)
+    })
+    }, [ token ])
 
   return (
     <>
-      <Modal opened={opened} onClose={close} centered>
+      {/* <Modal opened={opened} onClose={close} centered>
         <DetailsCard />
-      </Modal>
-      <div className="collections-wrapper-in-user-collections">
-        Collection 1 Name
-        <div className="userCollection">
-          {/* The name of the collection comes directly from the user */}
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[0].Media[0].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
-            />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[0].UnparsedAddress}
-            </p>
-          </div>
+      </Modal> */}
 
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[1].Media[2].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
+      {myCollections.map((collection, index) => {
+        index += 1
+        return (
+          <>
+          <div key={collection._id} className="collections-wrapper-in-user-collections">
+            {collection.search_name}
+            <CollectionListings 
+              token={token}
+              index={index}
+              myListings={myListings}
             />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[1].UnparsedAddress}
-            </p>
-          </div>
 
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[2].Media[5].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
-            />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[2].UnparsedAddress}
-            </p>
           </div>
-
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[2].Media[7].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
-            />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[2].UnparsedAddress}
-            </p>
-          </div>
-
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[0].Media[0].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
-            />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[0].UnparsedAddress}
-            </p>
-          </div>
-
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[1].Media[2].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
-            />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[1].UnparsedAddress}
-            </p>
-          </div>
-
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[2].Media[5].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
-            />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[2].UnparsedAddress}
-            </p>
-          </div>
-
-          <div onClick={open} className="listing-thumbnail-in-user-collections">
-            <img
-              src={homeData.value[2].Media[7].Thumbnail}
-              width={thumbWidth}
-              height={thumbHeight}
-            />
-            <p className="thumbnail-text-in-user-collections">
-              {homeData.value[2].UnparsedAddress}
-            </p>
-          </div>
-        </div>
-        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
-        {/* See more should pull up collection details */}
-      <Divider size="xs" />
-      </div>
-
-      <div className="collections-wrapper-in-user-collections"></div>
-      {/* <CollectionDetail />
-        <ComparisonTable /> */}
+          </>
+        )
+      })}
 
       <NewCollection token={token} />
     </>
   );
 }
-// I would like for the new collection form to be in a modal that pops up but I can't figure that out in this moment. I think it's because there is already a modal on that component for the detailsCard - Freddie
 
-export function NewCollection( {token}) {
+
+export function CollectionListings({myListings, token, index}) {
+  
+  const [collectionListings, setCollectionListings] = useState([])
+
+        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
+        {/* See more should pull up collection details */}
+      <Divider size="xs" />
+      
+
+
+  useEffect(() => {
+    axios.get("https://homepare-backend.onrender.com/collections", {
+        headers: {
+            authorization: `x-access-token ${token}`
+            }
+    }).then((res) => {
+    console.log(res.data.search[index - 1].houseID);
+    console.log(`index: ${index}`)
+    setCollectionListings(res.data.search[index - 1].houseID)})
+    console.log(`The listings inside this collection are: ${collectionListings}`)
+    }, [])
+
+
+    return (
+      <>
+      {/* {collectionListings.map((collectionlisting) => { */}
+        {/* return( */}
+          {/* <div key={collectionlisting._id}>
+            {collectionlisting} */}
+            {/* if houseID === listing._id return listing.address
+            myCollections.find(houseID => (new variables) houseID === listing._id) */}
+            <CollectionListingsDetails 
+            collectionListings={collectionListings}
+            myListings={myListings}/>
+          {/* </div> */}
+       {/* )} */}
+      {/* // } */}
+      {/* // )} */}
+      </>
+    )
+}
+
+export function CollectionListingsDetails( {collectionListings, myListings} ) {
+  // if houseID from collection listing matches id from myListings render home details from that home
+  
+  return (
+    <>
+    {myListings.map((listing) => {
+      return(
+        <div key={listing._id}>{listing.address}</div>
+      )
+    })}
+    </>
+  )
+}
+
+export function NewCollection( {token} ) {
   const [collectionInput, setCollectionInput] = useState("");
   const navigate = useNavigate();
 

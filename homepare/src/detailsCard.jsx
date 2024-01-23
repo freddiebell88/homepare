@@ -207,8 +207,7 @@ export function AddToCollection({ token, listingId }) {
         setMyCollections(res.data.search);
         console.log(`collections data ${res.data.search}`);
         console.log(myCollections);
-      })
-      .then(() => {});
+      });
   }, []);
 
   const handleCollectionChange = (e) => {
@@ -236,7 +235,8 @@ export function AddToCollection({ token, listingId }) {
           },
         }
       )
-      .then(console.log(myCollections));
+      .then(console.log(myCollections))
+      .then();
   };
 
   return (

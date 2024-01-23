@@ -1,10 +1,12 @@
 import { UserListings } from "./UserListings";
 import { UserCollections } from "./UserCollections.jsx";
 import { Menu } from "./Menu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs } from '@mantine/core';
 import { Questionnaire } from "./questionnaire";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 
 const TABNAMES = {
@@ -12,9 +14,20 @@ const TABNAMES = {
   MY_COLLECTIONS: "My Collections",
 };
 
-export function Dashboard( {myListings, token} ) {
+export function Dashboard( {token} ) {
   const [activeTab, setActiveTab] = useState(TABNAMES.MY_LISTINGS);
+  const [myListings, setMyListings] = useState([])
 
+
+  useEffect(() => {
+    axios.get("https://homepare-backend.onrender.com/homes", {
+        headers: {
+            authorization: `x-access-token ${token}`
+            }
+    }).then((res) => {
+    console.log(res.data.homes);
+    setMyListings(res.data.homes)})
+    }, [ token ])
 
   return (
     <>
@@ -33,7 +46,9 @@ export function Dashboard( {myListings, token} ) {
         myListings={myListings}
         />}
         {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections 
-        token={token}/>}
+        token={token}
+        myListings={myListings}
+        />}
 
     
     </>

@@ -6,12 +6,12 @@ import axios from 'axios';
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 import { Link } from "react-router-dom";
 
-export function UserListings({token}) {
+export function UserListings({myListings, token}) {
     
 
     const thumbWidth = "100px";
     const thumbHeight = "100px";
-    const [myListings, setMyListings] = useState([])
+    // const [myListings, setMyListings] = useState([])
     const [opened, { open, close }] = useDisclosure(false);
     const [activeListing, setActiveListing] = useState(null);
 
@@ -19,15 +19,15 @@ export function UserListings({token}) {
         e.target.src = placeholderImage
     }
 
-    useEffect(() => {
-    axios.get("https://homepare-backend.onrender.com/homes", {
-        headers: {
-            authorization: `x-access-token ${token}`
-            }
-    }).then((res) => {
-    console.log(res.data.homes);
-    setMyListings(res.data.homes)})
-    }, [ token ])
+    // useEffect(() => {
+    // axios.get("https://homepare-backend.onrender.com/homes", {
+    //     headers: {
+    //         authorization: `x-access-token ${token}`
+    //         }
+    // }).then((res) => {
+    // console.log(res.data.homes);
+    // setMyListings(res.data.homes)})
+    // }, [ token ])
 
     console.log('here - in user listings')
 
