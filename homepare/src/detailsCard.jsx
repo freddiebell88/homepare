@@ -15,7 +15,8 @@ export function DetailsCard({
     garage, 
     price, 
     listingId, 
-    halfBathrooms }) {
+    halfBathrooms,
+    close }) {
 
     const navigate = useNavigate()
     const [addListing, setAddListing] = useState([])
@@ -57,18 +58,18 @@ export function DetailsCard({
             headers: {
                 authorization: `x-access-token ${token}`
             }
-        }).then( navigate("/"))
+        }).then(close())
     }
 
     const handleSaveNotes = () => {
         // post notes to API
-        axios.put(`https://homepare-backend.onrender.com/homes/${listingID}`, {
+        axios.put(`https://homepare-backend.onrender.com/homes/${listingId}`, {
            notes: notesInput
        }, {
            headers: {
                authorization: `x-access-token ${token}`
            }
-       })
+       }).then(close())
     }
 
     const imgWidth = "200px";
@@ -100,7 +101,8 @@ export function DetailsCard({
             </label>
             <AddToCollection 
                 listingId={listingId}
-                token={token} />
+                token={token} 
+                close={close}/>
             </>
             :
             <button onClick={handleAddListingClick}>
@@ -116,7 +118,7 @@ const getCompareIcon = (a,b) => {
     else return "❌";
 }
 
-export function AddToCollection( {token, listingId} ) {
+export function AddToCollection( {close, token, listingId} ) {
     const [myCollections, setMyCollections] = useState([])
     const [selectedCollection, setSelectedCollection]= useState('')
     const [form, setForm] = useState({
@@ -157,7 +159,7 @@ const handleSubmit = (e) => {
     }
     ).then(
     console.log(myCollections))
-    .then()
+    .then(close())
 }
 
     return (
