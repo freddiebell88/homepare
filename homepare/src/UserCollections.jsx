@@ -9,8 +9,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Divider } from '@mantine/core';
+import { Dashboard } from "./dashboard";
 
-export function UserCollections( {token} ) {
+export function UserCollections( {myListings, token, index} ) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
@@ -24,7 +25,8 @@ export function UserCollections( {token} ) {
             }
     }).then((res) => {
     console.log(res.data.search);
-    setMyCollections(res.data.search)})
+    setMyCollections(res.data.search)
+    })
     }, [ token ])
 
   return (
@@ -42,7 +44,9 @@ export function UserCollections( {token} ) {
             <CollectionListings 
               token={token}
               index={index}
+              myListings={myListings}
             />
+
           </div>
           </>
         )
@@ -53,8 +57,8 @@ export function UserCollections( {token} ) {
   );
 }
 
-export function CollectionListings({token, index}) {
-
+export function CollectionListings({myListings, token, index}) {
+  
   const [collectionListings, setCollectionListings] = useState([])
 
   useEffect(() => {
@@ -69,17 +73,41 @@ export function CollectionListings({token, index}) {
     console.log(`The listings inside this collection are: ${collectionListings}`)
     }, [])
 
+    // const newMyListingsArray = collectionListings.find((houseID) =>  )
+
     return (
       <>
       {collectionListings.map((listings) => {
         return(
-          <div key={listings.houseID}>
-            {listings}
+          <div key={listings._id}>
+            {myListings.map((listing) => {
+              return(
+                { listings._id === listing._id &&
+                <div key={listing._id}>{listing.address}</div>
+                }
+                )
+            })}
+            {/* if houseID === listing._id return listing.address
+            myCollections.find(houseID => (new variables) houseID === listing._id) */}
+            {/* <CollectionListingsDetails myListings={myListings}/> */}
           </div>
-        )
-      })}
+       )}
+      // } */}
+      )}
       </>
     )
+}
+
+export function CollectionListingsDetails( {myListings} ) {
+  return (
+    <>
+    {myListings.map((listing) => {
+      return(
+        <div key={listing._id}>{listing.address}</div>
+      )
+    })}
+    </>
+  )
 }
 
 export function NewCollection( {token} ) {
