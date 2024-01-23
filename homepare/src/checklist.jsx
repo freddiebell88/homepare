@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Container } from "@mantine/core"
 
@@ -37,7 +38,7 @@ export function Checklist ({token}) {
         <h3>{`Garage: ${preferences.garage === true ? 'Yes' : 'No'}`}</h3>
         <h3>{`HOA: ${preferences.hoa === true ? 'Yes' : 'No'}`}</h3>
         &nbsp;
-        <Button>Edit?</Button>
+        <Link to="/editChecklist"><Button>Edit?</Button></Link>
         </Container>
         </>
     )

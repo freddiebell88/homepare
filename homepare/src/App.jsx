@@ -18,6 +18,7 @@ import { UserCollections } from './UserCollections'
 import { ListingInput } from './listingInput';
 import { Menu } from './Menu'
 import { Logout } from './logout'
+import { EditChecklist } from './editChecklist'
 
 
 function App() {
@@ -54,6 +55,10 @@ function App() {
       <Route
       path="checklist"
       element={<Menu><Checklist username={username} token={token}/></Menu>}
+      />
+      <Route
+      path="/editChecklist"
+      element={<EditChecklist username={username} token={token}/>}
       />
       <Route
       path="CollectionDetail"
