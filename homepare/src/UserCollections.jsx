@@ -57,9 +57,16 @@ export function UserCollections( {myListings, token, index} ) {
   );
 }
 
+
 export function CollectionListings({myListings, token, index}) {
   
   const [collectionListings, setCollectionListings] = useState([])
+
+        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
+        {/* See more should pull up collection details */}
+      <Divider size="xs" />
+      
+
 
   useEffect(() => {
     axios.get("https://homepare-backend.onrender.com/collections", {

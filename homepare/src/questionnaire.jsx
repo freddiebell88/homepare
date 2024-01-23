@@ -1,8 +1,8 @@
-import { Checklist } from "./checklist";
 import questionnaireData from "./data/questionnaire.json";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mantine/core";
 
 export function Questionnaire( {token}) {
   console.log(questionnaireData);
@@ -79,8 +79,8 @@ export function Questionnaire( {token}) {
           <div className="confirm-summary-div-in-questionnaire">
           <p className="confirm-summary-in-questionnaire">You are looking for a <b>{recordedAnswers[0].text}</b>, <b>{recordedAnswers[1].text}</b> home <b>{recordedAnswers[2].text}</b>, <b>{recordedAnswers[3].text}</b>, and <b>{recordedAnswers[4].text}</b>.</p>
           <br></br>
-          <button className="buttons-in-questionnaire" onClick={handleBackClick}>Back</button>
-          <button className="buttons-in-questionnaire" onClick={handleConfirmClick}>Confirm</button>
+          <Button  onClick={handleBackClick}>Back</Button>
+          <Button onClick={handleConfirmClick}>Confirm</Button>
           </div>
         </>
       ) : (
@@ -107,15 +107,14 @@ export function Questionnaire( {token}) {
               );
             })}
           </form>
-          {index != 0 && <button className="buttons-in-questionnaire" onClick={handleBackClick}>Back</button>}
+          {index != 0 && <Button onClick={handleBackClick}>Back</Button>}
           {
-            <button
+            <Button
               onClick={handleNextClick}
               disabled={selectedAnswer.value ? false : true}
-              className="buttons-in-questionnaire"
             >
               Next
-            </button>
+            </Button>
           }
           
           </div>

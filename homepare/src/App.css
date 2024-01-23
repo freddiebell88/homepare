@@ -34,8 +34,9 @@ div.userCollection {
   white-space: nowrap;
 }
 
-.see-more-in-user-collections {
+.compare-listings-in-user-collections {
   text-align: right;
+  text-decoration: underline;
 }
 
 .collections-wrapper-in-user-collections {
@@ -75,11 +76,11 @@ hr.rounded-divider-in-user-collections {
 }
 
 /* this is all buttons right now */
-button {
+/* button {
   border: solid black 2px;
   padding: 3px;
   margin: 5px;
-}
+} */
 
 /* Questionnaire CSS */
 
@@ -155,4 +156,24 @@ button {
 /* My Collections CSS */
 .see-more-in-user-collections {
   text-align: right;
+}
+
+/* Table CSS */
+
+.checklist-row-in-comparison-table {
+  background-color: var(--mantine-color-dark-8);
+  color: white;
+}
+
+.match-in-comparison-table {
+  background-color: var(--mantine-color-green-light-color);
+  color:white;
+  font-weight: bold;
+}
+
+.not-a-match-in-comparision-table {
+  background-color: var(--mantine-color-red-8);
+  opacity: 1;
+  color: white;
+  font-weight: bold;
 }
