@@ -132,7 +132,7 @@ export function AddToCollection( {token, listingId} ) {
         setMyCollections(res.data.search)
         console.log(`collections data ${res.data.search}`)
         console.log(myCollections)
-    }).then(()=>{})
+    })
 }, [])
     
 const handleCollectionChange = (e) => {
@@ -157,6 +157,7 @@ const handleSubmit = (e) => {
     }
     ).then(
     console.log(myCollections))
+    .then()
 }
 
     return (
