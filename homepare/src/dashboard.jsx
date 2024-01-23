@@ -32,20 +32,13 @@ export function Dashboard( {token} ) {
     }, [ token ])
 
 
-const HomePareIcon = () => {
-  return <IconHomeCheck />;
-};
-
-
   return (
     <>
     { error ? <div>{error.message}</div> :
-      <div>
-       
-      
-    <Group>
+    <div>
+ <Group>
     <IconHomeCheck color="var(--mantine-color-dark-4)" size={48} /><Title c="var(--mantine-color-dark-4)" order={1} fw="900">Home<Text span c="#00A6BA" inherit>Pare</Text></Title>
-    </Group>
+    </Group><div className="tabs">
       <Tabs
         onChange={(value) => setActiveTab(value)}
       >
@@ -65,7 +58,8 @@ const HomePareIcon = () => {
         
         </div>
          
-      }
-    </>
+      </div>}
+      </>
+    
   );
 }
