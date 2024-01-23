@@ -59,14 +59,14 @@ axios.get('https://homepare-backend.onrender.com/user-preference',{
             </Table.Thead>
             <Table.Thead>
             <Table.Tr>
-            <Table.Th>My Checklist</Table.Th>
-                <Table.Th>Price</Table.Th>
-                <Table.Th>SQ Footage</Table.Th>
-                <Table.Th>{preferences.bedrooms}</Table.Th>
-                <Table.Th>{preferences.bathrooms}</Table.Th>
-                <Table.Th>{preferences.hoa === true ? 'Yes' : 'No'}</Table.Th>
-                <Table.Th>{preferences.yard === true ? 'Yes' : 'No'}</Table.Th>
-                <Table.Th>{preferences.garage === true ? 'Yes' : 'No'}</Table.Th>
+            <Table.Th className="checklist-row-in-comparison-table">My Checklist</Table.Th>
+                <Table.Th className="checklist-row-in-comparison-table">Price</Table.Th>
+                <Table.Th className="checklist-row-in-comparison-table">SQ Footage</Table.Th>
+                <Table.Th className="checklist-row-in-comparison-table">{preferences.bedrooms}</Table.Th>
+                <Table.Th className="checklist-row-in-comparison-table">{preferences.bathrooms}</Table.Th>
+                <Table.Th className="checklist-row-in-comparison-table">{preferences.hoa === true ? 'Yes' : 'No'}</Table.Th>
+                <Table.Th className="checklist-row-in-comparison-table">{preferences.yard === true ? 'Yes' : 'No'}</Table.Th>
+                <Table.Th className="checklist-row-in-comparison-table">{preferences.garage === true ? 'Yes' : 'No'}</Table.Th>
             </Table.Tr>
             </Table.Thead>
             <Table.Tbody>{rows}</Table.Tbody>

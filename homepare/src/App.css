@@ -160,6 +160,11 @@ button {
 
 /* Table CSS */
 
+.checklist-row-in-comparison-table {
+  background-color: black;
+  color: white;
+}
+
 .match-in-comparison-table {
   background-color: green;
   color:white;
