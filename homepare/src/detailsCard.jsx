@@ -25,6 +25,7 @@ export function DetailsCard({
         garage : false ,
         hoa : false,
         yard : false})
+    const [notesInput, setNotesInput] = useState("")
 
     useEffect(() => {
         axios.get('https://homepare-backend.onrender.com/user-preference',{
@@ -61,14 +62,13 @@ export function DetailsCard({
 
     const handleSaveNotes = () => {
         // post notes to API
-        // axios.put(`https://homepare-backend.onrender.com/homes/${listingID}`, {
-   //         notes: notesInput
-   //     }, {
-   //         headers: {
-   //             authorization: `x-access-token ${token}`
-   //         }
-   //     })
-   // }
+        axios.put(`https://homepare-backend.onrender.com/homes/${listingID}`, {
+           notes: notesInput
+       }, {
+           headers: {
+               authorization: `x-access-token ${token}`
+           }
+       })
     }
 
     const imgWidth = "200px";
@@ -95,7 +95,7 @@ export function DetailsCard({
             <>
             <label>
                 Comments/Notes:
-                <textarea name="comments" rows={8} cols={40} />
+                <textarea onChange={(e)=>setNotesInput(e.target.value)} name="comments" rows={8} cols={40} />
                 <button onClick={handleSaveNotes}>Save</button>
             </label>
             <AddToCollection 
