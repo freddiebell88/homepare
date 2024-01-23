@@ -25,7 +25,6 @@ export function Preview( { token, address, previewImage, squareFootage, bathroom
 
     return (
         <>
-        <Modal opened={opened} onClose={close} centered>
             <DetailsCard 
             token={token}
             address={address}
@@ -40,15 +39,6 @@ export function Preview( { token, address, previewImage, squareFootage, bathroom
             price={price}
             listingId={listingId}
             />
-        </Modal>
-        <div
-        onClick={open}
-        className="previewCard">
-        <img src={previewImage}/>
-        <h3>{address}</h3>
-            <button>Add to My Listings</button>
-            {/* add a conditional here so add to my listings button does not render inside my listings and a add to a collection button does instead */}
-        </div>
         </>
     )
 }

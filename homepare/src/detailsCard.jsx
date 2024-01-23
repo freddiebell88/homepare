@@ -1,177 +1,259 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  SimpleGrid,
+  Text,
+  Badge,
+  Button,
+  Group,
+  Image,
+  Textarea,
+} from "@mantine/core";
 
 export function DetailsCard({
-    token, 
-    inMyListing, 
-    address, 
-    previewImage, 
-    squareFootage, 
-    bathrooms, 
-    bedrooms, 
-    propertyType, 
-    hoa, 
-    garage, 
-    price, 
-    listingId, 
-    halfBathrooms }) {
+  token,
+  inMyListing,
+  address,
+  previewImage,
+  squareFootage,
+  bathrooms,
+  bedrooms,
+  propertyType,
+  hoa,
+  garage,
+  price,
+  listingId,
+  halfBathrooms,
+}) {
+  const navigate = useNavigate();
+  const [addListing, setAddListing] = useState([]);
+  const [preferences, setPreferences] = useState({
+    bathrooms: 0,
+    bedrooms: 0,
+    garage: false,
+    hoa: false,
+    yard: false,
+  });
 
-    const navigate = useNavigate()
-    const [addListing, setAddListing] = useState([])
-    const [preferences, setPreferences] = useState({
-        bathrooms : 0,
-        bedrooms : 0,
-        garage : false ,
-        hoa : false,
-        yard : false})
+  useEffect(() => {
+    axios
+      .get("https://homepare-backend.onrender.com/user-preference", {
+        headers: {
+          authorization: `x-access-token ${token}`,
+        },
+      })
+      .then((res) => {
+        setPreferences(res.data);
+        console.log(res.data);
+      });
+  }, [token]);
 
-    useEffect(() => {
-        axios.get('https://homepare-backend.onrender.com/user-preference',{
-            headers: {
-              authorization: `x-access-token ${token}`
-            }
-          }).then((res) => {
-            setPreferences(res.data)
-            console.log(res.data)
-     })}, [token])
-    
-    
-    const handleAddListingClick = () => {
-        console.log("add listing button")
-        setAddListing()
-        // post listing to db
-        axios.post('https://homepare-backend.onrender.com/homes', {
-            address: address,
-            price: price,
-            property_type: propertyType,
-            bedrooms: bedrooms,
-            half_bath: halfBathrooms,
-            full_bath: bathrooms,
-            living_area: squareFootage, 
-            garage: garage,
-            hoa: hoa,
-            images: previewImage
-        }, {
-            headers: {
-                authorization: `x-access-token ${token}`
-            }
-        }).then( navigate("/"))
-    }
+  const handleAddListingClick = () => {
+    console.log("add listing button");
+    setAddListing();
+    // post listing to db
+    axios
+      .post(
+        "https://homepare-backend.onrender.com/homes",
+        {
+          address: address,
+          price: price,
+          property_type: propertyType,
+          bedrooms: bedrooms,
+          half_bath: halfBathrooms,
+          full_bath: bathrooms,
+          living_area: squareFootage,
+          garage: garage,
+          hoa: hoa,
+          images: previewImage,
+        },
+        {
+          headers: {
+            authorization: `x-access-token ${token}`,
+          },
+        }
+      )
+      .then(navigate("/"));
+  };
 
-    const handleSaveNotes = () => {
-        // post notes to API
-        // axios.put(`https://homepare-backend.onrender.com/homes/${listingID}`, {
-   //         notes: notesInput
-   //     }, {
-   //         headers: {
-   //             authorization: `x-access-token ${token}`
-   //         }
-   //     })
-   // }
-    }
+  const handleSaveNotes = () => {
+    // post notes to API
+    // axios.put(`https://homepare-backend.onrender.com/homes/${listingID}`, {
+    //         notes: notesInput
+    //     }, {
+    //         headers: {
+    //             authorization: `x-access-token ${token}`
+    //         }
+    //     })
+    // }
+  };
 
-    const imgWidth = "200px";
+  const imgWidth = "200px";
 
-    console.log('here in details card')
-    
-        return (
-            <div className="detailsCard">
-            <h1>Listing Details</h1>
-            
-            <img src={previewImage} alt="thumbnail of home" width={imgWidth}/>
-            
-            <p>Street Address:{address}</p>
-            <p>$$$: {price} </p>
-            <p>SQ Footage: {squareFootage}</p>
-            <p>Bedrooms: {`${bedrooms} ${getCompareIcon(bedrooms, preferences.bedrooms)}`
-            } </p>
-            <p>Bathrooms: {getCompareIcon(bathrooms, preferences.bathrooms)}</p>
-            <p>Half Bathrooms: {halfBathrooms}</p>
-            <p>Property Type: {propertyType}</p>
-            <p>HOA: {getCompareIcon(hoa, preferences.hoa)}</p>
-            <p>Garage: {getCompareIcon(garage, preferences.garage)}</p>
-            {inMyListing ? 
-            <>
-            <label>
-                Comments/Notes:
-                <textarea name="comments" rows={8} cols={40} />
-                <button onClick={handleSaveNotes}>Save</button>
-            </label>
-            <AddToCollection 
-                listingId={listingId}
-                token={token} />
-            </>
-            :
-            <button onClick={handleAddListingClick}>
-                Add to My Listings</button>
-            }
+  console.log("here in details card");
+
+  return (
+    <>
+      <div className="detailsCard">
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+          <Card.Section>
+            <Image src={previewImage} alt="thumbnail of home" />
+          </Card.Section>
+          <Text size="lg" fw={700} ta="center">
+            {address}
+          </Text>
+          <Text size="sm" c="dimmed" ta="center">
+            Property Type: {propertyType}
+          </Text>
+          <Group justify="space-between" mt="md" mb="xs">
+            <Badge color="var(--mantine-color-dark-8)">PRICE: ${price}</Badge>
+            <Badge color="var(--mantine-color-dark-8)">
+              SQ Footage: {squareFootage}
+            </Badge>
+          </Group>
+          <SimpleGrid
+            cols={2}
+            spacing="xs"
+            verticalSpacing="xs"
+            style={{ marginTop: 14 }}
+          >
+            <div>
+              <Text size="md" c="dimmed">
+                Bedrooms:{" "}
+                {`${bedrooms} ${getCompareIcon(
+                  bedrooms,
+                  preferences.bedrooms
+                )}`}{" "}
+              </Text>
             </div>
-        )
-    }
+            <div>
+              <Text size="md" c="dimmed" ta="right">
+                Bathrooms: {getCompareIcon(bathrooms, preferences.bathrooms)}
+              </Text>
+            </div>
 
+            <div>
+              <Text size="md" c="dimmed">
+                HOA: {getCompareIcon(hoa, preferences.hoa)}
+              </Text>
+            </div>
+            <div>
+              <Text size="md" c="dimmed" ta="right">
+                Garage: {getCompareIcon(garage, preferences.garage)}
+              </Text>
+            </div>
+          </SimpleGrid>
+          {inMyListing ? (
+            <>
+              <Textarea
+                placeholder="Add your notes here"
+                label="Notes:"
+                autosize
+                minRows={2}
+                style={{ marginTop: 14 }}
+              />
+              <Button
+                color="blue"
+                fullWidth
+                mt="md"
+                radius="md"
+                style={{ marginBottom: 14 }}
+                onClick={handleSaveNotes}
+              >
+                Save
+              </Button>
 
-const getCompareIcon = (a,b) => {
-    if(a === b) return "✅";
-    else return "❌";
+              <AddToCollection listingId={listingId} token={token} />
+            </>
+          ) : (
+            <Button
+              color="blue"
+              fullWidth
+              mt="md"
+              radius="md"
+              onClick={handleAddListingClick}
+            >
+              Add to My Listings
+            </Button>
+          )}
+        </Card>
+      </div>
+    </>
+  );
 }
 
-export function AddToCollection( {token, listingId} ) {
-    const [myCollections, setMyCollections] = useState([])
-    const [selectedCollection, setSelectedCollection]= useState('')
-    const [form, setForm] = useState({
-        search_name:''})
+const getCompareIcon = (a, b) => {
+  if (a === b) return "✅";
+  else return "❌";
+};
 
-    useEffect(() => {
-    axios.get('https://homepare-backend.onrender.com/collections',
-    {
+export function AddToCollection({ token, listingId }) {
+  const [myCollections, setMyCollections] = useState([]);
+  const [selectedCollection, setSelectedCollection] = useState("");
+  const [form, setForm] = useState({
+    search_name: "",
+  });
+
+  useEffect(() => {
+    axios
+      .get("https://homepare-backend.onrender.com/collections", {
         headers: {
-            authorization: `x-access-token ${token}`
-        }
-    }).then((res) => {
-        setMyCollections(res.data.search)
-        console.log(`collections data ${res.data.search}`)
-        console.log(myCollections)
-    }).then(()=>{})
-}, [])
-    
-const handleCollectionChange = (e) => {
+          authorization: `x-access-token ${token}`,
+        },
+      })
+      .then((res) => {
+        setMyCollections(res.data.search);
+        console.log(`collections data ${res.data.search}`);
+        console.log(myCollections);
+      })
+      .then(() => {});
+  }, []);
+
+  const handleCollectionChange = (e) => {
     setForm({
-        ...form,
-        _id: e.target.value,
-        houseID: listingId
-    })
-}
+      ...form,
+      _id: e.target.value,
+      houseID: listingId,
+    });
+  };
 
-const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const selectedCollection = myCollections.find((collection)=> collection._id === form._id)
-    console.log(selectedCollection)
-    selectedCollection.houseID.push(listingId)
-    axios.put(`https://homepare-backend.onrender.com/collections/${form._id}`,
-    {...selectedCollection},
-    { 
-        headers: {
-            authorization: `x-access-token ${token}`
+    const selectedCollection = myCollections.find(
+      (collection) => collection._id === form._id
+    );
+    console.log(selectedCollection);
+    selectedCollection.houseID.push(listingId);
+    axios
+      .put(
+        `https://homepare-backend.onrender.com/collections/${form._id}`,
+        { ...selectedCollection },
+        {
+          headers: {
+            authorization: `x-access-token ${token}`,
+          },
         }
-    }
-    ).then(
-    console.log(myCollections))
-}
+      )
+      .then(console.log(myCollections));
+  };
 
-    return (
-        <>
-        <form method="post" onSubmit={handleSubmit}>
-            <label >
-            <select value={selectedCollection} onChange={handleCollectionChange}>
+  return (
+    <>
+      <form method="post" onSubmit={handleSubmit}>
+        <label>
+          <select value={selectedCollection} onChange={handleCollectionChange}>
             <option>Add To Collection</option>
             {myCollections.map((collection) => (
-            <option key={collection._id} value={collection._id}>{collection.search_name}</option>
+              <option key={collection._id} value={collection._id}>
+                {collection.search_name}
+              </option>
             ))}
-            </select>
-            </label>
-            <button type="submit">Add</button>
-        </form>
-        </>
-    )
- }
+          </select>
+        </label>
+        <button type="submit">Add</button>
+      </form>
+    </>
+  );
+}
