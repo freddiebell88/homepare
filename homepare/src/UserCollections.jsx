@@ -85,15 +85,15 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
 
 
     return (
-      <div >
+      <div className="userCollection" >
         {collectionListings.map((coListing) => {
         return (
-          <div key={coListing._id}>
+          <div className="listing-thumbnail-in-user-collections" key={coListing._id}>
             { coListing.images && coListing.images.length >0 && Object.keys(coListing.images[0]).length >0 && <img src={coListing.images[0].Thumbnail}
                 onError={usePlaceHolder}
                 width={thumbWidth} height={thumbHeight}/> }
                 { coListing.images && coListing.images.length === 0 && <img src={placeholderImage}/> }
-            <p>{coListing.address}</p>
+            <p className="thumbnail-text-in-user-collections">{coListing.address}</p>
 
           </div>
         )}

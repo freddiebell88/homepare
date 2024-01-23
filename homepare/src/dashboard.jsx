@@ -27,7 +27,7 @@ export function Dashboard( {token} ) {
     }).then((res) => {
     console.log(res.data.homes);
     setMyListings(res.data.homes)})
-    .catch(error => setError("Error", error.message))
+    .catch(error => setError(`Error, ${error.message}`))
     }, [ token ])
 
   return (
