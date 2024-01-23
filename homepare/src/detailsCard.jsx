@@ -138,7 +138,7 @@ export function DetailsCard({
             </div>
             <div>
               <Text size="md" c="dimmed" ta="right">
-                Bathrooms: {getCompareIcon(bathrooms, preferences.bathrooms)}
+                Bathrooms:{" "} {`${bathrooms} ${getCompareIcon(bathrooms, preferences.bathrooms)}`}
               </Text>
             </div>
 
