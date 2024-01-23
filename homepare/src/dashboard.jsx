@@ -18,7 +18,7 @@ const TABNAMES = {
 export function Dashboard( {token} ) {
   const [activeTab, setActiveTab] = useState(TABNAMES.MY_LISTINGS);
   const [myListings, setMyListings] = useState([])
-
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     axios.get("https://homepare-backend.onrender.com/homes", {
@@ -28,18 +28,15 @@ export function Dashboard( {token} ) {
     }).then((res) => {
     console.log(res.data.homes);
     setMyListings(res.data.homes)})
-    .catch(error => console.log("Error", error.message))
+    .catch(error => setError(`Error, ${error.message}`))
     }, [ token ])
-
-
-const HomePareIcon = () => {
-  return <IconHomeCheck />;
-};
 
 
   return (
     <>
-    <Group>
+    { error ? <div>{error.message}</div> :
+    <div>
+ <Group>
     <IconHomeCheck color="var(--mantine-color-dark-4)" size={48} /><Title c="var(--mantine-color-dark-4)" order={1} fw="900">Home<Text span c="#00A6BA" inherit>Pare</Text></Title>
     </Group><div className="tabs">
       <Tabs
@@ -49,8 +46,8 @@ const HomePareIcon = () => {
         <Tabs.Tab value={TABNAMES.MY_LISTINGS}>My Listings</Tabs.Tab>
         <Tabs.Tab value={TABNAMES.MY_COLLECTIONS}>My Collections</Tabs.Tab>
       </Tabs.List>
+      
       </Tabs>
-      </div>
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings token={token}
         myListings={myListings}
         />}
@@ -58,8 +55,11 @@ const HomePareIcon = () => {
         token={token}
         myListings={myListings}
         />}
-
+        
+        </div>
+         
+      </div>}
+      </>
     
-    </>
   );
 }
