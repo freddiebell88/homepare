@@ -6,7 +6,8 @@ import { Tabs } from '@mantine/core';
 import { Questionnaire } from "./questionnaire";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { IconHomeCheck } from "@tabler/icons-react";
+import { Text, Group, Title } from "@mantine/core"
 
 
 const TABNAMES = {
@@ -30,12 +31,21 @@ export function Dashboard( {token} ) {
     .catch(error => setError(`Error, ${error.message}`))
     }, [ token ])
 
+
+const HomePareIcon = () => {
+  return <IconHomeCheck />;
+};
+
+
   return (
     <>
     { error ? <div>{error.message}</div> :
       <div>
       <h2>User's Dashboard</h2>   
-      <div className="tabs">
+      
+    <Group>
+    <IconHomeCheck color="var(--mantine-color-dark-4)" size={48} /><Title c="var(--mantine-color-dark-4)" order={1} fw="900">Home<Text span c="#00A6BA" inherit>Pare</Text></Title>
+    </Group><div className="tabs">
       <Tabs
         onChange={(value) => setActiveTab(value)}
       >
@@ -53,8 +63,8 @@ export function Dashboard( {token} ) {
         myListings={myListings}
         />}
         
-        </div>  }
-    
+        </div>  
+      }
     </>
   );
 }
