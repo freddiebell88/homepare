@@ -17,7 +17,7 @@ const TABNAMES = {
 export function Dashboard( {token} ) {
   const [activeTab, setActiveTab] = useState(TABNAMES.MY_LISTINGS);
   const [myListings, setMyListings] = useState([])
-
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     axios.get("https://homepare-backend.onrender.com/homes", {
@@ -27,11 +27,13 @@ export function Dashboard( {token} ) {
     }).then((res) => {
     console.log(res.data.homes);
     setMyListings(res.data.homes)})
-    .catch(error => console.log("Error", error.message))
+    .catch(error => setError("Error", error.message))
     }, [ token ])
 
   return (
     <>
+    { error ? <div>{error.message}</div> :
+      <div>
       <h2>User's Dashboard</h2>   
       <div className="tabs">
       <Tabs
@@ -50,7 +52,8 @@ export function Dashboard( {token} ) {
         token={token}
         myListings={myListings}
         />}
-
+        
+        </div>  }
     
     </>
   );

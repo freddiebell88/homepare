@@ -46,7 +46,8 @@ export function UserCollections( {myListings, token, index} ) {
             <CollectionListings 
               token={token}
               index={index}
-              myListings={myListings}
+              thumbHeight={thumbHeight}
+              thumbWidth={thumbWidth}
             />
 
           </div>
@@ -60,11 +61,9 @@ export function UserCollections( {myListings, token, index} ) {
 }
 
 
-export function CollectionListings({myListings, token, index}) {
+export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
   
   const [collectionListings, setCollectionListings] = useState([])
-  const thumbWidth = "100px";
-  const thumbHeight = "100px";
   const usePlaceHolder = (e) => {
     e.target.src = placeholderImage
 }
@@ -81,10 +80,7 @@ export function CollectionListings({myListings, token, index}) {
             authorization: `x-access-token ${token}`
             }
     }).then((res) => {
-    // console.log(res.data.searchNameArray)
     setCollectionListings(res.data.searchNameArray[index - 1].homeArray)})
-    console.log(collectionListings)
-    
     }, [])
 
 
@@ -105,20 +101,6 @@ export function CollectionListings({myListings, token, index}) {
       </div>
     )
 }
-
-// export function CollectionListingsDetails( { myListings} ) {
-//   // get request from collection details endpoint for homes inside collection
-  
-//   return (
-//     <>
-//     {myListings.map((listing) => {
-//       return(
-//         <div key={listing._id}>{listing.address}</div>
-//       )
-//     })}
-//     </>
-//   )
-// }
 
 export function NewCollection( {token} ) {
   const [collectionInput, setCollectionInput] = useState("");
