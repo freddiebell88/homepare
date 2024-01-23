@@ -77,7 +77,7 @@ export function Questionnaire( {token}) {
             </>
           ))} */}
           <div className="confirm-summary-div-in-questionnaire">
-          <p className="confirm-summary-in-questionnaire">You are looking for a <b>{recordedAnswers[0].text}</b>, <b>{recordedAnswers[1].text}</b> home <b>{recordedAnswers[2].text}</b>, and <b>{recordedAnswers[3].text}</b></p>
+          <p className="confirm-summary-in-questionnaire">You are looking for a home with <b>{recordedAnswers[0].text}</b>, <b>{recordedAnswers[1].text}</b>, <b>{recordedAnswers[2].text}</b>, and <b>{recordedAnswers[3].text}.</b></p>
           <br></br>
           <Button  onClick={handleBackClick}>Back</Button>
           <Button onClick={handleConfirmClick}>Confirm</Button>
@@ -101,7 +101,7 @@ export function Questionnaire( {token}) {
                       name={`question${index}`}
                       onClick={() => handleSelectedAnswer(answerObject)}
                     />
-                    {answerObject.text}
+                    {" "}{answerObject.text}
                   </label>
                 </div>
               );
