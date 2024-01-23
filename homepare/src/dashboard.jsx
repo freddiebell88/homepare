@@ -41,11 +41,11 @@ const HomePareIcon = () => {
     <>
     { error ? <div>{error.message}</div> :
       <div>
-      <h2>User's Dashboard</h2>   
+       
       
     <Group>
     <IconHomeCheck color="var(--mantine-color-dark-4)" size={48} /><Title c="var(--mantine-color-dark-4)" order={1} fw="900">Home<Text span c="#00A6BA" inherit>Pare</Text></Title>
-    </Group><div className="tabs">
+    </Group>
       <Tabs
         onChange={(value) => setActiveTab(value)}
       >
@@ -53,8 +53,8 @@ const HomePareIcon = () => {
         <Tabs.Tab value={TABNAMES.MY_LISTINGS}>My Listings</Tabs.Tab>
         <Tabs.Tab value={TABNAMES.MY_COLLECTIONS}>My Collections</Tabs.Tab>
       </Tabs.List>
+      
       </Tabs>
-      </div>
         {activeTab === TABNAMES.MY_LISTINGS && <UserListings token={token}
         myListings={myListings}
         />}
@@ -63,7 +63,8 @@ const HomePareIcon = () => {
         myListings={myListings}
         />}
         
-        </div>  
+        </div>
+         
       }
     </>
   );
