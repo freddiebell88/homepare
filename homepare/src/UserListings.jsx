@@ -59,6 +59,7 @@ export function UserListings({myListings, token}) {
             listingId={activeListing._id}
             inMyListing={true}
             token={token}
+            close={close}
             />}
         </Modal>
 
