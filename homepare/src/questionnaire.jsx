@@ -2,7 +2,7 @@ import questionnaireData from "./data/questionnaire.json";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Button } from "@mantine/core";
+import { Button, Text, Title } from "@mantine/core";
 
 export function Questionnaire( {token}) {
   console.log(questionnaireData);
@@ -70,15 +70,9 @@ export function Questionnaire( {token}) {
     <>
       {index === questionnaireData.length ? (
         <>
-          {/* <h1>You are looking for a:</h1>
-          {recordedAnswers.map((answerObject) => (
-            <>
-              <li className="confirm-results-list-in-questionnaire">{answerObject.text}</li>
-            </>
-          ))} */}
           <div className="confirm-summary-div-in-questionnaire">
-          <p className="confirm-summary-in-questionnaire">You are looking for a home with <b>{recordedAnswers[0].text}</b>, <b>{recordedAnswers[1].text}</b>, <b>{recordedAnswers[2].text}</b>, and <b>{recordedAnswers[3].text}.</b></p>
-          <br></br>
+          <Title order={3}>You are looking for a home with <Text span c="#00A6BA" inherit>{recordedAnswers[0].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[1].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[2].text}</Text>, and <Text span c="#00A6BA" inherit>{recordedAnswers[3].text}</Text>.
+          </Title>
           <Button  onClick={handleBackClick}>Back</Button>
           <Button onClick={handleConfirmClick}>Confirm</Button>
           </div>
