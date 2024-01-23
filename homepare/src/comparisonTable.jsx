@@ -1,5 +1,5 @@
 import dbhomes from "./data/homesfromDB.json";
-import { Table } from '@mantine/core'
+import { Table, ColorSwatch, Group, Tooltip } from '@mantine/core'
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -43,11 +43,21 @@ axios.get('https://homepare-backend.onrender.com/user-preference',{
 
     return (
       <>
+      
         <Table.ScrollContainer maxWidth={500}>
             <Table striped highlightOnHover>
             <Table.Thead>
                 <Table.Tr>
-                <Table.Th> </Table.Th>
+                <Table.Th> 
+                  <Group><Tooltip
+                  label="Matches your Checklist">
+                    <ColorSwatch color="var(--mantine-color-green-light-color)">✔️</ColorSwatch></Tooltip>
+                    
+                    <Tooltip label="Does not match your Checklist"><ColorSwatch color="var(--mantine-color-red-8)">
+                    X
+                    </ColorSwatch></Tooltip>
+                  </Group>
+        </Table.Th>
                 <Table.Th>Price</Table.Th>
                 <Table.Th>SQ Footage</Table.Th>
                 <Table.Th>Bedrooms</Table.Th>
@@ -72,6 +82,7 @@ axios.get('https://homepare-backend.onrender.com/user-preference',{
             <Table.Tbody>{rows}</Table.Tbody>
         </Table>
         </Table.ScrollContainer>
+        
         </>
     )
 }

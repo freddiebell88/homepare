@@ -3,7 +3,7 @@ import { ComparisonTable } from "./comparisonTable";
 import homeData from "./data/homesfromDB.json";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Modal } from "@mantine/core";
+import { Modal, Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
 export function CollectionDetail( {token}) {
@@ -33,9 +33,9 @@ export function CollectionDetail( {token}) {
 
   return (
     <>
-      <Link to="/"><button>Back to My Collections</button></Link>
+      <Link to="/"><Button>Back to My Collections</Button></Link>
       <h1> Collection Title </h1>
-      {listingCheckBoxes.find((checkedbox) => checkedbox === true) && <button onClick={open}>Compare</button>}
+      {listingCheckBoxes.find((checkedbox) => checkedbox === true) && <Button onClick={open}>Compare</Button>}
       <Modal
         opened={opened}
         onClose={close}

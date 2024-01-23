@@ -76,11 +76,11 @@ hr.rounded-divider-in-user-collections {
 }
 
 /* this is all buttons right now */
-button {
+/* button {
   border: solid black 2px;
   padding: 3px;
   margin: 5px;
-}
+} */
 
 /* Questionnaire CSS */
 
@@ -161,18 +161,18 @@ button {
 /* Table CSS */
 
 .checklist-row-in-comparison-table {
-  background-color: black;
+  background-color: var(--mantine-color-dark-8);
   color: white;
 }
 
 .match-in-comparison-table {
-  background-color: green;
+  background-color: var(--mantine-color-green-light-color);
   color:white;
   font-weight: bold;
 }
 
 .not-a-match-in-comparision-table {
-  background-color: red;
+  background-color: var(--mantine-color-red-8);
   opacity: 1;
   color: white;
   font-weight: bold;
