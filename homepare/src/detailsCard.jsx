@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { IconQuestionMark } from "@tabler/icons-react";
 
 export function DetailsCard({
     token, 
@@ -87,8 +88,8 @@ export function DetailsCard({
             <p>SQ Footage: {squareFootage}</p>
             <p>Bedrooms: {`${bedrooms} ${getCompareIcon(bedrooms, preferences.bedrooms)}`
             } </p>
-            <p>Bathrooms: {getCompareIcon(bathrooms, preferences.bathrooms)}</p>
-            <p>Half Bathrooms: {halfBathrooms}</p>
+            <p>Bathrooms: {`${bathrooms} ${getCompareIcon(bathrooms, preferences.bathrooms)}`}</p>
+            <p>Half Bathrooms: {`${halfBathrooms}`}</p>
             <p>Property Type: {propertyType}</p>
             <p>HOA: {getCompareIcon(hoa, preferences.hoa)}</p>
             <p>Garage: {getCompareIcon(garage, preferences.garage)}</p>
