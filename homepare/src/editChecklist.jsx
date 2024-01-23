@@ -113,19 +113,8 @@ console.log(form.initialValues)
         </Radio.Group>
         <br></br>
         <Radio.Group
-            name="yard"
-            label="Are you looking for a yard?"
-            {...form.getInputProps('yard')}
-            >
-          <Group mt="xs">
-            <Radio value="true" label="Yes" />
-            <Radio value="false" label="No" />
-          </Group>
-        </Radio.Group>
-        <br></br>
-        <Radio.Group
             name="garage"
-            label="Are you looking for a Garage?"
+            label="Do you want a home with or without a garage?"
             {...form.getInputProps('garage')}
             >
           <Group mt="xs">
@@ -136,7 +125,7 @@ console.log(form.initialValues)
         <br></br>
         <Radio.Group
             name="hoa"
-            label="Are you looking for an HOA?"
+            label="Do you want a home with or without an HOA (Home Owner's Association)?"
             {...form.getInputProps('hoa')}
             >
           <Group mt="xs">
