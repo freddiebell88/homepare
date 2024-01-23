@@ -73,23 +73,18 @@ export function CollectionListings({myListings, token, index}) {
     console.log(`The listings inside this collection are: ${collectionListings}`)
     }, [])
 
-    // const newMyListingsArray = collectionListings.find((houseID) =>  )
 
     return (
       <>
-      {collectionListings.map((listings) => {
+      {collectionListings.map((collectionlisting) => {
         return(
-          <div key={listings._id}>
-            {myListings.map((listing) => {
-              return(
-                { listings._id === listing._id &&
-                <div key={listing._id}>{listing.address}</div>
-                }
-                )
-            })}
+          <div key={collectionlisting._id}>
+            
             {/* if houseID === listing._id return listing.address
             myCollections.find(houseID => (new variables) houseID === listing._id) */}
-            {/* <CollectionListingsDetails myListings={myListings}/> */}
+            <CollectionListingsDetails 
+            collectionListings={collectionListings}
+            myListings={myListings}/>
           </div>
        )}
       // } */}
@@ -98,7 +93,9 @@ export function CollectionListings({myListings, token, index}) {
     )
 }
 
-export function CollectionListingsDetails( {myListings} ) {
+export function CollectionListingsDetails( {collectionListings, myListings} ) {
+  // if houseID from collection listing matches id from myListings render home details from that home
+  
   return (
     <>
     {myListings.map((listing) => {
