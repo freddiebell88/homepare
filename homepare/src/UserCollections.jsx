@@ -10,6 +10,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Divider } from '@mantine/core';
 import { Dashboard } from "./dashboard";
+import placeholderImage from "./data/pexels-kelly-2950003.jpg"
+
 
 export function UserCollections( {myListings, token, index} ) {
   const thumbWidth = "100px";
@@ -61,6 +63,11 @@ export function UserCollections( {myListings, token, index} ) {
 export function CollectionListings({myListings, token, index}) {
   
   const [collectionListings, setCollectionListings] = useState([])
+  const thumbWidth = "100px";
+  const thumbHeight = "100px";
+  const usePlaceHolder = (e) => {
+    e.target.src = placeholderImage
+}
 
       //   <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
       //   {/* See more should pull up collection details */}
@@ -69,49 +76,49 @@ export function CollectionListings({myListings, token, index}) {
 
 
   useEffect(() => {
-    axios.get("https://homepare-backend.onrender.com/collections", {
+    axios.get("https://homepare-backend.onrender.com/collections-details", {
         headers: {
             authorization: `x-access-token ${token}`
             }
     }).then((res) => {
-    console.log(res.data.search[index - 1].houseID);
-    console.log(`index: ${index}`)
-    setCollectionListings(res.data.search[index - 1].houseID)})
-    console.log(`The listings inside this collection are: ${collectionListings}`)
+    // console.log(res.data.searchNameArray)
+    setCollectionListings(res.data.searchNameArray[index - 1].homeArray)})
+    console.log(collectionListings)
+    
     }, [])
 
 
     return (
-      <>
-      {/* {collectionListings.map((collectionlisting) => { */}
-        {/* return( */}
-          {/* <div key={collectionlisting._id}>
-            {collectionlisting} */}
-            {/* if houseID === listing._id return listing.address
-            myCollections.find(houseID => (new variables) houseID === listing._id) */}
-            <CollectionListingsDetails 
-            myListings={myListings}/>
-          {/* </div> */}
-       {/* )} */}
-      {/* // } */}
-      {/* // )} */}
-      </>
+      <div >
+        {collectionListings.map((coListing) => {
+        return (
+          <div key={coListing._id}>
+            { coListing.images && coListing.images.length >0 && Object.keys(coListing.images[0]).length >0 && <img src={coListing.images[0].Thumbnail}
+                onError={usePlaceHolder}
+                width={thumbWidth} height={thumbHeight}/> }
+                { coListing.images && coListing.images.length === 0 && <img src={placeholderImage}/> }
+            <p>{coListing.address}</p>
+
+          </div>
+        )}
+        )}
+      </div>
     )
 }
 
-export function CollectionListingsDetails( { myListings} ) {
-  // get request from collection details endpoint for homes inside collection
+// export function CollectionListingsDetails( { myListings} ) {
+//   // get request from collection details endpoint for homes inside collection
   
-  return (
-    <>
-    {myListings.map((listing) => {
-      return(
-        <div key={listing._id}>{listing.address}</div>
-      )
-    })}
-    </>
-  )
-}
+//   return (
+//     <>
+//     {myListings.map((listing) => {
+//       return(
+//         <div key={listing._id}>{listing.address}</div>
+//       )
+//     })}
+//     </>
+//   )
+// }
 
 export function NewCollection( {token} ) {
   const [collectionInput, setCollectionInput] = useState("");

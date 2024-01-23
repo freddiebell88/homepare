@@ -77,7 +77,7 @@ export function DetailsCard({
           },
         }
       )
-      .then(close());
+      .then(navigate("/"));
   };
 
   const handleSaveNotes = () => {
@@ -97,9 +97,7 @@ export function DetailsCard({
       .then(close());
   };
 
-  const imgWidth = "200px";
 
-  console.log("here in details card");
 
   return (
     <>
