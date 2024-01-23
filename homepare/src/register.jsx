@@ -43,7 +43,9 @@ export function Register({setAuth}) {
             "email": email,
             "first_name": first_name,
             "last_name": last_name
-        }).catch((err) => setError(err.response.data.non_field_errors[0])).then((res) => {
+        }).catch((err) => {
+            console.log("this is the message", err);
+            setError(err.response.data.non_field_errors[0])}).then((res) => {
         return axios
         .post('https://homepare-backend.onrender.com/login', {
             "username": username,
