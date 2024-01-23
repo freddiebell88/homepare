@@ -62,9 +62,9 @@ export function CollectionListings({myListings, token, index}) {
   
   const [collectionListings, setCollectionListings] = useState([])
 
-        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
-        {/* See more should pull up collection details */}
-      <Divider size="xs" />
+      //   <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
+      //   {/* See more should pull up collection details */}
+      // <Divider size="xs" />
       
 
 
@@ -90,7 +90,6 @@ export function CollectionListings({myListings, token, index}) {
             {/* if houseID === listing._id return listing.address
             myCollections.find(houseID => (new variables) houseID === listing._id) */}
             <CollectionListingsDetails 
-            collectionListings={collectionListings}
             myListings={myListings}/>
           {/* </div> */}
        {/* )} */}
@@ -100,8 +99,8 @@ export function CollectionListings({myListings, token, index}) {
     )
 }
 
-export function CollectionListingsDetails( {collectionListings, myListings} ) {
-  // if houseID from collection listing matches id from myListings render home details from that home
+export function CollectionListingsDetails( { myListings} ) {
+  // get request from collection details endpoint for homes inside collection
   
   return (
     <>

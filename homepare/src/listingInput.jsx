@@ -62,6 +62,7 @@ const SearchBar = ({token}) => {
             setListingList(response.data.property);
             console.log(listingList)
             })
+        .catch(error => console.log("Error", error.message))
     }
 
     return (
