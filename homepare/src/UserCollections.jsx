@@ -76,19 +76,19 @@ export function CollectionListings({myListings, token, index}) {
 
     return (
       <>
-      {collectionListings.map((collectionlisting) => {
-        return(
-          <div key={collectionlisting._id}>
-            
+      {/* {collectionListings.map((collectionlisting) => { */}
+        {/* return( */}
+          {/* <div key={collectionlisting._id}>
+            {collectionlisting} */}
             {/* if houseID === listing._id return listing.address
             myCollections.find(houseID => (new variables) houseID === listing._id) */}
             <CollectionListingsDetails 
             collectionListings={collectionListings}
             myListings={myListings}/>
-          </div>
-       )}
-      // } */}
-      )}
+          {/* </div> */}
+       {/* )} */}
+      {/* // } */}
+      {/* // )} */}
       </>
     )
 }

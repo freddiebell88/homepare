@@ -157,6 +157,7 @@ const handleSubmit = (e) => {
     }
     ).then(
     console.log(myCollections))
+    .then()
 }
 
     return (
