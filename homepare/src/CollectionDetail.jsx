@@ -3,10 +3,10 @@ import { ComparisonTable } from "./comparisonTable";
 import homeData from "./data/homesfromDB.json";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Modal } from "@mantine/core";
+import { Modal, Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-export function CollectionDetail() {
+export function CollectionDetail( {token}) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
@@ -33,9 +33,9 @@ export function CollectionDetail() {
 
   return (
     <>
-      <Link to="/"><button>Back to My Collections</button></Link>
+      <Link to="/"><Button>Back to My Collections</Button></Link>
       <h1> Collection Title </h1>
-      {listingCheckBoxes.find((checkedbox) => checkedbox === true) && <button onClick={open}>Compare</button>}
+      {listingCheckBoxes.find((checkedbox) => checkedbox === true) && <Button onClick={open}>Compare</Button>}
       <Modal
         opened={opened}
         onClose={close}
@@ -44,12 +44,13 @@ export function CollectionDetail() {
         radius={0}
         transitionProps={{ transition: "fade", duration: 200 }}
       >
-        <ComparisonTable 
+        <ComparisonTable token={token}
         homeData={homeData.homes.filter((listing, index) => 
           {if (listingCheckBoxes[index] === true) {
             return true;
           } return false;
-        })}
+        })
+      }
   />
       </Modal>
       <br></br>
