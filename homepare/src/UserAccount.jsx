@@ -1,4 +1,4 @@
-import { TextInput, PasswordInput, Button, Group, Box, Text } from '@mantine/core';
+import { TextInput, PasswordInput, Button, Group, Box, Text, Title } from '@mantine/core';
 import { Link } from "react-router-dom"
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -59,7 +59,8 @@ export function UserAccount({ token }) {
     <div className="w-full h-screen flex justify-center items-center">
     <div className="w-3/12">
       <Text c="red">{ message }</Text>
-    <h1>Your account details:</h1>
+    <Title order={2}>Your account details:</Title>
+    <br></br>
     <form onSubmit={form.onSubmit((values) => saveUpdates(values))}>
       <TextInput
       label="Update E-mail address"
@@ -78,8 +79,8 @@ export function UserAccount({ token }) {
       <br></br>
       <Button type='submit'>Save</Button>
     </form>
-    &nbsp;
-    <Link to="/logout"><Button>Logout?</Button></Link>
+    <br></br>
+    <Link to="/logout"><Button color="red">Logout?</Button></Link>
     </div>
     </div>
     </>

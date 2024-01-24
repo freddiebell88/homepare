@@ -58,7 +58,6 @@ export function UserCollections( {myListings, token, setCollectionDetailDisplay}
               setCollectionDetailDisplay={setCollectionDetailDisplay}
             />
 
-          {/* <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link> */}
           <Divider size="xs" />
           </div>
           </>
@@ -172,7 +171,6 @@ export function NewCollection( {token} ) {
 
   return (
     <>
-
       <form onSubmit={handleSaveCollection}>
         <input
           type="text"

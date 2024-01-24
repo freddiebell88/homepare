@@ -16,7 +16,6 @@ const TABNAMES = {
 };
 
 export function Dashboard( {token} ) {
-  const [activeTab, setActiveTab] = useState(TABNAMES.MY_LISTINGS);
   const [myListings, setMyListings] = useState([])
   const [error, setError] = useState(null)
 
@@ -36,29 +35,19 @@ export function Dashboard( {token} ) {
     <>
     { error ? <div>{error}</div> :
     <div>
- <Group>
-    <IconHomeCheck color="var(--mantine-color-dark-4)" size={48} /><Title c="var(--mantine-color-dark-4)" order={1} fw="900">Home<Text span c="#00A6BA" inherit>Pare</Text></Title>
-    </Group><div className="tabs">
-      <Tabs
-        onChange={(value) => setActiveTab(value)}
-      >
-      <Tabs.List>
-        <Tabs.Tab value={TABNAMES.MY_LISTINGS}>My Listings</Tabs.Tab>
-        <Tabs.Tab value={TABNAMES.MY_COLLECTIONS}>My Collections</Tabs.Tab>
-      </Tabs.List>
-      
-      </Tabs>
-        {activeTab === TABNAMES.MY_LISTINGS && <UserListings token={token}
-        myListings={myListings}
-        />}
-        {activeTab === TABNAMES.MY_COLLECTIONS &&<UserCollections 
+{/* The Group Below is the HomePare Title and Logo */}
+<Group>
+    <IconHomeCheck color="var(--mantine-color-dark-4)" size={48} />
+    <Title c="var(--mantine-color-dark-4)" order={1} fw="900">
+      Home<Text span c="#00A6BA" inherit>Pare</Text>
+      </Title>
+</Group>
+  <UserCollections 
         token={token}
         myListings={myListings}
-        />}
-        
+        />
         </div>
-         
-      </div>}
+      }
       </>
     
   );

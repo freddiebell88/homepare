@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Container, Radio, Group } from "@mantine/core";
+import { Button, Container, Radio, Group, Title } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
 
@@ -80,7 +80,7 @@ console.log(form.initialValues)
         <>
         <Container
         size="30rem">
-        <h1>Edit your checklist:</h1>
+        <Title order={2}>Edit your checklist:</Title>
         <br></br>
         <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
         <Radio.Group
