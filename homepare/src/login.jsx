@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { matchesField, useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks"
-import { TextInput, PasswordInput, Stack, Button, Box, Title } from "@mantine/core"
+import { TextInput, PasswordInput, Stack, Button, Box, Title, Text } from "@mantine/core"
 import { IconUserCircle } from "@tabler/icons-react";
 
 export function Login({ setAuth }) {
@@ -49,6 +49,7 @@ export function Login({ setAuth }) {
 
     return (
         <>
+        { error && <Text>{error}</Text>}
         <div className="w-full flex justify-center h-screen items-center">
         <div className="w-3/12">
         <Title order={2}>Login:</Title>

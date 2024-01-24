@@ -1,9 +1,7 @@
-import dbhomes from "./data/homesfromDB.json";
-import { Table, ColorSwatch, Group, Tooltip } from "@mantine/core";
+import { Table, ColorSwatch, Group, Tooltip, Text } from "@mantine/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// useState for array of selected listings and map through those to build table?
 
 export function ComparisonTable({ homeData, token }) {
   const [errorMessage, setErrorMessage] = useState("")
@@ -78,6 +76,7 @@ export function ComparisonTable({ homeData, token }) {
 
   return (
     <>
+    { errorMessage && <Text >{errorMessage}</Text>}
       <Table.ScrollContainer maxWidth={500}>
         <Table striped highlightOnHover>
           <Table.Thead>

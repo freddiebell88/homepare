@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Container, Radio, Group, Title } from "@mantine/core";
+import { Button, Container, Radio, Group, Title, Text } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
 
@@ -78,6 +78,7 @@ console.log(form.initialValues)
 
     return (
         <>
+        { error && <Text >{error}</Text>}
         <Container
         size="30rem">
         <Title order={2}>Edit your checklist:</Title>

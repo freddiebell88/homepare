@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Text } from "@mantine/core"
 
 export function NewCollection( {token} ) {
     const [collectionInput, setCollectionInput] = useState("");
@@ -29,6 +30,7 @@ export function NewCollection( {token} ) {
   
     return (
       <>
+      { errorMessage && <Text >{errorMessage}</Text>}
         <form onSubmit={handleSaveCollection}>
           <input
             type="text"

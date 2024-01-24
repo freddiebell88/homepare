@@ -59,7 +59,6 @@ export function DetailsCard({
   const handleAddListingClick = () => {
     console.log("add listing button");
     setAddListing();
-    // post listing to db
     axios
       .post(
         "https://homepare-backend.onrender.com/homes",
@@ -109,6 +108,7 @@ export function DetailsCard({
 
   return (
     <>
+    { errorMessage && <Text >{errorMessage}</Text>}
       <div className="detailsCard">
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Card.Section>
@@ -176,7 +176,7 @@ export function DetailsCard({
                 style={{ marginBottom: 14 }}
                 onClick={handleSaveNotes}
               >
-                Save
+                Save Notes
               </Button>
 
               <AddToCollection listingId={listingId} token={token} />
@@ -255,13 +255,14 @@ export function AddToCollection({ close, token, listingId }) {
         )
         .then(console.log(myCollections))
         .then(close())
-      //   .catch((err) => {
-      //     return setErrorMessage(err.response.data.message)
-      //  });
+        .catch((err) => {
+          return setErrorMessage(err.response.data.message)
+       });
     };
 
     return (
       <>
+      { errorMessage && <Text >{errorMessage}</Text>}
         <form method="post" onSubmit={handleSubmit}>
           <label>
             <select

@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Container } from "@mantine/core";
+import { Button, Container, Text } from "@mantine/core";
 import { useState } from "react";
 
 
@@ -28,6 +28,7 @@ export function Logout({ token, username, setAuth }) {
 
     return (
         <>
+        { errorMessage && <Text >{errorMessage}</Text>}
         <div className="w-full h-screen flex justify-center items-center">
         <div className="w-3/12">
         <Container>
