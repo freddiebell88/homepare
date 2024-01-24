@@ -52,7 +52,7 @@ export function CollectionDetail( {token}) {
         transitionProps={{ transition: "fade", duration: 200 }}
       >
         <ComparisonTable token={token}
-        homeData={homeData.homes.filter((listing, index) => 
+        homeData={collectionListings.filter((listing, index) => 
           {if (listingCheckBoxes[index] === true) {
             return true;
           } return false;
