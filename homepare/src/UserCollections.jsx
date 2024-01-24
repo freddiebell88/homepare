@@ -1,29 +1,21 @@
-import { CollectionDetail } from "./CollectionDetail";
-import { ComparisonTable } from "./comparisonTable";
-import homeData from "./data/homes.json";
 import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DetailsCard } from "./detailsCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Divider } from '@mantine/core';
-import { Dashboard } from "./dashboard";
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
+import { NewCollection } from "./NewCollection";
 
 
-export function UserCollections( {myListings, token, setCollectionDetailDisplay} ) {
+export function UserCollections( {token} ) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
   const [errorMessage, setErrorMessage] = useState("");
-  const [opened, { open, close }] = useDisclosure(false);
   const [myCollections, setMyCollections] = useState([]);
-  
 
-  
-  
 
   useEffect(() => {
     axios.get("https://homepare-backend.onrender.com/collections", {
@@ -31,7 +23,6 @@ export function UserCollections( {myListings, token, setCollectionDetailDisplay}
             authorization: `x-access-token ${token}`
             }
     }).then((res) => {
-    console.log(res.data.search);
     setMyCollections(res.data.search)
     }).catch((err) => {
       return setErrorMessage(err.response.data.message)
@@ -40,9 +31,6 @@ export function UserCollections( {myListings, token, setCollectionDetailDisplay}
 
   return (
     <>
-      {/* <Modal opened={opened} onClose={close} centered>
-        <DetailsCard />
-      </Modal> */}
 
       {myCollections.map((collection, index) => {
         index += 1
@@ -55,7 +43,6 @@ export function UserCollections( {myListings, token, setCollectionDetailDisplay}
               index={index}
               thumbHeight={thumbHeight}
               thumbWidth={thumbWidth}
-              setCollectionDetailDisplay={setCollectionDetailDisplay}
             />
 
           <Divider size="xs" />
@@ -70,7 +57,7 @@ export function UserCollections( {myListings, token, setCollectionDetailDisplay}
 }
 
 
-export function CollectionListings({ token, index, thumbHeight, thumbWidth, setCollectionDetailDisplay}) {
+export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
   
   const [collectionListings, setCollectionListings] = useState([])
   const [opened, { open, close }] = useDisclosure(false);
@@ -80,8 +67,6 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth, setC
   const usePlaceHolder = (e) => {
     e.target.src = placeholderImage
 }
-      
-
 
   useEffect(() => {
     axios.get("https://homepare-backend.onrender.com/collections-details", {
@@ -98,18 +83,13 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth, setC
       setActiveListing(listing);
       open();
   }
-  // setCollectionDetailDisplay([1,2,3])
-
-  const handleCollectionDetails = (collectionListings) => {
-    setCollectionDetailDisplay(collectionListings)
-  }
 
     return (
-
+      <>
+      { errorMessage ? <div>{errorMessage}</div> :
       <div className="userCollection" >
       <Modal opened={opened} onClose={close} centered>
             {activeListing && <DetailsCard 
-            // myListings={myListings}
             address={activeListing.address}
             previewImage={activeListing.images[0]}
             squareFootage={activeListing.living_area}
@@ -141,45 +121,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth, setC
         )}
         <Link to="/CollectionDetail" state={collectionListings}><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
       </div>
-    )
-}
-
-export function NewCollection( {token} ) {
-  const [collectionInput, setCollectionInput] = useState("");
-  const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState("");
-
-
-  const handleSaveCollection = (e) => {
-    console.log("save button clicked");
-    console.log(collectionInput);
-    e.preventDefault();
-    axios.post(
-      "https://homepare-backend.onrender.com/collections",
-      {
-        search_name: collectionInput
-      },
-      {
-        headers: {
-          authorization: `x-access-token ${token}`
-        },
       }
-    ).then(navigate("/UserCollections")).catch((err) => {
-      return setErrorMessage(err.response.data.message)
-   })
-  };
-
-  return (
-    <>
-      <form onSubmit={handleSaveCollection}>
-        <input
-          type="text"
-          placeholder="Name your new collection"
-          onChange={(e) => setCollectionInput(e.target.value)}
-          value={collectionInput}
-        />
-        <button type="submit">Save</button>
-      </form>
-    </>
-  );
+      </>
+    )
 }
