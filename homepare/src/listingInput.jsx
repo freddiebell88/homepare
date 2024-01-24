@@ -55,7 +55,7 @@ const SearchBar = ({token}) => {
         axios.get(`https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=${input}`, {
             headers: {
                 Accept: 'application/json',
-                apikey: '8a27f74ad8a3190542411b44de720777',
+                apikey: 'da579c4ec106a16cb2eb8d426ec83d8e',
             }
         })
         .then((response) =>{
