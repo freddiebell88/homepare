@@ -49,7 +49,7 @@ export function UserCollections( {myListings, token, index} ) {
               thumbHeight={thumbHeight}
               thumbWidth={thumbWidth}
             />
-
+          <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
           </div>
           </>
         )
@@ -84,7 +84,6 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
             }
     }).then((res) => {
     setCollectionListings(res.data.searchNameArray[index - 1].homeArray)})
-    .catch(error => setError(`Error, ${error.message}`))
     }, [])
 
     const handleModalOpen = (listing) => {
