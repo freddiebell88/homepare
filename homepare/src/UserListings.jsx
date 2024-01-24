@@ -11,7 +11,6 @@ export function UserListings({myListings, token}) {
 
     const thumbWidth = "100px";
     const thumbHeight = "100px";
-    // const [myListings, setMyListings] = useState([])
     const [opened, { open, close }] = useDisclosure(false);
     const [activeListing, setActiveListing] = useState(null);
 
@@ -19,26 +18,11 @@ export function UserListings({myListings, token}) {
         e.target.src = placeholderImage
     }
 
-    // useEffect(() => {
-    // axios.get("https://homepare-backend.onrender.com/homes", {
-    //     headers: {
-    //         authorization: `x-access-token ${token}`
-    //         }
-    // }).then((res) => {
-    // console.log(res.data.homes);
-    // setMyListings(res.data.homes)})
-    // }, [ token ])
-
-    console.log('here - in user listings')
-
     
     const handleModalOpen = (listing) => {
         setActiveListing(listing);
         open();
     }
-
-    // if (activeListing === null ) {return <div className='no-listings-div-in-user-listings'><p className='no-listings-text-in-user-listings'>No listings saved yet!</p><p className='link-in-no-listings-in-user-listings'><Link to="/listingInput">Click here to add a listing</Link></p></div>
-    // }
 
     return (
         <>
