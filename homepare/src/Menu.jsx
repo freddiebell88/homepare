@@ -17,17 +17,16 @@ export function Menu({children}) {
         </MantineMenu.Target>
 
         <MantineMenu.Dropdown>
-        <Link to="/listingInput">
-                <MantineMenu.Item leftSection={<IconHomePlus size={25} />}>
-                <Text size="md" fw={500}>Add a Listing</Text>
-                </MantineMenu.Item>
-        </Link>
-
             <Link to="/">
                 <MantineMenu.Item leftSection={<IconHomeHeart size={25} />}>
                 <Text size="md" fw={500}>My Dashboard</Text>
                 </MantineMenu.Item>
                 </Link>
+            <Link to="/listingInput">
+                <MantineMenu.Item leftSection={<IconHomePlus size={25} />}>
+                <Text size="md" fw={500}>Add a Listing</Text>
+                </MantineMenu.Item>
+            </Link>
             <Link to="/checklist">
                 <MantineMenu.Item leftSection={<IconHomeCheck size={25} />}>
                 <Text size="md" fw={500}>Checklist</Text>

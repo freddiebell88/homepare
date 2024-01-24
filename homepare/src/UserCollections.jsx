@@ -53,6 +53,7 @@ export function UserCollections( {myListings, token, index} ) {
               thumbWidth={thumbWidth}
             />
           <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
+          <Divider size="xs" />
           </div>
           </>
         )
@@ -158,8 +159,7 @@ export function NewCollection( {token} ) {
 
   return (
     <>
-        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
-        <Divider size="xs" />
+        
       <form onSubmit={handleSaveCollection}>
         <input
           type="text"
