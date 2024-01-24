@@ -28,6 +28,8 @@ export function Logout({ token, username, setAuth }) {
 
     return (
         <>
+        <div className="w-full h-screen flex justify-center items-center">
+        <div className="w-3/12">
         <Container>
             <h1>Are you sure you want to log out?</h1>
             <br></br>
@@ -35,6 +37,8 @@ export function Logout({ token, username, setAuth }) {
             &nbsp;
             <Link to="/UserAccount"><Button type="submit">No</Button></Link> 
         </Container>
+        </div>
+        </div>
         </>
     )
 }
