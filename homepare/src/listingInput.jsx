@@ -9,7 +9,7 @@ import { Modal, Button, Title, Text, Input, Group } from "@mantine/core";
 export function ListingInput({ token }) {
   return (
     <>
-      <Text size="lg" fw={400} ta="center" fs="italic">
+      <Text size="lg" fw={400} ta="center" fs="italic" mt="md">
         Input the street address, city, and state of the listing you are trying
         to find
       </Text>
@@ -61,7 +61,6 @@ const SearchBar = ({ token }) => {
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
-    
     const handleSearchSubmit = (e) => {
         e.preventDefault()
         axios.get(`https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=${input}`, {
