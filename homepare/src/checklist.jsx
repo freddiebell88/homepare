@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Button, Container } from "@mantine/core"
+import { Button, Container, Title, Text, Modal} from "@mantine/core"
+
 
 export function Checklist ({token}) {
     const [errorMessage, setErrorMessage] = useState("")
@@ -32,14 +33,14 @@ export function Checklist ({token}) {
         <Container
         size="30rem"
         >
-        <h1>Checklist</h1>
-        <h2>You are looking for:</h2>
-        <h3>{`${preferences.bedrooms} Bedrooms`}</h3>
-        <h3>{`${preferences.bathrooms} Bathrooms`}</h3>
-        <h3>{`Garage: ${preferences.garage === true ? 'Yes' : 'No'}`}</h3>
-        <h3>{`HOA: ${preferences.hoa === true ? 'Yes' : 'No'}`}</h3>
+        
+        <Title order={2} >You are looking for:</Title>
+        <Text size="lg">{`${preferences.bedrooms} Bedrooms`}</Text>
+        <Text >{`${preferences.bathrooms} Bathrooms`}</Text>
+        <Text >{`Garage: ${preferences.garage === true ? 'Yes' : 'No'}`}</Text>
+        <Text >{`HOA: ${preferences.hoa === true ? 'Yes' : 'No'}`}</Text>
         &nbsp;
-        <Link to="/editChecklist"><Button>Edit?</Button></Link>
+        <Link to="/editChecklist"><Button size="md">Edit?</Button></Link>
         </Container>
         </>
     )
