@@ -121,8 +121,8 @@ export function DetailsCard({
             Property Type: {propertyType}
           </Text>
           <Group justify="space-between" mt="md" mb="xs">
-            <Badge color="var(--mantine-color-dark-8)">PRICE: ${price}</Badge>
-            <Badge color="var(--mantine-color-dark-8)">
+            <Badge size="lg" color="var(--mantine-color-dark-8)">PRICE: ${price}</Badge>
+            <Badge size="lg" color="var(--mantine-color-dark-8)">
               SQ Footage: {squareFootage}
             </Badge>
           </Group>
@@ -134,27 +134,27 @@ export function DetailsCard({
           >
             <div>
               <Text size="md" c="dimmed">
-                Bedrooms:{" "}
-                {`${bedrooms} ${getCompareIcon(
+                {getCompareIcon(
                   bedrooms,
                   preferences.bedrooms
-                )}`}{" "}
+                )} Bedrooms: {`${bedrooms} `}
               </Text>
             </div>
             <div>
               <Text size="md" c="dimmed" ta="right">
-                Bathrooms:{" "} {`${bathrooms} ${getCompareIcon(bathrooms, preferences.bathrooms)}`}
+              {getCompareIcon(bathrooms, preferences.bathrooms)} Bathrooms: {`${bathrooms} `}
               </Text>
             </div>
 
             <div>
               <Text size="md" c="dimmed">
-                HOA: {getCompareIcon(hoa, preferences.hoa)}
+              {getCompareIcon(hoa, preferences.hoa)} HOA: {preferences.hoa === true ? "Yes" : "No"}
+                
               </Text>
             </div>
             <div>
               <Text size="md" c="dimmed" ta="right">
-                Garage: {getCompareIcon(garage, preferences.garage)}
+              {getCompareIcon(garage, preferences.garage)} Garage: {preferences.garage === true ? "Yes" : "No"}
               </Text>
             </div>
           </SimpleGrid>

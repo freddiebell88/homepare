@@ -9,7 +9,7 @@ import { Modal, Button, Title, Text, Input, Group } from "@mantine/core";
 export function ListingInput({ token }) {
   return (
     <>
-      <Text size="lg" fw={400} ta="center" fs="italic">
+      <Text size="lg" fw={400} ta="center" fs="italic" mt="md">
         Input the street address, city, and state of the listing you are trying
         to find
       </Text>
@@ -69,7 +69,7 @@ const SearchBar = ({ token }) => {
         {
           headers: {
             Accept: "application/json",
-            apikey: "8a27f74ad8a3190542411b44de720777",
+            apikey: "da579c4ec106a16cb2eb8d426ec83d8e",
           },
         }
       )
