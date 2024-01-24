@@ -61,27 +61,23 @@ const SearchBar = ({ token }) => {
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .get(
-        `https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=${input}`,
-        {
-          headers: {
-            Accept: "application/json",
-            apikey: "da579c4ec106a16cb2eb8d426ec83d8e",
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-        setListingList(response.data.property);
-        console.log(listingList);
-      })
-      .catch((err) => {
-        return setErrorMessage(err.response.data.message);
-      });
-  };
+    const handleSearchSubmit = (e) => {
+        e.preventDefault()
+        axios.get(`https://api.gateway.attomdata.com/propertyapi/v1.0.0/property/basicprofile?address=${input}`, {
+            headers: {
+                Accept: 'application/json',
+                apikey: 'da579c4ec106a16cb2eb8d426ec83d8e',
+            }
+        })
+        .then((response) =>{
+            console.log(response.data);
+            setListingList(response.data.property);
+            console.log(listingList)
+            })
+            .catch((err) => {
+                return setErrorMessage(err.response.data.message)
+             })
+    }
 
   return (
     <>
