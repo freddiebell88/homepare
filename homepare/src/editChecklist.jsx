@@ -16,7 +16,6 @@ export function EditChecklist({ token }) {
         bedrooms : 0,
         garage : false ,
         hoa : false,
-        yard : false
     });
 
     const form = useForm({ 
@@ -35,35 +34,33 @@ export function EditChecklist({ token }) {
             bedrooms :`${res.data.bedrooms}`,
             garage : `${res.data.garage}` ,
             hoa : `${res.data.hoa}` ,
-            yard : `${res.data.yard}` ,
         })
         form.setValues({
             bathrooms : `${res.data.bathrooms}`,
             bedrooms :`${res.data.bedrooms}`,
             garage : `${res.data.garage}` ,
             hoa : `${res.data.hoa}` ,
-            yard : `${res.data.yard}` ,
         })
         console.log(res.data)
-      })}, [token])
+      }).catch((err) => {
+        return setError(err.response.data.message)
+     })}, [token])
 
 
  
 
     const handleSubmit = (values) => {
-        const { bathrooms, bedrooms, garage, hoa, yard } = values;
+        const { bathrooms, bedrooms, garage, hoa } = values;
         console.log('updating user preferences')
         console.log(`${token}`)
         console.log(bathrooms)
         console.log(bedrooms)
         console.log(hoa)
-        console.log(yard)
         console.log(garage)
         axios.put('https://homepare-backend.onrender.com/user-preference', {
             "bathrooms": bathrooms,
             "bedrooms": bedrooms,
             "hoa": hoa,
-            "yard": yard,
             "garage": garage,
         }, {
             headers: {
@@ -71,7 +68,9 @@ export function EditChecklist({ token }) {
             }
         }).then((res) => {
             navigate('/checklist')
-    }).catch((err) => setError(err.response.data.non_field_errors[0]))
+    }).catch((err) => {
+      return setError(err.response.data.message)
+   })
     
 }
 
@@ -113,19 +112,8 @@ console.log(form.initialValues)
         </Radio.Group>
         <br></br>
         <Radio.Group
-            name="yard"
-            label="Are you looking for a yard?"
-            {...form.getInputProps('yard')}
-            >
-          <Group mt="xs">
-            <Radio value="true" label="Yes" />
-            <Radio value="false" label="No" />
-          </Group>
-        </Radio.Group>
-        <br></br>
-        <Radio.Group
             name="garage"
-            label="Are you looking for a Garage?"
+            label="Do you want a home with or without a garage?"
             {...form.getInputProps('garage')}
             >
           <Group mt="xs">
@@ -136,7 +124,7 @@ console.log(form.initialValues)
         <br></br>
         <Radio.Group
             name="hoa"
-            label="Are you looking for an HOA?"
+            label="Do you want a home with or without an HOA (Home Owner's Association)?"
             {...form.getInputProps('hoa')}
             >
           <Group mt="xs">

@@ -19,6 +19,7 @@ import { ListingInput } from './listingInput';
 import { Menu } from './Menu'
 import { Logout } from './logout'
 import { EditChecklist } from './editChecklist'
+import { NotFound } from './NotFound'
 
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
       path="logout"
       element={<Logout username={username} token={token} setAuth={setAuth} />}
       />
+      <Route path='*' element={<NotFound />}/>
     </Routes>
     </MantineProvider>
   

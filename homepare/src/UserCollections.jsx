@@ -17,6 +17,7 @@ export function UserCollections( {myListings, token, index} ) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
+  const [errorMessage, setErrorMessage] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
   const [myCollections, setMyCollections] = useState([]);
  
@@ -28,7 +29,9 @@ export function UserCollections( {myListings, token, index} ) {
     }).then((res) => {
     console.log(res.data.search);
     setMyCollections(res.data.search)
-    })
+    }).catch((err) => {
+      return setErrorMessage(err.response.data.message)
+   })
     }, [ token ])
 
   return (
@@ -67,13 +70,11 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
   const [collectionListings, setCollectionListings] = useState([])
   const [opened, { open, close }] = useDisclosure(false);
   const [activeListing, setActiveListing] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const usePlaceHolder = (e) => {
     e.target.src = placeholderImage
 }
-
-      //   <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
-      //   {/* See more should pull up collection details */}
-      // <Divider size="xs" />
       
 
 
@@ -83,7 +84,9 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
             authorization: `x-access-token ${token}`
             }
     }).then((res) => {
-    setCollectionListings(res.data.searchNameArray[index - 1].homeArray)})
+    setCollectionListings(res.data.searchNameArray[index - 1].homeArray)}).catch((err) => {
+      return setErrorMessage(err.response.data.message)
+   })
     }, [])
 
     const handleModalOpen = (listing) => {
@@ -148,11 +151,15 @@ export function NewCollection( {token} ) {
           authorization: `x-access-token ${token}`
         },
       }
-    ).then(navigate("/UserCollections"))
+    ).then(navigate("/UserCollections")).catch((err) => {
+      return setErrorMessage(err.response.data.message)
+   })
   };
 
   return (
     <>
+        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
+        <Divider size="xs" />
       <form onSubmit={handleSaveCollection}>
         <input
           type="text"

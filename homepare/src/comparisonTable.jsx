@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 // useState for array of selected listings and map through those to build table?
 
 export function ComparisonTable({ homeData, token }) {
+  const [errorMessage, setErrorMessage] = useState("")
   const [preferences, setPreferences] = useState({
     bathrooms: 0,
     bedrooms: 0,
     garage: false,
     hoa: false,
-    yard: false,
   });
 
   useEffect(() => {
@@ -24,7 +24,9 @@ export function ComparisonTable({ homeData, token }) {
       .then((res) => {
         setPreferences(res.data);
         console.log(res.data);
-      });
+      }).catch((err) => {
+        return setErrorMessage(err.response.data.message)
+     });
   }, [token]);
 
   // if {listing.bedrooms === preference.bedrooms ? className="table-test-class" : className="table-test-class-pink"}
@@ -64,15 +66,6 @@ export function ComparisonTable({ homeData, token }) {
       </Table.Td>
       <Table.Td
         className={
-          listing.yard === preferences.yard
-            ? "match-in-comparison-table"
-            : "not-a-match-in-comparision-table"
-        }
-      >
-        {listing.yard === true ? "Yes" : "No"}
-      </Table.Td>
-      <Table.Td
-        className={
           listing.garage === preferences.garage
             ? "match-in-comparison-table"
             : "not-a-match-in-comparision-table"
@@ -109,7 +102,6 @@ export function ComparisonTable({ homeData, token }) {
               <Table.Th>Bedrooms</Table.Th>
               <Table.Th>Bathrooms</Table.Th>
               <Table.Th>HOA</Table.Th>
-              <Table.Th>Yard</Table.Th>
               <Table.Th>Garage</Table.Th>
             </Table.Tr>
           </Table.Thead>
@@ -132,9 +124,6 @@ export function ComparisonTable({ homeData, token }) {
               </Table.Th>
               <Table.Th className="checklist-row-in-comparison-table">
                 {preferences.hoa === true ? "Yes" : "No"}
-              </Table.Th>
-              <Table.Th className="checklist-row-in-comparison-table">
-                {preferences.yard === true ? "Yes" : "No"}
               </Table.Th>
               <Table.Th className="checklist-row-in-comparison-table">
                 {preferences.garage === true ? "Yes" : "No"}

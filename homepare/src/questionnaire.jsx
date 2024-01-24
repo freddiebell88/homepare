@@ -2,7 +2,8 @@ import questionnaireData from "./data/questionnaire.json";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Button } from "@mantine/core";
+import { Button, Text, Title, Group } from "@mantine/core";
+import { IconArrowRight, IconArrowLeft, IconCheckbox } from '@tabler/icons-react';
 
 export function Questionnaire( {token}) {
   console.log(questionnaireData);
@@ -51,9 +52,8 @@ export function Questionnaire( {token}) {
         address: null,
         bedrooms: recordedAnswers[0].value,
         bathrooms: recordedAnswers[1].value,
-        yard: recordedAnswers[2].value,
-        garage: recordedAnswers[3].value,
-        hoa: recordedAnswers[4].value,
+        garage: recordedAnswers[2].value,
+        hoa: recordedAnswers[3].value,
         UserID: "",
       }, {
         headers: {
@@ -62,32 +62,29 @@ export function Questionnaire( {token}) {
       })
       .then((result) => {
         navigate("/");
-      });
-    // .catch((error) => setError(error.response.data.))
+      }).catch((err) => {
+        return setError(err.response.data.message)
+     })
   };
 
   return (
     <>
       {index === questionnaireData.length ? (
         <>
-          {/* <h1>You are looking for a:</h1>
-          {recordedAnswers.map((answerObject) => (
-            <>
-              <li className="confirm-results-list-in-questionnaire">{answerObject.text}</li>
-            </>
-          ))} */}
           <div className="confirm-summary-div-in-questionnaire">
-          <p className="confirm-summary-in-questionnaire">You are looking for a <b>{recordedAnswers[0].text}</b>, <b>{recordedAnswers[1].text}</b> home <b>{recordedAnswers[2].text}</b>, <b>{recordedAnswers[3].text}</b>, and <b>{recordedAnswers[4].text}</b>.</p>
-          <br></br>
-          <Button  onClick={handleBackClick}>Back</Button>
-          <Button onClick={handleConfirmClick}>Confirm</Button>
+          <Group justify="center">
+          <Title order={3}>You are looking for a home with <Text span c="#00A6BA" inherit>{recordedAnswers[0].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[1].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[2].text}</Text>, and <Text span c="#00A6BA" inherit>{recordedAnswers[3].text}</Text>.
+          </Title>
+          <Button size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>
+          <Button onClick={handleConfirmClick} size="md" leftSection={<IconCheckbox size={14} />}>Confirm</Button>
+    </Group>
           </div>
         </>
       ) : (
         <>
         <div className="div-around-questions-answers-and-buttons-in-questionnaire">
           <form>
-            <p className="questions-in-questionnaire">{questionnaireData[index].question}</p>
+            <Text size="xl">{questionnaireData[index].question}</Text>
             {questionnaireData[index].answers.map((answerObject) => {
               console.log(answerObject);
               return (
@@ -101,21 +98,24 @@ export function Questionnaire( {token}) {
                       name={`question${index}`}
                       onClick={() => handleSelectedAnswer(answerObject)}
                     />
-                    {answerObject.text}
+                    {" "}{answerObject.text}
                   </label>
                 </div>
               );
             })}
           </form>
-          {index != 0 && <Button onClick={handleBackClick}>Back</Button>}
+          <Group justify="center" style={{ marginTop: 14 }}>
+          {index != 0 && <Button size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>}
           {
             <Button
               onClick={handleNextClick}
+              size="md"
+              rightSection={<IconArrowRight size={14} />}
               disabled={selectedAnswer.value ? false : true}
             >
               Next
             </Button>
-          }
+          }</Group>
           
           </div>
         </>

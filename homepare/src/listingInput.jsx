@@ -47,6 +47,7 @@ const SearchBar = ({token}) => {
     const [input, setInput] = useState('');
     const [listingList, setListingList] = useState([]);
     const [loading, setLoading] = useState(true)
+    const [errorMessage, setErrorMessage] = useState("")
 
     
     const handleSearchSubmit = (e) => {
@@ -62,7 +63,9 @@ const SearchBar = ({token}) => {
             setListingList(response.data.property);
             console.log(listingList)
             })
-        .catch(error => console.log("Error", error.message))
+            .catch((err) => {
+                return setErrorMessage(err.response.data.message)
+             })
     }
 
     return (

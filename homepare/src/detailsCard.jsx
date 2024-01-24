@@ -30,6 +30,7 @@ export function DetailsCard({
   close,
 }) {
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
   const [addListing, setAddListing] = useState([]);
   const [preferences, setPreferences] = useState({
     bathrooms: 0,
@@ -50,7 +51,9 @@ export function DetailsCard({
       .then((res) => {
         setPreferences(res.data);
         console.log(res.data);
-      });
+      }).catch((err) => {
+        return setErrorMessage(err.response.data.message)
+     });
   }, [token]);
 
   const handleAddListingClick = () => {
@@ -78,7 +81,9 @@ export function DetailsCard({
           },
         }
       )
-      .then(navigate("/"));
+      .then(navigate("/")).catch((err) => {
+        return setErrorMessage(err.response.data.message)
+     });
   };
 
   const handleSaveNotes = () => {
@@ -95,7 +100,9 @@ export function DetailsCard({
           },
         }
       )
-      .then(close());
+      .then(close()).catch((err) => {
+        return setErrorMessage(err.response.data.message)
+     });
   };
 
 
@@ -199,6 +206,7 @@ const getCompareIcon = (a,b) => {
 export function AddToCollection({ close, token, listingId }) {
   const [myCollections, setMyCollections] = useState([]);
   const [selectedCollection, setSelectedCollection] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
     search_name: "",
   });
@@ -215,7 +223,9 @@ export function AddToCollection({ close, token, listingId }) {
           setMyCollections(res.data.search);
           console.log(`collections data ${res.data.search}`);
           console.log(myCollections);
-        });
+        }).catch((err) => {
+          return setErrorMessage(err.response.data.message)
+       });
     }, []);
 
     const handleCollectionChange = (e) => {
@@ -244,7 +254,9 @@ export function AddToCollection({ close, token, listingId }) {
           }
         )
         .then(console.log(myCollections))
-        .then(close());
+        .then(close()).catch((err) => {
+          return setErrorMessage(err.response.data.message)
+       });
     };
 
     return (
