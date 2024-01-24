@@ -67,10 +67,6 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
   const usePlaceHolder = (e) => {
     e.target.src = placeholderImage
 }
-
-      //   <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
-      //   {/* See more should pull up collection details */}
-      // <Divider size="xs" />
       
 
 
@@ -125,6 +121,8 @@ export function NewCollection( {token} ) {
 
   return (
     <>
+        <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
+        <Divider size="xs" />
       <form onSubmit={handleSaveCollection}>
         <input
           type="text"

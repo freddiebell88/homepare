@@ -27,19 +27,9 @@
         "text": "1 bathroom"}
 ]
     },
-    {
-        "questionID" : "2",
-        "question": "Do you want a home with or without a yard?",
-        "answers" : [
-            {"value": "true",
-            "text": "with a yard"},
-            {"value": "false",
-            "text" : "without a yard"}
-            ]
-},
 {
-    "questionID" : "3",
-    "question": "With or without a garage?",
+    "questionID" : "2",
+    "question": "Do you want a home with or without a garage?",
     "answers" : [
         {"value": "true",
             "text": "with a garage"},
@@ -47,7 +37,7 @@
             "text" : "without a garage"}]
 },
 {
-    "questionID" : "4",
+    "questionID" : "3",
     "question": "With or without an HOA (Home Owner's Association)?",
     "answers" : [
         {"value": "true",
