@@ -54,7 +54,9 @@ export function Register({setAuth}) {
             console.log(res);
             setAuth(username, res.data.token)
             navigate('/questionnaire')
-        })
+        }).catch((err) => {
+            return setError(err.response.data.message)
+         })
 
     };
 

@@ -32,6 +32,8 @@ export function UserAccount({ token }) {
          }}).then((res) => {
             console.log(res.data.user[0])
             setUserProfile(res.data.user[0])
+      }).catch((err) => {
+         return setMessage(err.response.data.message)
       })}, [token]);
 
       const saveUpdates = (values) => {

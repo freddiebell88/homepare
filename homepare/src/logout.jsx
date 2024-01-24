@@ -1,9 +1,11 @@
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { Button, Container, Flex } from "@mantine/core";
+import { useState } from "react";
 
 
 export function Logout({ token, username, setAuth }) {
+    const [errorMessage, setErrorMessage] = useState("")
 
     const navigate = useNavigate()
     console.log({token})
@@ -19,7 +21,9 @@ export function Logout({ token, username, setAuth }) {
             setAuth("", "")
             console.log("Logged out")
             navigate('/login')
-        })
+        }).catch((err) => {
+            return setErrorMessage(err.response.data.message)
+         })
     }
 
     return (
