@@ -1,14 +1,20 @@
-import { DetailsCard } from "./detailsCard";
 import { ComparisonTable } from "./comparisonTable";
 import homeData from "./data/homesfromDB.json";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export function CollectionDetail( {token}) {
+
+
+export function CollectionDetail( {token, collectionDetailDisplay}) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
+
+  const location = useLocation()
+  const collectionListings = location.state
+
+  console.log(collectionListings)
 
   const [listingCheckBoxes, setlistingCheckBoxes] = useState(
     new Array(homeData.homes.length).fill(false)
@@ -30,6 +36,7 @@ export function CollectionDetail( {token}) {
     setlistingCheckBoxes(updatedListingCheckBoxes);
     //we need to send information from each checked box that identifies the listings
   };
+
 
   return (
     <>

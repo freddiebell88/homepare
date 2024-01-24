@@ -254,9 +254,10 @@ export function AddToCollection({ close, token, listingId }) {
           }
         )
         .then(console.log(myCollections))
-        .then(close()).catch((err) => {
-          return setErrorMessage(err.response.data.message)
-       });
+        .then(close())
+      //   .catch((err) => {
+      //     return setErrorMessage(err.response.data.message)
+      //  });
     };
 
     return (
