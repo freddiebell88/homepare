@@ -42,7 +42,9 @@ export function EditChecklist({ token }) {
             hoa : `${res.data.hoa}` ,
         })
         console.log(res.data)
-      })}, [token])
+      }).catch((err) => {
+        return setError(err.response.data.message)
+     })}, [token])
 
 
  
@@ -66,7 +68,9 @@ export function EditChecklist({ token }) {
             }
         }).then((res) => {
             navigate('/checklist')
-    }).catch((err) => setError(err.response.data.non_field_errors[0]))
+    }).catch((err) => {
+      return setError(err.response.data.message)
+   })
     
 }
 

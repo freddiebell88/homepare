@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 // useState for array of selected listings and map through those to build table?
 
 export function ComparisonTable({ homeData, token }) {
+  const [errorMessage, setErrorMessage] = useState("")
   const [preferences, setPreferences] = useState({
     bathrooms: 0,
     bedrooms: 0,
@@ -23,7 +24,9 @@ export function ComparisonTable({ homeData, token }) {
       .then((res) => {
         setPreferences(res.data);
         console.log(res.data);
-      });
+      }).catch((err) => {
+        return setErrorMessage(err.response.data.message)
+     });
   }, [token]);
 
   // if {listing.bedrooms === preference.bedrooms ? className="table-test-class" : className="table-test-class-pink"}

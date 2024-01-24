@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button, Container } from "@mantine/core"
 
 export function Checklist ({token}) {
+    const [errorMessage, setErrorMessage] = useState("")
     const [preferences, setPreferences] = useState({
         bathrooms : 0,
         bedrooms : 0,
@@ -19,7 +20,9 @@ export function Checklist ({token}) {
       }).then((res) => {
         setPreferences(res.data)
         console.log(res.data)
-      })}, [token])
+      }).catch((err) => {
+        return setErrorMessage(err.response.data.message)
+     })}, [token])
 
 
 

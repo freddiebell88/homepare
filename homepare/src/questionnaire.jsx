@@ -62,8 +62,9 @@ export function Questionnaire( {token}) {
       })
       .then((result) => {
         navigate("/");
-      });
-    // .catch((error) => setError(error.response.data.))
+      }).catch((err) => {
+        return setError(err.response.data.message)
+     })
   };
 
   return (
