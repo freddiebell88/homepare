@@ -2,7 +2,8 @@ import questionnaireData from "./data/questionnaire.json";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Text, Title } from "@mantine/core";
+import { Button, Text, Title, Group } from "@mantine/core";
+import { IconArrowRight, IconArrowLeft, IconCheckbox } from '@tabler/icons-react';
 
 export function Questionnaire( {token}) {
   console.log(questionnaireData);
@@ -71,17 +72,19 @@ export function Questionnaire( {token}) {
       {index === questionnaireData.length ? (
         <>
           <div className="confirm-summary-div-in-questionnaire">
+          <Group justify="center">
           <Title order={3}>You are looking for a home with <Text span c="#00A6BA" inherit>{recordedAnswers[0].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[1].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[2].text}</Text>, and <Text span c="#00A6BA" inherit>{recordedAnswers[3].text}</Text>.
           </Title>
-          <Button  onClick={handleBackClick}>Back</Button>
-          <Button onClick={handleConfirmClick}>Confirm</Button>
+          <Button size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>
+          <Button onClick={handleConfirmClick} size="md" leftSection={<IconCheckbox size={14} />}>Confirm</Button>
+    </Group>
           </div>
         </>
       ) : (
         <>
         <div className="div-around-questions-answers-and-buttons-in-questionnaire">
           <form>
-            <p className="questions-in-questionnaire">{questionnaireData[index].question}</p>
+            <Text size="xl">{questionnaireData[index].question}</Text>
             {questionnaireData[index].answers.map((answerObject) => {
               console.log(answerObject);
               return (
@@ -101,15 +104,18 @@ export function Questionnaire( {token}) {
               );
             })}
           </form>
-          {index != 0 && <Button onClick={handleBackClick}>Back</Button>}
+          <Group justify="center" style={{ marginTop: 14 }}>
+          {index != 0 && <Button size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>}
           {
             <Button
               onClick={handleNextClick}
+              size="md"
+              rightSection={<IconArrowRight size={14} />}
               disabled={selectedAnswer.value ? false : true}
             >
               Next
             </Button>
-          }
+          }</Group>
           
           </div>
         </>
