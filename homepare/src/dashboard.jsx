@@ -33,7 +33,7 @@ export function Dashboard( {token} ) {
 
   return (
     <>
-    { error ? <div>{error}</div> :
+    { error ? <Text c="red">{error}</Text> :
     <div>
 {/* The Group Below is the HomePare Title and Logo */}
 <Group>

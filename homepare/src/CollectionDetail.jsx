@@ -1,5 +1,4 @@
 import { ComparisonTable } from "./comparisonTable";
-import homeData from "./data/homesfromDB.json";
 import { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { Modal, Button } from "@mantine/core";
@@ -25,7 +24,6 @@ export function CollectionDetail( {token}) {
     { open: thumbnailModalOpen, close: thumbnailModalClose },
   ] = useDisclosure(false);
   const [opened, { open, close }] = useDisclosure(false);
-  //this useDisclosure is for Mantine
 
 
   const handleThumbnailCheckOnChange = (listingIndex) => {

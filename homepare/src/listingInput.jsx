@@ -81,6 +81,7 @@ const SearchBar = ({ token }) => {
 
   return (
     <>
+    { errorMessage && <Text c="red" >{errorMessage}</Text>}
       <form onSubmit={handleSearchSubmit}>
         <Group justify="center" mt="md" mb="md">
           <Input

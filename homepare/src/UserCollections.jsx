@@ -4,7 +4,7 @@ import { DetailsCard } from "./detailsCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Divider } from '@mantine/core';
+import { Divider, Text } from '@mantine/core';
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 import { NewCollection } from "./NewCollection";
 
@@ -31,7 +31,7 @@ export function UserCollections( {token} ) {
 
   return (
     <>
-
+      { errorMessage && <Text c="red" >{errorMessage}</Text>}
       {myCollections.map((collection, index) => {
         index += 1
         return (
@@ -86,7 +86,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
 
     return (
       <>
-      { errorMessage ? <div>{errorMessage}</div> :
+      { errorMessage ? <Text c="red" >{errorMessage}</Text> :
       <div className="userCollection" >
       <Modal opened={opened} onClose={close} centered>
             {activeListing && <DetailsCard 

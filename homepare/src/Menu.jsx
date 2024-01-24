@@ -1,5 +1,3 @@
-import { UserAccount } from "./UserAccount";
-import { Checklist } from "./checklist";
 import { useDisclosure } from '@mantine/hooks';
 import { Burger, Text} from '@mantine/core';
 import { IconHomePlus, IconHomeCheck, IconHomeCog, IconHomeHeart} from '@tabler/icons-react';
@@ -43,11 +41,3 @@ export function Menu({children}) {
         </>
     )
 }
-
-//   {/* <p>🍔 Menu:</p>
-//         <p>Add Listing</p>
-//         <ListingInput />
-//         <p>Checklist</p> */}
-//         {/* <Checklist /> */}
-//         {/* <p>My Account</p> */}
-//         {/* <UserAccount /> */}

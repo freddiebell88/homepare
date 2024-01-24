@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Route, useNavigate, Link } from "react-router-dom";
 import { Questionnaire } from "./questionnaire";
-import { TextInput, PasswordInput, Button, Title } from '@mantine/core';
+import { TextInput, PasswordInput, Button, Title, Text } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconAt, IconUserCircle, IconAsterisk } from "@tabler/icons-react";
 import { useState } from "react";
@@ -62,6 +62,7 @@ export function Register({setAuth}) {
 
     return (
         <>
+        { error && <Text c="red" >{error}</Text>}
         <div className="w-full h-screen flex items-center justify-center">
         <div className="w-3/12">
         <Title order={2}>Sign up below:</Title>

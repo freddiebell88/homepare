@@ -34,7 +34,7 @@ export function Checklist ({token}) {
         <Container
         size="30rem"
         >
-        
+        { errorMessage && <Text c="red">{errorMessage}</Text> }
         <Title order={2} >You are looking for:</Title>
         <br></br>
         <Text size="lg">{`${preferences.bedrooms} Bedrooms`}</Text>
