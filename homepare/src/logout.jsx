@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Button, Container, Flex } from "@mantine/core";
+import { Button, Container } from "@mantine/core";
 import { useState } from "react";
 
 
@@ -11,6 +11,7 @@ export function Logout({ token, username, setAuth }) {
     console.log({token})
 
     const handleClick = () => {
+        setAuth("", "");
         axios.get('https://homepare-backend.onrender.com/logout',
         {
             headers:{
@@ -18,7 +19,6 @@ export function Logout({ token, username, setAuth }) {
             }
         })
         .then(() => {
-            setAuth("", "")
             console.log("Logged out")
             navigate('/login')
         }).catch((err) => {

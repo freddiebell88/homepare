@@ -3,8 +3,8 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { matchesField, useForm } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks"
-import { Input, TextInput, CloseButton, PasswordInput, Stack, Button, Box } from "@mantine/core"
-import { IconMail, IconUserCircle } from "@tabler/icons-react";
+import { TextInput, PasswordInput, Stack, Button, Box, Title } from "@mantine/core"
+import { IconUserCircle } from "@tabler/icons-react";
 
 export function Login({ setAuth }) {
     const [value, setValue] = useState('Clear me');
@@ -51,7 +51,8 @@ export function Login({ setAuth }) {
         <>
         <div className="w-full flex justify-center h-screen items-center">
         <div className="w-3/12">
-        <h1>Login:</h1>
+        <Title order={2}>Login:</Title>
+        <br></br>
         <Box maw={340} mx="auto">
             <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
             <TextInput
