@@ -25,7 +25,9 @@ import { NotFound } from './NotFound'
 function App() {
   const [token, setToken] = useLocalStorageState('token');
   const [username, setUsername] = useLocalStorageState('username');
+  const [collectionDetailDisplay, setCollectionDetailDisplay] = useState([])
 
+  // setCollectionDetailDisplay([1,2,3])
 
   const setAuth = (username, token) => {
     setUsername(username);
@@ -63,7 +65,8 @@ function App() {
       />
       <Route
       path="CollectionDetail"
-      element={<CollectionDetail username={username} token={token}/>}
+      element={<CollectionDetail username={username} token={token}
+      collectionDetailDisplay={collectionDetailDisplay} />}
       />
       <Route
       path="comparisonTable"
@@ -80,7 +83,9 @@ function App() {
       <Route
       path="UserCollections"
       element={
-      <Menu><UserCollections username={username} token={token}/></Menu>}
+      <Menu><UserCollections username={username} token={token}
+      setCollectionDetailDisplay={setCollectionDetailDisplay}
+      /></Menu>}
       />
       <Route
       path="UserListings"

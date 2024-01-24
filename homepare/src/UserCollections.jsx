@@ -13,14 +13,18 @@ import { Dashboard } from "./dashboard";
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 
 
-export function UserCollections( {myListings, token, index} ) {
+export function UserCollections( {myListings, token, setCollectionDetailDisplay} ) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
   const [errorMessage, setErrorMessage] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
   const [myCollections, setMyCollections] = useState([]);
- 
+  
+
+  
+  
+
   useEffect(() => {
     axios.get("https://homepare-backend.onrender.com/collections", {
         headers: {
@@ -51,8 +55,11 @@ export function UserCollections( {myListings, token, index} ) {
               index={index}
               thumbHeight={thumbHeight}
               thumbWidth={thumbWidth}
+              setCollectionDetailDisplay={setCollectionDetailDisplay}
             />
-          <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
+
+          {/* <Link to="/CollectionDetail"><p className="compare-listings-in-user-collections">Compare Listings?</p></Link> */}
+          <Divider size="xs" />
           </div>
           </>
         )
@@ -64,9 +71,8 @@ export function UserCollections( {myListings, token, index} ) {
 }
 
 
-export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
+export function CollectionListings({ token, index, thumbHeight, thumbWidth, setCollectionDetailDisplay}) {
   
-  const [error, setError] = useState(null)
   const [collectionListings, setCollectionListings] = useState([])
   const [opened, { open, close }] = useDisclosure(false);
   const [activeListing, setActiveListing] = useState(null);
@@ -92,6 +98,11 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
     const handleModalOpen = (listing) => {
       setActiveListing(listing);
       open();
+  }
+  // setCollectionDetailDisplay([1,2,3])
+
+  const handleCollectionDetails = (collectionListings) => {
+    setCollectionDetailDisplay(collectionListings)
   }
 
     return (
@@ -129,6 +140,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
           </div>
         )}
         )}
+        <Link to="/CollectionDetail" state={collectionListings}><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
       </div>
     )
 }
@@ -136,6 +148,8 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth}) {
 export function NewCollection( {token} ) {
   const [collectionInput, setCollectionInput] = useState("");
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+
 
   const handleSaveCollection = (e) => {
     console.log("save button clicked");
