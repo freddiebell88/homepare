@@ -9,7 +9,6 @@ export function Checklist ({token}) {
         bedrooms : 0,
         garage : false ,
         hoa : false,
-        yard : false
     });
 
     useEffect(() => {
@@ -34,7 +33,6 @@ export function Checklist ({token}) {
         <h2>You are looking for:</h2>
         <h3>{`${preferences.bedrooms} Bedrooms`}</h3>
         <h3>{`${preferences.bathrooms} Bathrooms`}</h3>
-        <h3>{`Yard: ${preferences.yard === true ? 'Yes' : 'No'}`}</h3>
         <h3>{`Garage: ${preferences.garage === true ? 'Yes' : 'No'}`}</h3>
         <h3>{`HOA: ${preferences.hoa === true ? 'Yes' : 'No'}`}</h3>
         &nbsp;

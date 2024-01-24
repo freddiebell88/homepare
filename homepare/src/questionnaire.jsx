@@ -52,9 +52,8 @@ export function Questionnaire( {token}) {
         address: null,
         bedrooms: recordedAnswers[0].value,
         bathrooms: recordedAnswers[1].value,
-        yard: recordedAnswers[2].value,
-        garage: recordedAnswers[3].value,
-        hoa: recordedAnswers[4].value,
+        garage: recordedAnswers[2].value,
+        hoa: recordedAnswers[3].value,
         UserID: "",
       }, {
         headers: {
