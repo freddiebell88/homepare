@@ -1,8 +1,8 @@
 import { UserAccount } from "./UserAccount";
 import { Checklist } from "./checklist";
 import { useDisclosure } from '@mantine/hooks';
-import { Burger } from '@mantine/core';
-import { IconHome2, IconGauge, IconChevronRight, IconActivity, IconCircleOff, IconFolderHeart, IconHeartCheck, IconUserCircle} from '@tabler/icons-react';
+import { Burger, Text} from '@mantine/core';
+import { IconHomePlus, IconHomeCheck, IconHomeCog, IconHomeHeart} from '@tabler/icons-react';
 import { Menu as MantineMenu } from '@mantine/core';
 import { Link } from "react-router-dom";
 
@@ -17,14 +17,27 @@ export function Menu({children}) {
         </MantineMenu.Target>
 
         <MantineMenu.Dropdown>
-            <Link to="/listingInput"><MantineMenu.Item>
-                <IconHome2/> Add a Listing </MantineMenu.Item></Link>
-            <Link to="/"><MantineMenu.Item>
-                <IconFolderHeart/> My Dashboard</MantineMenu.Item></Link>
-            <Link to="/checklist"> <MantineMenu.Item>
-                <IconHeartCheck/> Checklist</MantineMenu.Item></Link>
-            <Link to="/UserAccount"><MantineMenu.Item>
-                <IconUserCircle/> My Account</MantineMenu.Item></Link>
+        <Link to="/listingInput">
+                <MantineMenu.Item leftSection={<IconHomePlus size={25} />}>
+                <Text size="md" fw={500}>Add a Listing</Text>
+                </MantineMenu.Item>
+        </Link>
+
+            <Link to="/">
+                <MantineMenu.Item leftSection={<IconHomeHeart size={25} />}>
+                <Text size="md" fw={500}>My Dashboard</Text>
+                </MantineMenu.Item>
+                </Link>
+            <Link to="/checklist">
+                <MantineMenu.Item leftSection={<IconHomeCheck size={25} />}>
+                <Text size="md" fw={500}>Checklist</Text>
+                </MantineMenu.Item>
+                </Link>
+            <Link to="/UserAccount">
+                <MantineMenu.Item leftSection={<IconHomeCog size={25} />}>
+                <Text size="md" fw={500}>My Account</Text>
+                </MantineMenu.Item>
+                </Link>
         </MantineMenu.Dropdown>
         </MantineMenu>
         {children}
