@@ -30,6 +30,7 @@ export function Checklist ({token}) {
     console.log('this is checklist')
     return(
         <>
+        <div className="w-full h-screen flex justify-center items-center">
         <Container
         size="30rem"
         >
@@ -43,6 +44,8 @@ export function Checklist ({token}) {
         <br></br>
         <Link to="/editChecklist"><Button size="md">Edit?</Button></Link>
         </Container>
+        </div>
+        
         </>
     )
 }
