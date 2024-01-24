@@ -60,6 +60,7 @@ export function UserAccount({ token }) {
     <div className="w-3/12">
       <Text c="red">{ message }</Text>
     <h1>Your account details:</h1>
+    <br></br>
     <form onSubmit={form.onSubmit((values) => saveUpdates(values))}>
       <TextInput
       label="Update E-mail address"
@@ -78,8 +79,8 @@ export function UserAccount({ token }) {
       <br></br>
       <Button type='submit'>Save</Button>
     </form>
-    &nbsp;
-    <Link to="/logout"><Button>Logout?</Button></Link>
+    <br></br>
+    <Link to="/logout"><Button color="red">Logout?</Button></Link>
     </div>
     </div>
     </>
