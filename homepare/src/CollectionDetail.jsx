@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 
 
 
-export function CollectionDetail( {token, collectionDetailDisplay}) {
+export function CollectionDetail( {token}) {
   const thumbWidth = "100px";
   const thumbHeight = "100px";
 
@@ -17,9 +17,9 @@ export function CollectionDetail( {token, collectionDetailDisplay}) {
   console.log(collectionListings)
 
   const [listingCheckBoxes, setlistingCheckBoxes] = useState(
-    new Array(homeData.homes.length).fill(false)
+    new Array(collectionListings.length).fill(false)
   );
-  //the value inside new Array is hardcoded for demo, it should be updated to what the length of listings in the collection
+  
   const [
     thumbnailModalOpened,
     { open: thumbnailModalOpen, close: thumbnailModalClose },
@@ -71,7 +71,7 @@ export function CollectionDetail( {token, collectionDetailDisplay}) {
         </Modal> */}
 
       <div className="thumnail-grid-in-collections-detail">
-        {homeData.homes.map((listing, index) => {
+        {collectionListings.map((listing, index) => {
           console.log('listing', listing)
           return (
             <div
@@ -80,7 +80,7 @@ export function CollectionDetail( {token, collectionDetailDisplay}) {
               className="listing-thumbnail-in-collections-detail"
             >
               <img
-                src={listing.images[0].Thumbnail}
+                src={listing.images[0]}
                 width={thumbWidth}
                 height={thumbHeight}
               />
