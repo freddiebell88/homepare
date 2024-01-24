@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Route, useNavigate, Link } from "react-router-dom";
 import { Questionnaire } from "./questionnaire";
-import { TextInput, PasswordInput, Button, Group, Box } from '@mantine/core';
+import { TextInput, PasswordInput, Button, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconAt, IconUserCircle, IconAsterisk } from "@tabler/icons-react";
 import { useState } from "react";
@@ -64,6 +64,8 @@ export function Register({setAuth}) {
         <>
         <div className="w-full h-screen flex items-center justify-center">
         <div className="w-3/12">
+        <Title order={2}>Sign up below:</Title>
+        <br></br>
         <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
             <TextInput 
             withAsterisk
@@ -98,7 +100,7 @@ export function Register({setAuth}) {
             placeholder="Enter your last name"
             {...form.getInputProps('last_name')}
             />
-    
+        <br></br>
         <Button type="submit">Register</Button>
         </form>
         {/* <Questionnaire /> */}
