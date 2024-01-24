@@ -49,7 +49,7 @@ export function Login({ setAuth }) {
 
     return (
         <>
-        { error && <Text>{error}</Text>}
+        { error && <Text c="red">{error}</Text>}
         <div className="w-full flex justify-center h-screen items-center">
         <div className="w-3/12">
         <Title order={2}>Login:</Title>

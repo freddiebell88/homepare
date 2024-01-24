@@ -78,7 +78,7 @@ console.log(form.initialValues)
 
     return (
         <>
-        { error && <Text >{error}</Text>}
+        { error && <Text c="red" >{error}</Text>}
         <Container
         size="30rem">
         <Title order={2}>Edit your checklist:</Title>

@@ -28,7 +28,7 @@ export function Logout({ token, username, setAuth }) {
 
     return (
         <>
-        { errorMessage && <Text >{errorMessage}</Text>}
+        { errorMessage && <Text c="red" >{errorMessage}</Text>}
         <div className="w-full h-screen flex justify-center items-center">
         <div className="w-3/12">
         <Container>

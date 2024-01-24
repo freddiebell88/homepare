@@ -62,7 +62,7 @@ export function Register({setAuth}) {
 
     return (
         <>
-        { error && <Text >{error}</Text>}
+        { error && <Text c="red" >{error}</Text>}
         <div className="w-full h-screen flex items-center justify-center">
         <div className="w-3/12">
         <Title order={2}>Sign up below:</Title>

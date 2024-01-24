@@ -30,7 +30,7 @@ export function NewCollection( {token} ) {
   
     return (
       <>
-      { errorMessage && <Text >{errorMessage}</Text>}
+      { errorMessage && <Text c="red" >{errorMessage}</Text>}
         <form onSubmit={handleSaveCollection}>
           <input
             type="text"

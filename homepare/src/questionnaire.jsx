@@ -69,7 +69,7 @@ export function Questionnaire( {token}) {
 
   return (
     <>
-      { error && <Text >{error}</Text>}
+      { error && <Text c="red" >{error}</Text>}
       {index === questionnaireData.length ? (
         <>
           <div className="confirm-summary-div-in-questionnaire">

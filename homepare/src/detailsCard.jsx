@@ -108,7 +108,7 @@ export function DetailsCard({
 
   return (
     <>
-    { errorMessage && <Text >{errorMessage}</Text>}
+    { errorMessage && <Text c="red" >{errorMessage}</Text>}
       <div className="detailsCard">
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Card.Section>
@@ -262,7 +262,7 @@ export function AddToCollection({ close, token, listingId }) {
 
     return (
       <>
-      { errorMessage && <Text >{errorMessage}</Text>}
+      { errorMessage && <Text c="red" >{errorMessage}</Text>}
         <form method="post" onSubmit={handleSubmit}>
           <label>
             <select

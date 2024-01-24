@@ -76,7 +76,7 @@ export function ComparisonTable({ homeData, token }) {
 
   return (
     <>
-    { errorMessage && <Text >{errorMessage}</Text>}
+    { errorMessage && <Text c="red" >{errorMessage}</Text>}
       <Table.ScrollContainer maxWidth={500}>
         <Table striped highlightOnHover>
           <Table.Thead>

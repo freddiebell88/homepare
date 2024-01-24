@@ -56,7 +56,6 @@ export function UserAccount({ token }) {
 
    return (
     <>
-    { message && <Text >{message}</Text>}
     <div className="w-full h-screen flex justify-center items-center">
     <div className="w-3/12">
       <Text c="red">{ message }</Text>
