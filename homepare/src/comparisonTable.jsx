@@ -89,13 +89,13 @@ export function ComparisonTable({ homeData, token }) {
               <Table.Th>
                 <Group>
                   <Tooltip label="Matches your Checklist">
-                    <ColorSwatch color="var(--mantine-color-green-light-color)">
+                    <ColorSwatch color="#ccedff">
                       ✔️
                     </ColorSwatch>
                   </Tooltip>
 
                   <Tooltip label="Does not match your Checklist">
-                    <ColorSwatch color="var(--mantine-color-red-8)">
+                    <ColorSwatch color="#099cff">
                       X
                     </ColorSwatch>
                   </Tooltip>

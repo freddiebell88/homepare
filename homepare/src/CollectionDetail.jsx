@@ -53,7 +53,7 @@ export function CollectionDetail({ token }) {
         opened={opened}
         onClose={close}
         title=""
-        fullScreen
+        size="auto"
         radius={0}
         transitionProps={{ transition: "fade", duration: 200 }}
       >
@@ -70,8 +70,8 @@ export function CollectionDetail({ token }) {
 
       <Flex
       gap="xs"
-      justify="flex-start"
-      align="flex-start"
+      justify="center"
+      align="flex-center"
       direction="row"
       wrap="wrap"
     >
@@ -91,7 +91,7 @@ export function CollectionDetail({ token }) {
                 width={thumbWidth}
                 height={thumbHeight}
               />
-              <Text size="sm" truncate="end">{listing.address}</Text>
+              <Text tt="capitalize" size="sm" truncate="end">{listing.address}</Text>
         
                 <Checkbox
                   type="checkbox"
