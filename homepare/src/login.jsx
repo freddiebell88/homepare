@@ -44,7 +44,7 @@ export function Login({ setAuth }) {
                 setAuth(username, res.data.token)
                 navigate('/')
             })
-            .catch((err) => setError(err.response.data.non_field_errors[0]))
+            .catch((err) => setError(err.response.data.message))
     }
 
     return (
