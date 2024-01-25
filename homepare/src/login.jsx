@@ -52,7 +52,7 @@ export function Login({ setAuth }) {
         { error && <Text c="red">{error}</Text>}
         <div className="w-full flex justify-center h-screen items-center">
         <div className="w-3/12">
-        <Title order={2}>Login:</Title>
+        <Title order={2}>Login</Title>
         <br></br>
         <Box maw={340} mx="auto">
             <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>

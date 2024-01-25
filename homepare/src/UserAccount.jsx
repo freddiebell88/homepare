@@ -59,7 +59,7 @@ export function UserAccount({ token }) {
     <div className="w-full h-screen flex justify-center items-center">
     <div className="w-3/12">
       <Text c="red">{ message }</Text>
-    <Title order={2}>Your account details:</Title>
+    <Title order={2}>Your account details</Title>
     <br></br>
     <form onSubmit={form.onSubmit((values) => saveUpdates(values))}>
       <TextInput
@@ -68,13 +68,13 @@ export function UserAccount({ token }) {
       {...form.getInputProps('email')}
       />
       <TextInput
-      label="Update Username:"
+      label="Update Username"
       placeholder={userProfile.username}
       {...form.getInputProps('username')}
       />
       <TextInput
-      label="Update Password:"
-      placeholder="Password:"
+      label="Update Password"
+      placeholder="Password"
       />
       <br></br>
       <Button type='submit'>Save</Button>
