@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Button, Container, Title, Text, Modal} from "@mantine/core"
+import { Button, Container, Title, Text, Group} from "@mantine/core"
 
 
 export function Checklist ({token}) {
@@ -35,14 +35,14 @@ export function Checklist ({token}) {
         size="30rem"
         >
         { errorMessage && <Text c="red">{errorMessage}</Text> }
-        <Title order={2} >You are looking for:</Title>
+        <Title ta="center" order={2} >You are looking for a home with:</Title>
         <br></br>
-        <Text size="lg">{`${preferences.bedrooms} Bedrooms`}</Text>
-        <Text >{`${preferences.bathrooms} Bathrooms`}</Text>
-        <Text >{`Garage: ${preferences.garage === true ? 'Yes' : 'No'}`}</Text>
-        <Text >{`HOA: ${preferences.hoa === true ? 'Yes' : 'No'}`}</Text>
+        <Text ta="center" fw={500} size="xl">{`${preferences.bedrooms} Bedrooms`}</Text>
+        <Text ta="center" fw={500} size="xl">{`${preferences.bathrooms} Bathrooms`}</Text>
+        <Text ta="center" fw={500} size="xl">{preferences.garage === true ? 'Yes' : 'No'} Garage</Text>
+        <Text fw={500} ta="center" size="xl">{preferences.hoa === true ? 'Yes' : 'No'} HOA</Text>
         <br></br>
-        <Link to="/editChecklist"><Button size="md">Edit?</Button></Link>
+        <Group ta="center" justify="center"><Link to="/editChecklist"><Button size="md">Edit?</Button></Link></Group>
         </Container>
         </div>
         
