@@ -29,6 +29,12 @@ export function UserCollections({ token }) {
       });
   }, [token]);
 
+  if (myCollections.length != 0 ){
+
+  if (myCollections[0].search_name === "My List") {
+    myCollections[0].search_name = "My Homes"
+  }}
+
   return (
     <>
     <NewCollection token={token} />
