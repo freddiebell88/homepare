@@ -1,10 +1,9 @@
-import { Modal, Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DetailsCard } from "./detailsCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Divider, Text } from '@mantine/core';
+import { Divider, Text, Modal, Group, Box } from '@mantine/core';
 import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 import { NewCollection } from "./NewCollection";
 
@@ -45,7 +44,7 @@ export function UserCollections( {token} ) {
               thumbWidth={thumbWidth}
             />
 
-          <Divider size="xs" />
+          
           </div>
           </>
         )
@@ -95,7 +94,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
     return (
       <>
       { errorMessage ? <Text c="red" >{errorMessage}</Text> :
-      <div className="userCollection" >
+      <Box className="userCollection" >
       <Modal opened={opened} onClose={close} centered>
             {activeListing && <DetailsCard 
             address={activeListing.address}
@@ -118,19 +117,40 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
         
         {collectionListings.map((coListing) => {
         return (
-          <div className="listing-thumbnail-in-user-collections" key={coListing._id} onClick={()=>handleModalOpen(coListing)}>
-            { coListing.images && coListing.images.length >0 && Object.keys(coListing.images[0]).length >0 && <img src={coListing.images[0][0]}
-                onError={usePlaceHolder}
-                width={thumbWidth} height={thumbHeight}/> }
-                { coListing.images && coListing.images.length === 0 && <img src={placeholderImage}/> }
-            <p className="thumbnail-text-in-user-collections">{coListing.address}</p>
-
-          </div>
+          <Box
+                mah={200}
+                p="xs"
+                className="listing-thumbnail-in-user-collections"
+                style={{ '--radius': '0.5rem', borderRadius: 'var(--radius)' }}
+                key={coListing._id}
+                onClick={() => handleModalOpen(coListing)}
+              >
+                <Group>
+                {coListing.images &&
+                  coListing.images.length > 0 &&
+                  Object.keys(coListing.images[0]).length > 0 && (
+                    <img
+                      src={coListing.images[0].Thumbnail}
+                      onError={usePlaceHolder}
+                      width={thumbWidth}
+                      height={thumbHeight}
+                    />
+                  )}
+                {coListing.images && coListing.images.length === 0 && (
+                  <img src={placeholderImage} />
+                )}
+                <Text className="thumbnail-text-in-user-collections" truncate="end">
+                  {coListing.address}
+                </Text>
+                </Group>
+              </Box>
         )}
         )}
-        <Link to="/CollectionDetail" state={collectionListings}><p className="compare-listings-in-user-collections">Compare Listings?</p></Link>
-      </div>
+        
+      </Box>
       }
+      <Link to="/CollectionDetail" state={collectionListings}><Text ta="right" size="md" td="underline" pb="xs" >Compare Listings?</Text></Link>
+      <Divider size="xs" />
       </>
     )
 }
