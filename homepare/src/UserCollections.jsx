@@ -141,7 +141,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
                 borderRadius: "var(--radius)",
               }}
             >
-              <Link to="/listingInput">
+              <Link to="/listing-input">
                 <IconHomePlus color="var(--mantine-color-dark-4)" size={40} />
               <Text ta="center" size="sm">Add a listing!</Text>
               </Link>
