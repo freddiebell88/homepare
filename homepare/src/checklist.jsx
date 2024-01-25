@@ -42,7 +42,7 @@ export function Checklist ({token}) {
         <Text ta="center" fw={500} size="xl">{preferences.garage === true ? 'Yes' : 'No'} Garage</Text>
         <Text fw={500} ta="center" size="xl">{preferences.hoa === true ? 'Yes' : 'No'} HOA</Text>
         <br></br>
-        <Group ta="center" justify="center"><Link to="/editChecklist"><Button size="md">Edit?</Button></Link></Group>
+        <Group ta="center" justify="center"><Link to="/edit-checklist"><Button size="md">Edit?</Button></Link></Group>
         </Container>
         </div>
         
