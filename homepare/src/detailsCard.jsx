@@ -92,6 +92,10 @@ export function DetailsCard({
      });
   };
 
+  const returnToSearch = () => {
+    window.location.reload()
+  }
+
   const handleSaveNotes = () => {
     // post notes to API
     axios
@@ -195,6 +199,7 @@ export function DetailsCard({
               <AddToCollection listingId={listingId} token={token} />
             </>
           ) : (
+            <>
             <Button
               color="blue"
               fullWidth
@@ -204,6 +209,16 @@ export function DetailsCard({
             >
               Add to My Listings
             </Button>
+            <Button
+              color="blue"
+              fullWidth
+              mt="md"
+              radius="md"
+              onClick={returnToSearch}
+            >
+              Cancel
+            </Button>
+            </>
           )}
         </Card>
       </div>
