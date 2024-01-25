@@ -30,7 +30,7 @@ export function Logout({ token, username, setAuth }) {
         <>
         { errorMessage && <Text c="red" >{errorMessage}</Text>}
         <div className="w-full h-screen flex justify-center items-center">
-        <div className="w-3/12">
+        <div className="w-3/5">
         <Container>
             <h1>Are you sure you want to log out?</h1>
             <br></br>

@@ -62,7 +62,7 @@ export function Register({setAuth}) {
         <>
         { error && <Text c="red" >{error}</Text>}
         <div className="w-full h-screen flex items-center justify-center">
-        <div className="w-3/12">
+        <div className="w-3/5">
         <Title order={2}>Sign up below</Title>
         <br></br>
         <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>

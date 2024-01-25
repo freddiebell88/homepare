@@ -57,7 +57,7 @@ export function UserAccount({ token }) {
    return (
     <>
     <div className="w-full h-screen flex justify-center items-center">
-    <div className="w-3/12">
+    <div className="w-3/5">
       <Text c="red">{ message }</Text>
     <Title order={2}>Your account details</Title>
     <br></br>
