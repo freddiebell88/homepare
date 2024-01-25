@@ -27,7 +27,12 @@ export function ComparisonTable({ homeData, token }) {
      });
   }, [token]);
 
-  
+  for (let i=0; i < homeData.length - 1; i++) {
+    if (homeData[i].sentiment != null){
+      homeData[i].sentiment = homeData[i].sentiment.split('.')[0]
+    }
+  }
+  console.log("Home data: ", homeData)
 
   const rows = homeData.map((listing) => (
     <Table.Tr key={listing.id}>
