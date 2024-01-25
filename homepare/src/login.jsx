@@ -50,8 +50,8 @@ export function Login({ setAuth }) {
     return (
         <>
         { error && <Text c="red">{error}</Text>}
-        <div className="w-full flex justify-center h-screen items-center">
-        <div className="w-3/12">
+        <div className="w-screen flex justify-center h-screen items-center">
+        <div className="w-3/5">
         <Title order={2}>Login</Title>
         <br></br>
         <Box maw={340} mx="auto">
