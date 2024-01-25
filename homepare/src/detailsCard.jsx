@@ -30,6 +30,7 @@ export function DetailsCard({
   halfBathrooms,
   notes,
   close,
+  updateCollection
 }) {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
@@ -187,7 +188,8 @@ export function DetailsCard({
               </Button> 
               </> 
 
-              <AddToCollection listingId={listingId} token={token} />
+              <AddToCollection listingId={listingId} token={token}
+              updateCollection={updateCollection} />
             </>
           ) : (
             <Button
@@ -211,7 +213,7 @@ const getCompareIcon = (a,b) => {
   else return "❌";
 }
 
-export function AddToCollection({ close, token, listingId }) {
+export function AddToCollection({ close, token, listingId, updateCollection }) {
   const [myCollections, setMyCollections] = useState([]);
   const [selectedCollection, setSelectedCollection] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -267,13 +269,13 @@ export function AddToCollection({ close, token, listingId }) {
             },
           }
         )
-        .then(axios.get(`https://homepare-backend.onrender.com/home/${listingId}`,
+        .then(() => (axios.get(`https://homepare-backend.onrender.com/home/${listingId}`,
         {
           headers: {
             authorization: `x-access-token ${token}`,
           },
-        }))
-        .then((res) => setMyCollections([...myCollections, res.data]))
+        })))
+        .then((res) => updateCollection(res.data))
 
         // .then(close())
         .catch((err) => {
