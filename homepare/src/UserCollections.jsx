@@ -141,7 +141,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
                     coListing.images.length > 0 &&
                     Object.keys(coListing.images[0]).length > 0 && (
                       <img
-                        src={coListing.images[0].Thumbnail}
+                        src={coListing.images[0][0]}
                         onError={usePlaceHolder}
                         width={thumbWidth}
                         height={thumbHeight}
