@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { IconHomeOff } from '@tabler/icons-react';
+import { IconHomeStar } from '@tabler/icons-react';
 import {
   Card,
   SimpleGrid,
@@ -57,6 +57,11 @@ export function DetailsCard({
         return setErrorMessage(err.response.data.message)
      });
   }, [token]);
+
+  //if previewimage wasnt passed in or error set a default value
+  // if (!previewImage) {
+  //   previewImage = 
+  // }
 
   const handleAddListingClick = () => {
     console.log("add listing button");
@@ -114,9 +119,9 @@ export function DetailsCard({
     <>
     { errorMessage && <Text c="red" >{errorMessage}</Text>}
       <div className="detailsCard">
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
+        <Card shadow="sm" padding="lg" m="lg" radius="md" withBorder >
           <Card.Section>
-            <Image src={previewImage} className="detailsCardImage" alt="thumbnail of home" />
+        {previewImage ? <Image src={previewImage} className="detailsCardImage" alt="thumbnail of home" /> : <Group justify="center"><IconHomeStar size={100} /></Group>}
           </Card.Section>
           <Text size="lg" fw={700} ta="center">
             {address}
