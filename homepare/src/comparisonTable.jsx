@@ -27,8 +27,7 @@ export function ComparisonTable({ homeData, token }) {
      });
   }, [token]);
 
-  // if {listing.bedrooms === preference.bedrooms ? className="table-test-class" : className="table-test-class-pink"}
-  //if listing.bedrooms has the same value as preference.bedrooms the classname is table-test-class else table-test-class-pink
+  
 
   const rows = homeData.map((listing) => (
     <Table.Tr key={listing.id}>
@@ -71,6 +70,7 @@ export function ComparisonTable({ homeData, token }) {
       >
         {listing.garage === true ? "Yes" : "No"}
       </Table.Td>
+      <Table.Td>{listing.sentiment}</Table.Td>
     </Table.Tr>
   ));
 
@@ -102,6 +102,7 @@ export function ComparisonTable({ homeData, token }) {
               <Table.Th>Bathrooms</Table.Th>
               <Table.Th>HOA</Table.Th>
               <Table.Th>Garage</Table.Th>
+              <Table.Th>Your Sentiment</Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Thead>
