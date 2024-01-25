@@ -3,9 +3,10 @@ import { DetailsCard } from "./detailsCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Divider, Text, Modal, Group, Box } from "@mantine/core";
+import { Divider, Text, Modal, Group, Box, Title } from "@mantine/core";
 import placeholderImage from "./data/pexels-kelly-2950003.jpg";
 import { NewCollection } from "./NewCollection";
+import { IconHomePlus } from '@tabler/icons-react';
 
 export function UserCollections({ token }) {
   const thumbWidth = "100px";
@@ -130,7 +131,21 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
             )}
           </Modal>
           {collectionListings.length === 0 ? (
-            <Text>Add a listing!</Text>
+            <Box
+              justify="center"
+              mah={200}
+              p="xs"
+              className="listing-thumbnail-in-user-collections"
+              style={{
+                "--radius": "0.5rem",
+                borderRadius: "var(--radius)",
+              }}
+            >
+              <Link to="/listingInput">
+                <IconHomePlus color="var(--mantine-color-dark-4)" size={40} />
+              <Text ta="center" size="sm">Add a listing!</Text>
+              </Link>
+            </Box>
           ) : (
             collectionListings.map((coListing) => {
               return (
