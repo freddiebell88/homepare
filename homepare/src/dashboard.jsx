@@ -36,6 +36,7 @@ export function Dashboard( {token} ) {
     <div>
 {/* The Group Below is the HomePare Title and Logo */}
 <Group>
+  <Menu></Menu>
     <IconHomeCheck color="var(--mantine-color-dark-4)" size={48} />
     <Title c="var(--mantine-color-dark-4)" order={1} fw="900">
       Home<Text span c="#00A6BA" inherit>Pare</Text>

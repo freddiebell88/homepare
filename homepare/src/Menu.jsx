@@ -11,9 +11,8 @@ export function Menu({children}) {
         <>
         <MantineMenu width={200}>
         <MantineMenu.Target> 
-        <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />
+        <Burger onClick={toggle} aria-label="Toggle navigation" />
         </MantineMenu.Target>
-
         <MantineMenu.Dropdown>
             <Link to="/">
                 <MantineMenu.Item leftSection={<IconHomeHeart size={25} />}>
