@@ -80,7 +80,15 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
     }, [])
 
     const handleModalOpen = (listing) => {
-      setActiveListing(listing);
+      if (listing.images.length === 0) {
+        console.log("Inside listing If")
+        listing.images.push({
+          "0": "https://assets-global.website-files.com/619e763bb3de7b56e6107aeb/61f2b0e1f0a732ae15de4d98_open-house-ideas-header-image-scaled.jpeg"
+        })
+        setActiveListing(listing)
+        } else {
+        setActiveListing(listing);
+      }
       open();
   }
 
@@ -91,7 +99,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
       <Modal opened={opened} onClose={close} centered>
             {activeListing && <DetailsCard 
             address={activeListing.address}
-            previewImage={activeListing.images[0]}
+            previewImage={activeListing.images[0][0]}
             squareFootage={activeListing.living_area}
             halfBathrooms={activeListing.half_bath}
             bathrooms={activeListing.full_bath}
