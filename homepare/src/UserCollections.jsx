@@ -32,8 +32,7 @@ export function UserCollections({ token }) {
   if (myCollections.length != 0 ){
 
   if (myCollections[0].search_name === "My List") {
-    console.log("My List If: ")
-    myCollections[0].search_name = "My Listings"
+    myCollections[0].search_name = "My Homes"
   }}
 
   return (

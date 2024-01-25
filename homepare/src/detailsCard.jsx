@@ -236,6 +236,12 @@ export function AddToCollection({ close, token, listingId }) {
        });
     }, []);
 
+    if (myCollections.length != 0 ){
+
+      if (myCollections[0].search_name === "My List") {
+        myCollections[0].search_name = "My Homes"
+      }}
+
     const handleCollectionChange = (e) => {
       setForm({
         ...form,
