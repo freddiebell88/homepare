@@ -165,7 +165,7 @@ export function DetailsCard({
           {inMyListing ? (
             <>
               <Text size="sm">{notes}</Text>
-              { !notes && 
+              
               <>
               <Textarea
                 placeholder="Add your notes here"
@@ -185,7 +185,7 @@ export function DetailsCard({
               >
                 Save Notes
               </Button> 
-              </> }
+              </> 
 
               <AddToCollection listingId={listingId} token={token} />
             </>
