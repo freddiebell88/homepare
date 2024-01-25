@@ -47,7 +47,7 @@ export function CollectionDetail({ token }) {
       <CloseButton size="lg"  />
       </Link></Group>
       {listingCheckBoxes.find((checkedbox) => checkedbox === true) && (
-        <Group justify="Center"><Button size="sm" m={5} variant="outline" onClick={open}>Compare?</Button></Group>
+        <Group justify="Center"><Button size="sm" m={5} variant="light" onClick={open}>Compare?</Button></Group>
       )}
       <Modal
         opened={opened}
