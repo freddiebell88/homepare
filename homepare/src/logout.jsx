@@ -36,7 +36,7 @@ export function Logout({ token, username, setAuth }) {
             <br></br>
             <Button type="submit" onClick={handleClick}>Yes</Button>
             &nbsp;
-            <Link to="/UserAccount"><Button type="submit">No</Button></Link> 
+            <Link to="/user-account"><Button type="submit">No</Button></Link> 
         </Container>
         </div>
         </div>

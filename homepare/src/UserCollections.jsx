@@ -187,7 +187,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
           )}
         </Box>
       )}
-      <Link to="/CollectionDetail" state={collectionListings}>
+      <Link to="/collection-detail" state={collectionListings}>
         <Text ta="right" size="md" td="underline" pb="xs">
           Compare Listings?
         </Text>

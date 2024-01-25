@@ -57,37 +57,37 @@ function App() {
       element={!token ? <Navigate to="/login" /> :<Menu><Checklist username={username} token={token}/></Menu>}
       />
       <Route
-      path="/editChecklist"
+      path="/edit-checklist"
       element={!token ? <Navigate to="/login" /> :<EditChecklist username={username} token={token}/>}
       />
       <Route
-      path="CollectionDetail"
+      path="collection-detail"
       element={<CollectionDetail username={username} token={token} />}
       />
       <Route
-      path="comparisonTable"
+      path="comparison-table"
       element={<ComparisonTable username={username} token={token}/>}
       />
       <Route
-      path="detailsCard"
+      path="details-card"
       element={<DetailsCard username={username} token={token}/>}
       />
       <Route
-      path="UserAccount"
+      path="user-account"
       element=
       {!token ? <Navigate to="/login" /> : <Menu><UserAccount username={username} token={token}/></Menu>}
       />
       <Route
-      path="UserCollections"
+      path="user-collections"
       element={
       <Menu><UserCollections username={username} token={token} /></Menu>}
       />
       <Route
-      path="UserListings"
+      path="user-listings"
       element={<UserListings username={username} token={token}/>}
       />
       <Route
-      path="listingInput"
+      path="listing-input"
       element={<Menu><ListingInput token={token} username={username} /></Menu>}
       />
       <Route

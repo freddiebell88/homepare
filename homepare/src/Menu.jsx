@@ -19,7 +19,7 @@ export function Menu({children}) {
                 <Text size="md" fw={500}>My Dashboard</Text>
                 </MantineMenu.Item>
                 </Link>
-            <Link to="/listingInput">
+            <Link to="/listing-input">
                 <MantineMenu.Item leftSection={<IconHomePlus size={25} />}>
                 <Text size="md" fw={500}>Add a Listing</Text>
                 </MantineMenu.Item>
@@ -29,7 +29,7 @@ export function Menu({children}) {
                 <Text size="md" fw={500}>Checklist</Text>
                 </MantineMenu.Item>
                 </Link>
-            <Link to="/UserAccount">
+            <Link to="/user-account">
                 <MantineMenu.Item leftSection={<IconHomeCog size={25} />}>
                 <Text size="md" fw={500}>My Account</Text>
                 </MantineMenu.Item>

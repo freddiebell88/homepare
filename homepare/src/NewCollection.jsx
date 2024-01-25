@@ -24,7 +24,7 @@ export function NewCollection( {token} ) {
             authorization: `x-access-token ${token}`
           },
         }
-      ).then(navigate("/UserCollections")).catch((err) => {
+      ).then(navigate("/user-collections")).catch((err) => {
         return setErrorMessage(err.response.data.message)
      })
     };
