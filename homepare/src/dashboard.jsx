@@ -25,7 +25,6 @@ export function Dashboard( {token} ) {
             authorization: `x-access-token ${token}`
             }
     }).then((res) => {
-    console.log(res.data.homes);
     setMyListings(res.data.homes)})
     .catch(error => setError(`Error, ${error.message}`))
     }, [ token ])

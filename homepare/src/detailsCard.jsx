@@ -27,6 +27,7 @@ export function DetailsCard({
   price,
   listingId,
   halfBathrooms,
+  notes,
   close,
 }) {
   const navigate = useNavigate();
@@ -99,7 +100,9 @@ export function DetailsCard({
           },
         }
       )
-      .then(close()).catch((err) => {
+      .then(close())
+      .then(navigate("/"))
+      .catch((err) => {
         return setErrorMessage(err.response.data.message)
      });
   };
@@ -160,6 +163,9 @@ export function DetailsCard({
           </SimpleGrid>
           {inMyListing ? (
             <>
+              <Text size="sm">{notes}</Text>
+              { !notes && 
+              <>
               <Textarea
                 placeholder="Add your notes here"
                 label="Notes:"
@@ -177,7 +183,8 @@ export function DetailsCard({
                 onClick={handleSaveNotes}
               >
                 Save Notes
-              </Button>
+              </Button> 
+              </> }
 
               <AddToCollection listingId={listingId} token={token} />
             </>

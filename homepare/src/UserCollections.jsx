@@ -101,6 +101,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
             garage={activeListing.garage}
             price={activeListing.price}
             listingId={activeListing._id}
+            notes={activeListing.notes}
             inMyListing={true}
             token={token}
             close={close}

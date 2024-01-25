@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import homeData from "./data/homes.json";
 import { useDisclosure } from "@mantine/hooks";
 import { DetailsCard } from "./detailsCard";
 import { IconHomeSearch, IconSearch } from "@tabler/icons-react";
