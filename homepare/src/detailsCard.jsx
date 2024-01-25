@@ -267,11 +267,19 @@ export function AddToCollection({ close, token, listingId }) {
             },
           }
         )
-        .then(console.log(myCollections))
-        .then(close())
+        .then(axios.get(`https://homepare-backend.onrender.com/home/${listingId}`,
+        {
+          headers: {
+            authorization: `x-access-token ${token}`,
+          },
+        }))
+        .then((res) => setMyCollections([...myCollections, res.data]))
+
+        // .then(close())
         .catch((err) => {
           return setErrorMessage(err.response.data.message)
        });
+       
     };
 
     return (
