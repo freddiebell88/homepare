@@ -4,9 +4,12 @@ This is the bare bones for the FrontEnd of Team 20's ReadMe file.
 
 ## Project description
 
-Our final project is a checklist app made for homehunters as they view homes for sale. The user can search listings, add listings to their collections, and the app comes with a personalized checklist that compares each home listing's data to the user's personal preferences.
+HomePare is a home comparison tool for prospective home buyers. Users can record their personal home preferences, search for home listings, sort listings into collections, and view a personalized checklist that compares home listing data to their own personal preferences.
 
-The app begins with registration for a new user, where they will be prompted to fill out their basic account information. Then, the first time user will be led to a page with a questionnaire that records the data and once confirmed will lead the user to their dashboard. From there, users now have access to their listings and their collections on their dashboard, as well as a menu bar with other options. A user can use the menu to navigate to "Add a listing", which will open a page with a search bar where users can search for a home using its address. When they click search, they'll see a listing for that home, which they can add to their collections or listings. They can continue searching and adding homes, or they can navigate to other pages, including a checklist page which shows users their preferences. Users can edit their preferences questions on an edit page, where they can choose to update individual information as they choose to. The users can also navigate to a user account page where they can update their account information, or logout.
+The app begins with registration where a new user is prompted to fill out basic account information. First time users are then led to a questionnaire to identify and record their home preferences (number of bedrooms, bathrooms, etc.). Once a user completes the questionnaire, they are redirected to their user dashboard.
+
+From the dashboard a user has options to search for listings and add them to their collection, view and edit their checklist results, and modify their user account information. When adding listings, a user has the option to simply add it to a provided default collection (My List) or create their own collections. A second comparison feature is accessible when a user views a collection. The user can select multiple listings within an expanded collection and then compare them against each other and their own preferences in a chart.
+
 
 ## Technologies Used
 

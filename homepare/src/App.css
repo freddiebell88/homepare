@@ -31,10 +31,6 @@ div.userCollection {
   white-space: nowrap;
 }
 
-.compare-listings-in-user-collections {
-  text-align: right;
-  text-decoration: underline;
-}
 
 .collections-wrapper-in-user-collections {
   padding: 10px;
@@ -49,10 +45,9 @@ hr.rounded-divider-in-user-collections {
 
 .listing-thumbnail-in-user-collections {
   max-width: 150px;
-  max-height: 150px;
-  border: solid aqua 2px;
+  border: solid rgb(211, 211, 211) 1px;
   font-size:x-small;
-  margin: 15px;
+  margin: 5px;
 }
 
 .thumbnail-text-in-user-collections {
