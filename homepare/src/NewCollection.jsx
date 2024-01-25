@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Text } from "@mantine/core"
+import { Text, Input, Button, Group } from "@mantine/core"
+import { IconHomeEdit } from "@tabler/icons-react";
 
 export function NewCollection( {token} ) {
     const [collectionInput, setCollectionInput] = useState("");
@@ -32,13 +33,17 @@ export function NewCollection( {token} ) {
       <>
       { errorMessage && <Text c="red" >{errorMessage}</Text>}
         <form onSubmit={handleSaveCollection}>
-          <input
+          <Group justify="right" m="sm">
+          <Input
             type="text"
-            placeholder="Name your new collection"
+            placeholder="Add New Collection"
             onChange={(e) => setCollectionInput(e.target.value)}
             value={collectionInput}
+            rightSection={<IconHomeEdit size={25} />}
+            size="md"
           />
-          <button type="submit">Save</button>
+          <Button type="submit" size="md">Save</Button>
+          </Group>
         </form>
       </>
     );
