@@ -3,9 +3,10 @@ import { DetailsCard } from "./detailsCard";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Divider, Text, Modal, Group, Box } from "@mantine/core";
+import { Divider, Text, Modal, Group, Box, Title } from "@mantine/core";
 import placeholderImage from "./data/pexels-kelly-2950003.jpg";
 import { NewCollection } from "./NewCollection";
+import { IconHomePlus } from '@tabler/icons-react';
 
 export function UserCollections({ token }) {
   const thumbWidth = "100px";
@@ -29,15 +30,15 @@ export function UserCollections({ token }) {
       });
   }, [token]);
 
-  if (myCollections.length != 0 ){
-
-  if (myCollections[0].search_name === "My List") {
-    myCollections[0].search_name = "My Homes"
-  }}
+  if (myCollections.length != 0) {
+    if (myCollections[0].search_name === "My List") {
+      myCollections[0].search_name = "My Homes";
+    }
+  }
 
   return (
     <>
-    <NewCollection token={token} />
+      <NewCollection token={token} />
       {errorMessage && <Text c="red">{errorMessage}</Text>}
       {myCollections.map((collection, index) => {
         index += 1;
@@ -60,8 +61,6 @@ export function UserCollections({ token }) {
           </>
         );
       })}
-
-      
     </>
   );
 }
@@ -131,41 +130,61 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
               />
             )}
           </Modal>
-
-          {collectionListings.map((coListing) => {
-            return (
-              <Box
-                mah={200}
-                p="xs"
-                className="listing-thumbnail-in-user-collections"
-                style={{ "--radius": "0.5rem", borderRadius: "var(--radius)" }}
-                key={coListing._id}
-                onClick={() => handleModalOpen(coListing)}
-              >
-                <Group>
-                  {coListing.images &&
-                    coListing.images.length > 0 &&
-                    Object.keys(coListing.images[0]).length > 0 && (
-                      <img
-                        src={coListing.images[0][0]}
-                        onError={usePlaceHolder}
-                        width={thumbWidth}
-                        height={thumbHeight}
-                      />
+          {collectionListings.length === 0 ? (
+            <Box
+              justify="center"
+              mah={200}
+              p="xs"
+              className="listing-thumbnail-in-user-collections"
+              style={{
+                "--radius": "0.5rem",
+                borderRadius: "var(--radius)",
+              }}
+            >
+              <Link to="/listingInput">
+                <IconHomePlus color="var(--mantine-color-dark-4)" size={40} />
+              <Text ta="center" size="sm">Add a listing!</Text>
+              </Link>
+            </Box>
+          ) : (
+            collectionListings.map((coListing) => {
+              return (
+                <Box
+                  mah={200}
+                  p="xs"
+                  className="listing-thumbnail-in-user-collections"
+                  style={{
+                    "--radius": "0.5rem",
+                    borderRadius: "var(--radius)",
+                  }}
+                  key={coListing._id}
+                  onClick={() => handleModalOpen(coListing)}
+                >
+                  <Group>
+                    {coListing.images &&
+                      coListing.images.length > 0 &&
+                      Object.keys(coListing.images[0]).length > 0 && (
+                        <img
+                          src={coListing.images[0][0]}
+                          onError={usePlaceHolder}
+                          width={thumbWidth}
+                          height={thumbHeight}
+                        />
+                      )}
+                    {coListing.images && coListing.images.length === 0 && (
+                      <img src={placeholderImage} />
                     )}
-                  {coListing.images && coListing.images.length === 0 && (
-                    <img src={placeholderImage} />
-                  )}
-                  <Text
-                    className="thumbnail-text-in-user-collections"
-                    truncate="end"
-                  >
-                    {coListing.address}
-                  </Text>
-                </Group>
-              </Box>
-            );
-          })}
+                    <Text
+                      className="thumbnail-text-in-user-collections"
+                      truncate="end"
+                    >
+                      {coListing.address}
+                    </Text>
+                  </Group>
+                </Box>
+              );
+            })
+          )}
         </Box>
       )}
       <Link to="/CollectionDetail" state={collectionListings}>

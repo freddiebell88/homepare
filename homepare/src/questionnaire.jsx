@@ -74,11 +74,11 @@ export function Questionnaire( {token}) {
         <>
           <div className="confirm-summary-div-in-questionnaire">
           <Group justify="center">
-          <Title order={3}>You are looking for a home with <Text span td="underline" inherit>{recordedAnswers[0].text}</Text>, <Text span td="underline" inherit>{recordedAnswers[1].text}</Text>, <Text span td="underline" inherit>{recordedAnswers[2].text}</Text>, and <Text span td="underline" inherit>{recordedAnswers[3].text}</Text>.
+          <Title fw={500} order={3}>You are looking for a home with <br></br><Text span td="underline" inherit>{recordedAnswers[0].text}</Text>,<br></br> <Text span td="underline" inherit>{recordedAnswers[1].text}</Text>,<br></br> <Text span td="underline" inherit>{recordedAnswers[2].text}</Text>, and <Text span td="underline" inherit>{recordedAnswers[3].text}</Text>.
           </Title>
-          <Button my={4} size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>
-          <Button onClick={handleConfirmClick} size="md" variant="light" leftSection={<IconCheckbox size={14} />}>Confirm</Button>
-    </Group>
+          </Group>
+          <Button my={4} size="sm" mt="sm" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>
+          <Button onClick={handleConfirmClick} size="sm" variant="light" mt="xs" ml="sm" leftSection={<IconCheckbox size={14} />}>Confirm</Button>
           </div>
         </>
       ) : (
@@ -106,11 +106,11 @@ export function Questionnaire( {token}) {
             })}
           </form>
           <Group justify="center" style={{ marginTop: 20 }}>
-          {index != 0 && <Button size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>}
+          {index != 0 && <Button size="sm" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>}
           {
             <Button
               onClick={handleNextClick}
-              size="md"
+              size="sm"
               rightSection={<IconArrowRight size={14} />}
               disabled={selectedAnswer.value ? false : true}
               variant="light"
