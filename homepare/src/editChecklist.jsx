@@ -78,19 +78,21 @@ console.log(form.initialValues)
 
     return (
         <>
+        <div className="w-full h-screen flex justify-center items-center">
         { error && <Text c="red" >{error}</Text>}
         <Container
         size="30rem">
-        <Title order={2}>Edit your checklist:</Title>
+        <Title ta="center" order={2}>Edit your checklist:</Title>
         <br></br>
         <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
+        <Group justify="center">
         <Radio.Group
             defaultValue={preferences.bedrooms}
             name="bedrooms"
             label="How many bedrooms are you looking for?"
             {...form.getInputProps('bedrooms')}
             >
-          <Group mt="xs">
+          <Group justify="center" mt="xs">
             <Radio value="1" label="1" />
             <Radio value="2" label="2" />
             <Radio value="3" label="3" />
@@ -104,7 +106,7 @@ console.log(form.initialValues)
             label="How many bathrooms are you looking for?"
             {...form.getInputProps('bathrooms')}
             >
-          <Group mt="xs">
+          <Group justify="center" mt="xs">
             <Radio value="1" label="1" />
             <Radio value="2" label="2" />
             <Radio value="3" label="3" />
@@ -117,7 +119,7 @@ console.log(form.initialValues)
             label="Do you want a home with or without a garage?"
             {...form.getInputProps('garage')}
             >
-          <Group mt="xs">
+          <Group justify="center" mt="xs">
             <Radio value="true" label="Yes" />
             <Radio value="false" label="No" />
           </Group>
@@ -128,15 +130,17 @@ console.log(form.initialValues)
             label="Do you want a home with or without an HOA (Home Owner's Association)?"
             {...form.getInputProps('hoa')}
             >
-          <Group mt="xs">
+          <Group justify="center" mt="xs">
             <Radio value="true" label="Yes" />
             <Radio value="false" label="No" />
           </Group>
         </Radio.Group>
+      
         <br></br>
-        <Button type="submit" onClick={handleSubmit}>Update</Button>
+      <Button type="submit" onClick={handleSubmit}>Update</Button></Group>
         </form>
         </Container>
+        </div>
         </>
     )
     }

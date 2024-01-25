@@ -74,10 +74,10 @@ export function Questionnaire( {token}) {
         <>
           <div className="confirm-summary-div-in-questionnaire">
           <Group justify="center">
-          <Title order={3}>You are looking for a home with <Text span c="#00A6BA" inherit>{recordedAnswers[0].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[1].text}</Text>, <Text span c="#00A6BA" inherit>{recordedAnswers[2].text}</Text>, and <Text span c="#00A6BA" inherit>{recordedAnswers[3].text}</Text>.
+          <Title order={3}>You are looking for a home with <Text span td="underline" inherit>{recordedAnswers[0].text}</Text>, <Text span td="underline" inherit>{recordedAnswers[1].text}</Text>, <Text span td="underline" inherit>{recordedAnswers[2].text}</Text>, and <Text span td="underline" inherit>{recordedAnswers[3].text}</Text>.
           </Title>
-          <Button size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>
-          <Button onClick={handleConfirmClick} size="md" leftSection={<IconCheckbox size={14} />}>Confirm</Button>
+          <Button my={4} size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>
+          <Button onClick={handleConfirmClick} size="md" variant="light" leftSection={<IconCheckbox size={14} />}>Confirm</Button>
     </Group>
           </div>
         </>
@@ -85,7 +85,7 @@ export function Questionnaire( {token}) {
         <>
         <div className="div-around-questions-answers-and-buttons-in-questionnaire">
           <form>
-            <Text size="xl">{questionnaireData[index].question}</Text>
+            <Text fw={500} size="xl" my={10}>{questionnaireData[index].question}</Text>
             {questionnaireData[index].answers.map((answerObject) => {
               console.log(answerObject);
               return (
@@ -105,7 +105,7 @@ export function Questionnaire( {token}) {
               );
             })}
           </form>
-          <Group justify="center" style={{ marginTop: 14 }}>
+          <Group justify="center" style={{ marginTop: 20 }}>
           {index != 0 && <Button size="md" leftSection={<IconArrowLeft size={14} />} onClick={handleBackClick}>Back</Button>}
           {
             <Button
@@ -113,6 +113,7 @@ export function Questionnaire( {token}) {
               size="md"
               rightSection={<IconArrowRight size={14} />}
               disabled={selectedAnswer.value ? false : true}
+              variant="light"
             >
               Next
             </Button>
