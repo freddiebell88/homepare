@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { IconHomeOff } from '@tabler/icons-react';
 import {
   Card,
   SimpleGrid,
@@ -115,7 +116,7 @@ export function DetailsCard({
       <div className="detailsCard">
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Card.Section>
-            <Image src={previewImage} alt="thumbnail of home" />
+            <Image src={previewImage} className="detailsCardImage" alt="thumbnail of home" />
           </Card.Section>
           <Text size="lg" fw={700} ta="center">
             {address}
