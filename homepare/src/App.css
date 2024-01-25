@@ -158,13 +158,13 @@ hr.rounded-divider-in-user-collections {
 }
 
 .match-in-comparison-table {
-  background-color: var(--mantine-color-green-light-color);
-  color:white;
+  background-color: #ccedff;
+  color:black;
   font-weight: bold;
 }
 
 .not-a-match-in-comparision-table {
-  background-color: var(--mantine-color-red-8);
+  background-color: #099cff;
   opacity: 1;
   color: white;
   font-weight: bold;

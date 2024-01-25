@@ -138,7 +138,7 @@ console.log(form.initialValues)
       
         <br></br>
       <Button type="submit" onClick={handleSubmit}>Update</Button>
-     <Link to="/checklist"><Button color="green">Go back to checklist</Button></Link> 
+     <Link to="/checklist"><Button variant="light">Go back to checklist</Button></Link> 
       </Group>
         </form>
         </Container>
