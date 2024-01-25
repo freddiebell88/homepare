@@ -50,15 +50,15 @@ function App() {
         />
       <Route 
       path="/questionnaire"
-      element={<Questionnaire username={username} token={token} />}
+      element={!token ? <Navigate to="/login" /> :<Questionnaire username={username} token={token} />}
       />
       <Route
       path="checklist"
-      element={<Menu><Checklist username={username} token={token}/></Menu>}
+      element={!token ? <Navigate to="/login" /> :<Menu><Checklist username={username} token={token}/></Menu>}
       />
       <Route
       path="/editChecklist"
-      element={<EditChecklist username={username} token={token}/>}
+      element={!token ? <Navigate to="/login" /> :<EditChecklist username={username} token={token}/>}
       />
       <Route
       path="CollectionDetail"
@@ -74,7 +74,8 @@ function App() {
       />
       <Route
       path="UserAccount"
-      element={<Menu><UserAccount username={username} token={token}/></Menu>}
+      element=
+      {!token ? <Navigate to="/login" /> : <Menu><UserAccount username={username} token={token}/></Menu>}
       />
       <Route
       path="UserCollections"
@@ -91,7 +92,7 @@ function App() {
       />
       <Route
       path="logout"
-      element={<Logout username={username} token={token} setAuth={setAuth} />}
+      element={!token ? <Navigate to="/login" /> : <Logout username={username} token={token} setAuth={setAuth} />}
       />
       <Route path='*' element={<NotFound />}/>
     </Routes>
