@@ -102,7 +102,10 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
     }
     open();
   };
-
+   const handleAddNewListingToCollection = (newListing) => {
+    setCollectionListings([...collectionListings, newListing])
+    console.log("NEw listing:", newListing)
+  }
   return (
     <>
       {errorMessage ? (
@@ -112,6 +115,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
           <Modal opened={opened} onClose={close} centered>
             {activeListing && (
               <DetailsCard
+              updateCollection={handleAddNewListingToCollection}
                 address={activeListing.address}
                 previewImage={activeListing.images[0][0]}
                 squareFootage={activeListing.living_area}
