@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button, Container, Radio, Group, Title, Text } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
@@ -82,7 +82,7 @@ console.log(form.initialValues)
         { error && <Text c="red" >{error}</Text>}
         <Container
         size="30rem">
-        <Title ta="center" order={2}>Edit your checklist:</Title>
+        <Title ta="center" order={2}>Edit your checklist</Title>
         <br></br>
         <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
         <Group justify="center">
@@ -116,12 +116,12 @@ console.log(form.initialValues)
         <br></br>
         <Radio.Group
             name="garage"
-            label="Do you want a home with or without a garage?"
+            label="Do you want a home with a garage?"
             {...form.getInputProps('garage')}
             >
           <Group justify="center" mt="xs">
-            <Radio value="true" label="Yes" />
-            <Radio value="false" label="No" />
+            <Radio value="true" label="With a garage" />
+            <Radio value="false" label="Without a garage" />
           </Group>
         </Radio.Group>
         <br></br>
@@ -131,13 +131,15 @@ console.log(form.initialValues)
             {...form.getInputProps('hoa')}
             >
           <Group justify="center" mt="xs">
-            <Radio value="true" label="Yes" />
-            <Radio value="false" label="No" />
+            <Radio value="true" label="With an HOA" />
+            <Radio value="false" label="Without an HOA" />
           </Group>
         </Radio.Group>
       
         <br></br>
-      <Button type="submit" onClick={handleSubmit}>Update</Button></Group>
+      <Button type="submit" onClick={handleSubmit}>Update</Button>
+     <Link to="/checklist"><Button color="green">Go back to checklist</Button></Link> 
+      </Group>
         </form>
         </Container>
         </div>
