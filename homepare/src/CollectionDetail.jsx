@@ -35,6 +35,13 @@ export function CollectionDetail( {token}) {
     //we need to send information from each checked box that identifies the listings
   };
 
+  for (const listing of collectionListings) {
+    if (listing.images.length === 0) {
+      listing.images.push({
+        "0": "https://assets-global.website-files.com/619e763bb3de7b56e6107aeb/61f2b0e1f0a732ae15de4d98_open-house-ideas-header-image-scaled.jpeg"
+      })
+    }
+  }
 
   return (
     <>
@@ -78,7 +85,7 @@ export function CollectionDetail( {token}) {
               className="listing-thumbnail-in-collections-detail"
             >
               <img
-                src={listing.images[0]}
+                src={listing.images[0][0]}
                 width={thumbWidth}
                 height={thumbHeight}
               />
