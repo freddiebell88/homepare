@@ -224,7 +224,7 @@ export function DetailsCard({
           )}
         </Card>
       </div>
-    </>
+    </> 
   );
 }
 
@@ -233,7 +233,7 @@ const getCompareIcon = (a,b) => {
   else return "❌";
 }
 
-export function AddToCollection({ close, token, listingId, updateCollection }) {
+export function  AddToCollection({ close, token, listingId, updateCollection }) {
   const [myCollections, setMyCollections] = useState([]);
   const [selectedCollection, setSelectedCollection] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -321,7 +321,7 @@ export function AddToCollection({ close, token, listingId, updateCollection }) {
               ))}
             </select>
           </label>
-          <button type="submit">Add</button>
+          <Button type="submit" size="xs" color="gray">Add</Button>
         </form>
       </>
     );
