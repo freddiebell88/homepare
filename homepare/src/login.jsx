@@ -30,11 +30,6 @@ export function Login({ setAuth }) {
 
     const handleSubmit = (values, token) => {
         const { username, password, email } = values; 
-        console.log('submitting form')
-        console.log(username)
-        console.log(password)
-        console.log(`${token}`)
-        console.log(email);
         axios
             .post('https://homepare-backend.onrender.com/login', {
                 "username": username,

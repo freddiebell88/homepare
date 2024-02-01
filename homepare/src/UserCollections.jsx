@@ -84,6 +84,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
       })
       .then((res) => {
         setCollectionListings(res.data.searchNameArray[index - 1].homeArray);
+        console.log(collectionListings)
       })
       .catch((err) => {
         return setErrorMessage(err.response.data.message);
@@ -104,7 +105,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
   };
    const handleAddNewListingToCollection = (newListing) => {
     setCollectionListings([...collectionListings, newListing])
-    console.log("NEw listing:", newListing)
+    console.log("New listing:", newListing)
   }
   return (
     <>
@@ -191,6 +192,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
           )}
         </Box>
       )}
+      
       <Link to="/collection-detail" state={collectionListings}>
         <Text ta="right" size="md" td="underline" pb="xs">
           Compare Listings?
