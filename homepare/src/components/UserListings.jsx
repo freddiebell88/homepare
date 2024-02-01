@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
 import axios from 'axios';
-import placeholderImage from "./data/pexels-kelly-2950003.jpg"
+// import placeholderImage from "./data/pexels-kelly-2950003.jpg"
 import { Link } from "react-router-dom";
 
 export function UserListings({myListings, token}) {

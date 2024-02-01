@@ -1,25 +1,24 @@
-import { useState } from 'react'
 import './App.css'
 import useLocalStorageState from 'use-local-storage-state'
-import { Dashboard } from './dashboard'
-import { Register } from './register'
-import { Login } from './login'
+import { Dashboard } from './components/dashboard.jsx'
+import { Register } from './components/register'
+import { Login } from './components/login'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
-import { Questionnaire } from './questionnaire'
-import { Checklist } from './checklist'
-import { CollectionDetail } from './CollectionDetail'
-import { ComparisonTable } from './comparisonTable'
-import { DetailsCard } from './detailsCard'
-import { UserAccount } from './UserAccount'
-import { UserListings } from './UserListings'
-import { UserCollections } from './UserCollections'
-import { ListingInput } from './listingInput';
-import { Menu } from './Menu'
-import { Logout } from './logout'
-import { EditChecklist } from './editChecklist'
-import { NotFound } from './NotFound'
+import { Questionnaire } from './components/questionnaire'
+import { Checklist } from './components/checklist'
+import { CollectionDetail } from './components/CollectionDetail'
+import { ComparisonTable } from './components/comparisonTable'
+import { DetailsCard } from './components/detailsCard'
+import { UserAccount } from './components/UserAccount'
+import { UserListings } from './components/UserListings'
+import { UserCollections } from './components/UserCollections'
+import { ListingInput } from './components/listingInput';
+import { Menu } from './components/Menu'
+import { Logout } from './components/logout'
+import { EditChecklist } from './components/editChecklist'
+import { NotFound } from './components/NotFound'
 
 
 function App() {

@@ -25,9 +25,6 @@ export function Checklist ({token}) {
         return setErrorMessage(err.response.data.message)
      })}, [token])
 
-
-
-    console.log('this is checklist')
     return(
         <>
         <div className="w-full h-screen flex justify-center items-center">

@@ -1,10 +1,7 @@
-import { UserListings } from "./UserListings";
+import { UserListings } from "./UserListings.jsx";
 import { UserCollections } from "./UserCollections.jsx";
-import { Menu } from "./Menu";
+import { Menu } from "./Menu.jsx";
 import { useState, useEffect } from "react";
-import { Tabs } from '@mantine/core';
-import { Questionnaire } from "./questionnaire";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { IconHomeCheck } from "@tabler/icons-react";
 import { Text, Group, Title } from "@mantine/core"

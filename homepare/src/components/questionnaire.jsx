@@ -1,4 +1,4 @@
-import questionnaireData from "./data/questionnaire.json";
+import questionnaireData from "../data/questionnaire.json";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";

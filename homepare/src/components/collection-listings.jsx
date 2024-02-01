@@ -4,7 +4,7 @@ import axios from "axios";
 import { DetailsCard } from "./detailsCard";
 import { Link } from "react-router-dom";
 import { IconHomePlus } from "@tabler/icons-react";
-import placeholderImage from "./data/pexels-kelly-2950003.jpg";
+import placeholderImage from "../data/pexels-kelly-2950003.jpg";
 import { Divider, Text, Modal, Group, Box } from "@mantine/core";
 
 export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
@@ -12,7 +12,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
   const [opened, { open, close }] = useDisclosure(false);
   const [activeListing, setActiveListing] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
-
+  // const placeholderImage = "src/data/pexels-kelly-2950003.jpg"
   const usePlaceHolder = (e) => {
     e.target.src = placeholderImage;
   };
