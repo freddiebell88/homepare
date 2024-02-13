@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { IconHomePlus } from "@tabler/icons-react";
 import placeholderImage from "../data/pexels-kelly-2950003.jpg";
 import { Divider, Text, Modal, Group, Box } from "@mantine/core";
+import { AddToCollection } from "./add-to-collection";
 
 export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
   const [collectionListings, setCollectionListings] = useState([]);
@@ -16,6 +17,7 @@ export function CollectionListings({ token, index, thumbHeight, thumbWidth }) {
   const usePlaceHolder = (e) => {
     e.target.src = placeholderImage;
   };
+
 
   useEffect(() => {
     axios

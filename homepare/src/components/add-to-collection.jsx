@@ -73,7 +73,6 @@ export function  AddToCollection({ close, token, listingId, updateCollection }) 
           console.log(selectedCollection)
          
       };
-  
       return (
         <>
         { errorMessage && <Text c="red" >{errorMessage}</Text>}
@@ -94,5 +93,5 @@ export function  AddToCollection({ close, token, listingId, updateCollection }) 
             <Button type="submit" size="xs" color="gray">Add</Button>
           </form>
         </>
-      );
+      )
     }
