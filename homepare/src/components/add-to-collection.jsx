@@ -65,11 +65,12 @@ export function  AddToCollection({ close, token, listingId, updateCollection }) 
             },
           })))
           .then((res) => updateCollection(res.data))
-  
+          
           // .then(close())
           .catch((err) => {
             return setErrorMessage(err.response.data.message)
-         });
+          });
+          console.log(selectedCollection)
          
       };
   
